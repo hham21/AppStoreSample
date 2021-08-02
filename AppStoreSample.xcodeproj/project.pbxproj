@@ -26,6 +26,7 @@
 		37E99BC126B7B964002A840B /* Keyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E99BC026B7B964002A840B /* Keyword.swift */; };
 		37E99BC526B7B9D5002A840B /* TrackUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E99BC426B7B9D5002A840B /* TrackUseCase.swift */; };
 		37E99BC726B7B9DD002A840B /* KeywordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E99BC626B7B9DD002A840B /* KeywordUseCase.swift */; };
+		37E99BCC26B7BC47002A840B /* RxFlow in Frameworks */ = {isa = PBXBuildFile; productRef = 37E99BCB26B7BC47002A840B /* RxFlow */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37E99BCC26B7BC47002A840B /* RxFlow in Frameworks */,
 				37E99BB926B7B94E002A840B /* RxRelay in Frameworks */,
 				37E99BB726B7B94E002A840B /* RxSwift in Frameworks */,
 				37E99BBB26B7B94E002A840B /* RxCocoa in Frameworks */,
@@ -141,6 +143,8 @@
 		37E99B7D26B7B892002A840B /* AppStoreSample */ = {
 			isa = PBXGroup;
 			children = (
+				37E99BC826B7BBE6002A840B /* Application */,
+				37E99BC926B7BBF2002A840B /* Presentation */,
 				37E99B7E26B7B892002A840B /* AppDelegate.swift */,
 				37E99B8026B7B892002A840B /* SceneDelegate.swift */,
 				37E99B8226B7B892002A840B /* ViewController.swift */,
@@ -190,6 +194,20 @@
 			path = UseCase;
 			sourceTree = "<group>";
 		};
+		37E99BC826B7BBE6002A840B /* Application */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		37E99BC926B7BBF2002A840B /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -224,6 +242,7 @@
 				37E99BB826B7B94E002A840B /* RxRelay */,
 				37E99BBA26B7B94E002A840B /* RxCocoa */,
 				37E99BBC26B7B94E002A840B /* RxBlocking */,
+				37E99BCB26B7BC47002A840B /* RxFlow */,
 			);
 			productName = AppStoreSample;
 			productReference = 37E99B7B26B7B892002A840B /* AppStoreSample.app */;
@@ -299,6 +318,7 @@
 			mainGroup = 37E99B7226B7B892002A840B;
 			packageReferences = (
 				37E99BB526B7B94E002A840B /* XCRemoteSwiftPackageReference "RxSwift" */,
+				37E99BCA26B7BC47002A840B /* XCRemoteSwiftPackageReference "RxFlow" */,
 			);
 			productRefGroup = 37E99B7C26B7B892002A840B /* Products */;
 			projectDirPath = "";
@@ -711,6 +731,14 @@
 				minimumVersion = 6.2.0;
 			};
 		};
+		37E99BCA26B7BC47002A840B /* XCRemoteSwiftPackageReference "RxFlow" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxFlow";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.12.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -733,6 +761,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 37E99BB526B7B94E002A840B /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxBlocking;
+		};
+		37E99BCB26B7BC47002A840B /* RxFlow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 37E99BCA26B7BC47002A840B /* XCRemoteSwiftPackageReference "RxFlow" */;
+			productName = RxFlow;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

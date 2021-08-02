@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "RxFlow",
+        "repositoryURL": "https://github.com/RxSwiftCommunity/RxFlow",
+        "state": {
+          "branch": null,
+          "revision": "e85a54421b79ba9873704169c4611cc41383d772",
+          "version": "2.12.2"
+        }
+      },
+      {
         "package": "RxSwift",
         "repositoryURL": "https://github.com/ReactiveX/RxSwift",
         "state": {
