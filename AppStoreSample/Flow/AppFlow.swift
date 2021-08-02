@@ -13,10 +13,16 @@ import RxFlow
 enum AppStep: Step {
     case initial
     
-    case main
+    // TapBar
+    case tapBarMain
     
-    case search
-    case setting
+    // Search
+    case searchMain
+    case searchResult
+    case searchDetail
+    
+    // Setting
+    case settingMain
 }
 
 struct AppStepper: Stepper {
@@ -64,7 +70,7 @@ final class AppFlow: Flow {
             rootWindow.rootViewController = root
         }
         
-        let stepper: OneStepper = .init(withSingleStep: AppStep.main)
+        let stepper: OneStepper = .init(withSingleStep: AppStep.tapBarMain)
         let contributor: FlowContributor = .contribute(withNextPresentable: mainFlow, withNextStepper: stepper)
         return .one(flowContributor: contributor)
     }

@@ -9,12 +9,13 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxFlow
+import Reusable
 
 struct SearchStepper: Stepper {
     let steps: PublishRelay<Step> = .init()
     
     var initialStep: Step {
-        return AppStep.search
+        return AppStep.searchMain
     }
 }
 
@@ -37,7 +38,7 @@ final class SearchFlow: Flow {
         }
         
         switch step {
-        case .search:
+        case .searchMain:
             return coordinateToTestVC()
         default:
             return .none
@@ -45,10 +46,9 @@ final class SearchFlow: Flow {
     }
     
     private func coordinateToTestVC() -> FlowContributors {
-        let vc: UIViewController = .init()
-        vc.view.backgroundColor = .brown
+        let vc: SearchMainViewController = SearchMainViewController.instantiate()
         rootViewController.setViewControllers([vc], animated: true)
-        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: SearchStepper()))
+        return .none
     }
 }
 

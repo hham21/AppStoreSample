@@ -14,7 +14,7 @@ struct SettingStepper: Stepper {
     let steps: PublishRelay<Step> = .init()
     
     var initialStep: Step {
-        return AppStep.setting
+        return AppStep.settingMain
     }
 }
 
@@ -39,6 +39,7 @@ final class SettingFlow: Flow {
         let vc: UIViewController = .init()
         vc.view.backgroundColor = .blue
         rootViewController.setViewControllers([vc], animated: true)
-        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: SearchStepper()))
+//        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: SearchStepper()))
+        return .none
     }
 }

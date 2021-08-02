@@ -8,6 +8,6 @@
 import Foundation
 import RxSwift
 
-protocol TrackUseCase {
+public protocol TrackUseCase {
     func getTracks(_ query: String) -> Observable<[Track]>
 }

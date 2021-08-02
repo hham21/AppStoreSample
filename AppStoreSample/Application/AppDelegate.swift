@@ -1,5 +1,5 @@
 //
-//  SceneDelegate.swift
+//  AppDelegate.swift
 //  AppStoreSample
 //
 //  Created by Hyoungsu Ham on 2021/08/02.
@@ -9,21 +9,22 @@ import UIKit
 import RxSwift
 import RxFlow
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+@main
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
     private let coordinator: FlowCoordinator = .init()
     private let disposeBag: DisposeBag = .init()
 
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let windowScene = (scene as? UIWindowScene) else { return }
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         startToLogCoordinator()
-        startApp(with: windowScene)
+        startApp()
+        return true
     }
     
-    private func startApp(with windowScene: UIWindowScene) {
-        let window: UIWindow = .init(windowScene: windowScene)
+    private func startApp() {
+        let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
         
         let appFlow: AppFlow = .init(with: window)
@@ -43,3 +44,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .disposed(by: disposeBag)
     }
 }
+

@@ -2,6 +2,42 @@
   "object": {
     "pins": [
       {
+        "package": "Cosmos",
+        "repositoryURL": "https://github.com/evgenyneu/Cosmos",
+        "state": {
+          "branch": null,
+          "revision": "cce521e734d0090494bd4afab5fd2e2f2465c1af",
+          "version": "23.0.0"
+        }
+      },
+      {
+        "package": "Kingfisher",
+        "repositoryURL": "https://github.com/onevcat/Kingfisher",
+        "state": {
+          "branch": null,
+          "revision": "44450a8f564d7c0165f736ba2250649ff8d3e556",
+          "version": "6.3.0"
+        }
+      },
+      {
+        "package": "Reusable",
+        "repositoryURL": "https://github.com/AliSoftware/Reusable",
+        "state": {
+          "branch": null,
+          "revision": "86cd17aa27e80d20bfe2ea57dd08958cf64664f4",
+          "version": "4.1.1"
+        }
+      },
+      {
+        "package": "RxDataSources",
+        "repositoryURL": "https://github.com/RxSwiftCommunity/RxDataSources",
+        "state": {
+          "branch": null,
+          "revision": "e4627ac4f5a8dc10719030561801825c443acfec",
+          "version": "5.0.1"
+        }
+      },
+      {
         "package": "RxFlow",
         "repositoryURL": "https://github.com/RxSwiftCommunity/RxFlow",
         "state": {

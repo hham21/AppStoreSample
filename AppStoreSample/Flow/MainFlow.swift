@@ -35,7 +35,7 @@ final class MainFlow: Flow {
         }
         
         switch step {
-        case .main:
+        case .tapBarMain:
             return coordinateToMainTapBar()
         default:
             return .none
@@ -49,8 +49,10 @@ final class MainFlow: Flow {
         ) { [unowned self] (search: UINavigationController,
                             setting: UINavigationController) in
             
-            let searchImage: UIImage? = UIImage(systemName: "magnifyingglass")
-            let settingImage: UIImage? = UIImage(systemName: "gearshape.fill")
+//            let searchImage: UIImage? = UIImage(systemName: "magnifyingglass")
+//            let settingImage: UIImage? = UIImage(systemName: "gearshape.fill")
+            let searchImage: UIImage? = nil
+            let settingImage: UIImage? = nil
             
             let homeItem: UITabBarItem = .init(title: "Search", image: searchImage, selectedImage: nil)
             let settingItem: UITabBarItem = .init(title: "Setting", image: settingImage, selectedImage: nil)

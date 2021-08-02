@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-protocol KeywordUseCase {
+public protocol KeywordUseCase {
     func getKeywords() -> Observable<[Keyword]>
     func saveKeyword(_ keyword: Keyword) -> Observable<Void>
 }

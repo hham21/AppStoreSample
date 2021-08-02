@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="SearchRecentKeywordCell" customModule="AppStoreSearch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="xKz-fU-Nwe">
+                        <rect key="frame" x="20" y="13" width="20" height="18"/>
+                        <color key="tintColor" systemColor="systemGrayColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="C5R-S5-Fz9"/>
+                            <constraint firstAttribute="height" constant="20" id="lRU-mX-wyo"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mE3-uX-ilq">
+                        <rect key="frame" x="55" y="13" width="245" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DNB-UC-dIv">
+                        <rect key="frame" x="20" y="43.5" width="300" height="0.5"/>
+                        <color key="backgroundColor" systemColor="separatorColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="CRD-qG-mg3"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="xKz-fU-Nwe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="1FL-to-lCa"/>
+                    <constraint firstItem="xKz-fU-Nwe" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="G7x-YQ-IP3"/>
+                    <constraint firstAttribute="bottom" secondItem="xKz-fU-Nwe" secondAttribute="bottom" constant="12" id="WPQ-Jg-SiF"/>
+                    <constraint firstItem="mE3-uX-ilq" firstAttribute="centerY" secondItem="xKz-fU-Nwe" secondAttribute="centerY" id="bFk-UJ-FdJ"/>
+                    <constraint firstItem="mE3-uX-ilq" firstAttribute="leading" secondItem="xKz-fU-Nwe" secondAttribute="trailing" constant="15" id="bLn-gf-iw2"/>
+                    <constraint firstAttribute="trailing" secondItem="DNB-UC-dIv" secondAttribute="trailing" id="ivc-uK-UUg"/>
+                    <constraint firstItem="xKz-fU-Nwe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="jeX-fQ-WCL"/>
+                    <constraint firstAttribute="bottom" secondItem="DNB-UC-dIv" secondAttribute="bottom" id="u8q-xi-lwU"/>
+                    <constraint firstAttribute="trailing" secondItem="mE3-uX-ilq" secondAttribute="trailing" constant="20" id="wiN-Ek-PQD"/>
+                    <constraint firstItem="DNB-UC-dIv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="wwA-uY-ups"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="titleLabel" destination="mE3-uX-ilq" id="Cjr-fL-VSA"/>
+            </connections>
+            <point key="canvasLocation" x="121.73913043478262" y="61.607142857142854"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
