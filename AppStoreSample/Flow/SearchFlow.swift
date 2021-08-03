@@ -5,11 +5,13 @@
 //  Created by Hyoungsu Ham on 2021/08/02.
 //
 
+import Domain
 import UIKit
 import RxSwift
 import RxCocoa
 import RxFlow
 import Reusable
+import Data
 
 struct SearchStepper: Stepper {
     let steps: PublishRelay<Step> = .init()
@@ -23,10 +25,11 @@ final class SearchFlow: Flow {
     var root: Presentable {
         return rootViewController
     }
+
+    let stepper: SearchStepper
     
     private let rootViewController = UINavigationController()
-    
-    let stepper: SearchStepper
+    private let service: KeywordUseCaseProvider = KeywordUseCaseProviderImpl()
     
     init(stepper: SearchStepper) {
         self.stepper = stepper
@@ -39,15 +42,17 @@ final class SearchFlow: Flow {
         
         switch step {
         case .searchMain:
-            return coordinateToTestVC()
+            return coordinateToSearchMainVC()
         default:
             return .none
         }
     }
     
-    private func coordinateToTestVC() -> FlowContributors {
-        let vc: SearchMainViewController = SearchMainViewController.instantiate()
-        rootViewController.setViewControllers([vc], animated: true)
+    private func coordinateToSearchMainVC() -> FlowContributors {
+        let useCase: KeywordUseCase = service.createKeywordUseCase()
+        let viewModel: SearchMainViewModel = .init(keywordUseCase: useCase)
+        let viewController: SearchMainViewController = .create(with: viewModel)
+        rootViewController.setViewControllers([viewController], animated: true)
         return .none
     }
 }

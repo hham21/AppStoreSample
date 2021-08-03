@@ -25,7 +25,7 @@ final class SearchResultViewController: UIViewController, StoryboardBased {
     
     @IBOutlet weak var tableView: UITableView!
     
-    private let viewModel: SearchResultViewModel = .init()
+    private let viewModel: SearchResultViewModel! = nil
     private lazy var dataSource: SearchResult.DataSource = createDataSource()
     weak var delegate: SearchResultViewControllerDelegate?
     private var disposeBag: DisposeBag = .init()

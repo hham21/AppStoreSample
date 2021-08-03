@@ -22,7 +22,7 @@ final class SearchMainViewController: UIViewController, StoryboardBased {
     
     @IBOutlet weak var tableView: UITableView!
     
-    private let viewModel: SearchMainViewModel! = nil
+    private var viewModel: SearchMainViewModel! = nil
     private lazy var dataSource: SearchMain.DataSource = createDataSource()
     private let searchResultVC: SearchResultViewController = .instantiate()
     private lazy var searchController: UISearchController = .init(searchResultsController: searchResultVC)
@@ -179,5 +179,15 @@ extension SearchMainViewController: SearchResultViewControllerDelegate {
     func didTapRecentKeyword(_ keyword: String) {
         inputTextToSearchBar(keyword)
         resignSearchBarFirstResponder()
+    }
+}
+
+// MARK: - Preperation
+
+extension SearchMainViewController {
+    static func create(with viewModel: SearchMainViewModel) -> SearchMainViewController {
+        let vc: SearchMainViewController = SearchMainViewController.instantiate()
+        vc.viewModel = viewModel
+        return vc
     }
 }

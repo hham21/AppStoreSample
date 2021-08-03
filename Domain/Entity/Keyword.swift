@@ -8,7 +8,11 @@
 import Foundation
 
 public struct Keyword {
-    public let id: String
     public let text: String
     public let date: Date
+    
+    public init(text: String, date: Date) {
+        self.text = text
+        self.date = date
+    }
 }

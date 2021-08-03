@@ -76,10 +76,15 @@ final class SearchResultViewModel: ViewModelType {
     }
     
     func mutate(input: Input) -> Output {
+        let saveKeyword = saveKeyword(input: input)
+        return Output(dataSource: .just([]))
+    }
+    
+    private func saveKeyword(input: Input) -> Observable<Void> {
         input.searchButtonTapped
             .withUnretained(self)
             .flatMapLatest {
-                $0.0.keywordUseCase.saveKeyword(<#T##keyword: Keyword##Keyword#>)
+                $0.0.keywordUseCase.saveKeyword($0.1)
             }
     }
 }

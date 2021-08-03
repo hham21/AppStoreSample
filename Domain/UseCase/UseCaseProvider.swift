@@ -8,5 +8,6 @@
 import Foundation
 
 public protocol UseCaseProvider {
-//    func
+    func createTrackUseCase() -> TrackUseCase
+    func createKeywordUseCase() -> KeywordUseCase
 }
