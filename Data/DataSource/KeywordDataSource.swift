@@ -10,5 +10,6 @@ import RxSwift
 
 public protocol KeywordDataSource {
     func getKeywords() -> Observable<[Keyword]>
+    func getKeywordsContains(text: String) -> Observable<[Keyword]>
     func saveKeyword(_ keyword: Keyword) -> Observable<Void>
 }

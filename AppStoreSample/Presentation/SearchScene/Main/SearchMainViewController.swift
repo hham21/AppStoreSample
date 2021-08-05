@@ -11,20 +11,11 @@ import RxSwift
 import Reusable
 
 final class SearchMainViewController: UIViewController, StoryboardBased {
-    enum Const {
-        static let title: String = "검색"
-        static let searchBarCancelButtonKey: String = "cancelButtonText"
-        static let searchBarCancelButtonTitle: String = "취소"
-        static let searchBarPlaceHodlerText: String = "게임, 앱, 스토리 등"
-        static let mainHeaderCellHeight: CGFloat = 66.0
-        static let recentKeywordCellHeight: CGFloat = 44.0
-    }
-    
     @IBOutlet weak var tableView: UITableView!
     
     private var viewModel: SearchMainViewModel! = nil
     private lazy var dataSource: SearchMain.DataSource = createDataSource()
-    private let searchResultVC: SearchResultViewController = .instantiate()
+    private var searchResultVC: SearchResultViewController!
     private lazy var searchController: UISearchController = .init(searchResultsController: searchResultVC)
     private let disposeBag: DisposeBag = .init()
     
@@ -32,6 +23,7 @@ final class SearchMainViewController: UIViewController, StoryboardBased {
         super.viewDidLoad()
         setAttributes()
         bind()
+        viewModel.input.initialLoad.accept(())
     }
     
     private func setAttributes() {
@@ -42,9 +34,9 @@ final class SearchMainViewController: UIViewController, StoryboardBased {
     }
     
     private func setSearchController() {
-        let placeholder = Const.searchBarPlaceHodlerText
-        let cancelbuttonTitle = Const.searchBarCancelButtonTitle
-        let cancelButtonKey = Const.searchBarCancelButtonKey
+        let placeholder = SearchMain.Const.searchBarPlaceHodlerText
+        let cancelbuttonTitle = SearchMain.Const.searchBarCancelButtonTitle
+        let cancelButtonKey = SearchMain.Const.searchBarCancelButtonKey
         searchController.searchBar.placeholder = placeholder
         searchController.searchBar.autocapitalizationType = .none
         searchController.obscuresBackgroundDuringPresentation = false
@@ -55,7 +47,7 @@ final class SearchMainViewController: UIViewController, StoryboardBased {
     }
     
     private func setNavigationItem() {
-        navigationItem.title = Const.title
+        navigationItem.title = SearchMain.Const.title
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
         navigationController?.navigationBar.sizeToFit()
@@ -109,9 +101,9 @@ extension SearchMainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch dataSource[indexPath] {
         case .header:
-            return Const.mainHeaderCellHeight
+            return SearchMain.Const.mainHeaderCellHeight
         case .recentKeyword:
-            return Const.recentKeywordCellHeight
+            return SearchMain.Const.recentKeywordCellHeight
         }
     }
     
@@ -132,7 +124,7 @@ extension SearchMainViewController: UITableViewDelegate {
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        resignSearchBarFirstResponder()
+        searchResultScrollViewWillBeginDragging()
     }
 }
 
@@ -152,7 +144,7 @@ extension SearchMainViewController: UISearchResultsUpdating {
 
 extension SearchMainViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        resignSearchBarFirstResponder()
+        searchResultScrollViewWillBeginDragging()
         
         if let text = searchBar.text {
             searchResultVC.searchQuery(text: text)
@@ -164,7 +156,7 @@ extension SearchMainViewController: UISearchBarDelegate {
 // MARK: - SearchViewControllerDelegate
 
 extension SearchMainViewController: SearchResultViewControllerDelegate {
-    func showDetailViewController(with data: Track) {
+    func searchResultDidSelectTrack(with data: Track) {
         guard let navigationController = navigationController else {
             return
         }
@@ -172,22 +164,23 @@ extension SearchMainViewController: SearchResultViewControllerDelegate {
 //        navigationController.pushViewController(vc, animated: true)
     }
     
-    func resignSearchBarFirstResponder() {
+    func searchResultScrollViewWillBeginDragging() {
         navigationItem.searchController?.searchBar.resignFirstResponder()
     }
     
-    func didTapRecentKeyword(_ keyword: String) {
+    func searchResultDidSelectKeyword(_ keyword: String) {
         inputTextToSearchBar(keyword)
-        resignSearchBarFirstResponder()
+        searchResultScrollViewWillBeginDragging()
     }
 }
 
 // MARK: - Preperation
 
 extension SearchMainViewController {
-    static func create(with viewModel: SearchMainViewModel) -> SearchMainViewController {
+    static func create(with viewModel: SearchMainViewModel, searchResultVC: SearchResultViewController) -> SearchMainViewController {
         let vc: SearchMainViewController = SearchMainViewController.instantiate()
         vc.viewModel = viewModel
+        vc.searchResultVC = searchResultVC
         return vc
     }
 }

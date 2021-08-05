@@ -5,13 +5,12 @@
 //  Created by Hyoungsu Ham on 2021/08/02.
 //
 
-import Domain
 import UIKit
+import Domain
 import RxSwift
 import RxCocoa
 import RxFlow
 import Reusable
-import Data
 
 struct SearchStepper: Stepper {
     let steps: PublishRelay<Step> = .init()
@@ -29,7 +28,7 @@ final class SearchFlow: Flow {
     let stepper: SearchStepper
     
     private let rootViewController = UINavigationController()
-    private let service: KeywordUseCaseProvider = KeywordUseCaseProviderImpl()
+    private let provider = Application.shared.useCaseProvider
     
     init(stepper: SearchStepper) {
         self.stepper = stepper
@@ -49,10 +48,14 @@ final class SearchFlow: Flow {
     }
     
     private func coordinateToSearchMainVC() -> FlowContributors {
-        let useCase: KeywordUseCase = service.createKeywordUseCase()
-        let viewModel: SearchMainViewModel = .init(keywordUseCase: useCase)
-        let viewController: SearchMainViewController = .create(with: viewModel)
-        rootViewController.setViewControllers([viewController], animated: true)
+        let keywordUseCase: KeywordUseCase = provider.createKeywordUseCase()
+        let trackUseCase: TrackUseCase = provider.createTrackUseCase()
+        let resultViewModel: SearchResultViewModel = .init(keywordUseCase: keywordUseCase, trackUseCase: trackUseCase)
+        let resultVC: SearchResultViewController = .create(viewModel: resultViewModel)
+        let mainViewModel: SearchMainViewModel = .init(keywordUseCase: keywordUseCase)
+        let mainVC: SearchMainViewController = .create(with: mainViewModel, searchResultVC: resultVC)
+        
+        rootViewController.setViewControllers([mainVC], animated: true)
         return .none
     }
 }

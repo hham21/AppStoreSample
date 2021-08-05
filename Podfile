@@ -10,6 +10,10 @@ def shared_pods
   pod 'RxDataSources', '~> 5.0'
   pod 'RxFlow'
   pod 'RealmSwift'
+  pod 'Alamofire', '~> 5.4'
+  pod 'Moya', '~> 14.0'
+  pod 'SwiftyBeaver'
+
 end
 
 target 'AppStoreSample' do

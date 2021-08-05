@@ -7,8 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3781ED8D26BBA9EC00404A9D /* TrackAPIDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3781ED8C26BBA9EC00404A9D /* TrackAPIDataSource.swift */; };
+		3781ED8F26BBB8EE00404A9D /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3781ED8E26BBB8EE00404A9D /* Application.swift */; };
+		3781ED9126BBB9BB00404A9D /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3781ED9026BBB9BB00404A9D /* UseCaseProvider.swift */; };
+		3781ED9326BBBA5400404A9D /* UseCaseProviderImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3781ED9226BBBA5400404A9D /* UseCaseProviderImpl.swift */; };
 		3782ED6C26B93FC300CB3711 /* KeywordUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3782ED6B26B93FC300CB3711 /* KeywordUseCaseImpl.swift */; };
-		37C1C47826B7D7A200151E68 /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1C47726B7D7A200151E68 /* UseCaseProvider.swift */; };
+		37851DE726BA7BD100491D05 /* TrackUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37851DE626BA7BD100491D05 /* TrackUseCaseImpl.swift */; };
+		37851DEC26BA7D8900491D05 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37851DEB26BA7D8900491D05 /* Track.swift */; };
+		37851DEE26BA7E3F00491D05 /* DBObjectConvertableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37851DED26BA7E3F00491D05 /* DBObjectConvertableType.swift */; };
+		37851DF026BA89B500491D05 /* DBObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37851DEF26BA89B500491D05 /* DBObject.swift */; };
+		37851DF226BA994000491D05 /* TrackAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37851DF126BA994000491D05 /* TrackAPI.swift */; };
 		37C1C47A26B7E00400151E68 /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1C47926B7E00400151E68 /* MainFlow.swift */; };
 		37C1C47C26B7EA9E00151E68 /* SearchFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1C47B26B7EA9E00151E68 /* SearchFlow.swift */; };
 		37C1C47E26B7EAAF00151E68 /* SettingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1C47D26B7EAAE00151E68 /* SettingFlow.swift */; };
@@ -125,8 +133,16 @@
 
 /* Begin PBXFileReference section */
 		33A1863F4A8B34B814F3DB8D /* Pods-AppStoreSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreSample.release.xcconfig"; path = "Target Support Files/Pods-AppStoreSample/Pods-AppStoreSample.release.xcconfig"; sourceTree = "<group>"; };
+		3781ED8C26BBA9EC00404A9D /* TrackAPIDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackAPIDataSource.swift; sourceTree = "<group>"; };
+		3781ED8E26BBB8EE00404A9D /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		3781ED9026BBB9BB00404A9D /* UseCaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
+		3781ED9226BBBA5400404A9D /* UseCaseProviderImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProviderImpl.swift; sourceTree = "<group>"; };
 		3782ED6B26B93FC300CB3711 /* KeywordUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordUseCaseImpl.swift; sourceTree = "<group>"; };
-		37C1C47726B7D7A200151E68 /* UseCaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
+		37851DE626BA7BD100491D05 /* TrackUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackUseCaseImpl.swift; sourceTree = "<group>"; };
+		37851DEB26BA7D8900491D05 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		37851DED26BA7E3F00491D05 /* DBObjectConvertableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBObjectConvertableType.swift; sourceTree = "<group>"; };
+		37851DEF26BA89B500491D05 /* DBObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBObject.swift; sourceTree = "<group>"; };
+		37851DF126BA994000491D05 /* TrackAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackAPI.swift; sourceTree = "<group>"; };
 		37C1C47926B7E00400151E68 /* MainFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlow.swift; sourceTree = "<group>"; };
 		37C1C47B26B7EA9E00151E68 /* SearchFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFlow.swift; sourceTree = "<group>"; };
 		37C1C47D26B7EAAE00151E68 /* SettingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFlow.swift; sourceTree = "<group>"; };
@@ -262,9 +278,37 @@
 		3782ED6A26B93F7600CB3711 /* UseCaseImpl */ = {
 			isa = PBXGroup;
 			children = (
+				3781ED9226BBBA5400404A9D /* UseCaseProviderImpl.swift */,
 				3782ED6B26B93FC300CB3711 /* KeywordUseCaseImpl.swift */,
+				37851DE626BA7BD100491D05 /* TrackUseCaseImpl.swift */,
 			);
 			path = UseCaseImpl;
+			sourceTree = "<group>";
+		};
+		37851DE826BA7C5C00491D05 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				37C1C51A26B90A2E00151E68 /* Realm */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		37851DE926BA7C6F00491D05 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				37C1C51926B90A1F00151E68 /* API */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		37851DEA26BA7D7D00491D05 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				37851DEF26BA89B500491D05 /* DBObject.swift */,
+				37851DED26BA7E3F00491D05 /* DBObjectConvertableType.swift */,
+				37851DEB26BA7D8900491D05 /* Track.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		37C1C48126B80E6100151E68 /* Flow */ = {
@@ -403,8 +447,8 @@
 		37C1C50926B9034C00151E68 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
-				37C1C51A26B90A2E00151E68 /* Realm */,
-				37C1C51926B90A1F00151E68 /* API */,
+				37851DE826BA7C5C00491D05 /* Local */,
+				37851DE926BA7C6F00491D05 /* Remote */,
 				37C1C51726B905CB00151E68 /* KeywordDataSource.swift */,
 				37C1C51526B904F700151E68 /* TrackDataSource.swift */,
 			);
@@ -423,6 +467,9 @@
 		37C1C51926B90A1F00151E68 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				37851DEA26BA7D7D00491D05 /* Entity */,
+				37851DF126BA994000491D05 /* TrackAPI.swift */,
+				3781ED8C26BBA9EC00404A9D /* TrackAPIDataSource.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -493,6 +540,11 @@
 				37E99BC826B7BBE6002A840B /* Application */,
 				37C1C48126B80E6100151E68 /* Flow */,
 				37E99BC926B7BBF2002A840B /* Presentation */,
+				37C1C4A526B828FD00151E68 /* Common */,
+				37C1C4B926B840FB00151E68 /* Util */,
+				37E99B8726B7B892002A840B /* Assets.xcassets */,
+				37E99B8926B7B892002A840B /* LaunchScreen.storyboard */,
+				37E99B7E26B7B892002A840B /* AppDelegate.swift */,
 				37E99B8C26B7B892002A840B /* Info.plist */,
 			);
 			path = AppStoreSample;
@@ -532,9 +584,9 @@
 		37E99BC326B7B972002A840B /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				3781ED9026BBB9BB00404A9D /* UseCaseProvider.swift */,
 				37E99BC426B7B9D5002A840B /* TrackUseCase.swift */,
 				37E99BC626B7B9DD002A840B /* KeywordUseCase.swift */,
-				37C1C47726B7D7A200151E68 /* UseCaseProvider.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -542,11 +594,7 @@
 		37E99BC826B7BBE6002A840B /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				37C1C4A526B828FD00151E68 /* Common */,
-				37C1C4B926B840FB00151E68 /* Util */,
-				37E99B7E26B7B892002A840B /* AppDelegate.swift */,
-				37E99B8726B7B892002A840B /* Assets.xcassets */,
-				37E99B8926B7B892002A840B /* LaunchScreen.storyboard */,
+				3781ED8E26BBB8EE00404A9D /* Application.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -964,12 +1012,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				37C1C51026B9039100151E68 /* TrackRepositoryImpl.swift in Sources */,
+				37851DEC26BA7D8900491D05 /* Track.swift in Sources */,
 				37C1C51226B9039A00151E68 /* KeywordRepositoryImpl.swift in Sources */,
+				3781ED8D26BBA9EC00404A9D /* TrackAPIDataSource.swift in Sources */,
 				37C1C51826B905CB00151E68 /* KeywordDataSource.swift in Sources */,
 				3782ED6C26B93FC300CB3711 /* KeywordUseCaseImpl.swift in Sources */,
 				37C1C51626B904F700151E68 /* TrackDataSource.swift in Sources */,
+				37851DF026BA89B500491D05 /* DBObject.swift in Sources */,
 				37C1C52D26B910D300151E68 /* RealmConvertableType.swift in Sources */,
+				37851DE726BA7BD100491D05 /* TrackUseCaseImpl.swift in Sources */,
+				37851DEE26BA7E3F00491D05 /* DBObjectConvertableType.swift in Sources */,
 				37C1C53C26B9159B00151E68 /* RMKeyword.swift in Sources */,
+				37851DF226BA994000491D05 /* TrackAPI.swift in Sources */,
+				3781ED9326BBBA5400404A9D /* UseCaseProviderImpl.swift in Sources */,
 				37C1C51C26B90AB900151E68 /* KeywordRealmDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -986,6 +1041,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3781ED8F26BBB8EE00404A9D /* Application.swift in Sources */,
 				37C1C4B026B8388B00151E68 /* SearchRecentKeywordCell.swift in Sources */,
 				37C1C48726B8145100151E68 /* SearchMainViewController.swift in Sources */,
 				37C1C49D26B8214700151E68 /* MainRecentKeywordCell.swift in Sources */,
@@ -1009,10 +1065,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				37E99BBF26B7B95A002A840B /* Track.swift in Sources */,
-				37C1C47826B7D7A200151E68 /* UseCaseProvider.swift in Sources */,
 				37E99BC726B7B9DD002A840B /* KeywordUseCase.swift in Sources */,
 				37E99BC526B7B9D5002A840B /* TrackUseCase.swift in Sources */,
 				37E99BC126B7B964002A840B /* Keyword.swift in Sources */,
+				3781ED9126BBB9BB00404A9D /* UseCaseProvider.swift in Sources */,
 				37C1C52F26B910E500151E68 /* DomainConvertableType.swift in Sources */,
 				37C1C4E126B901FB00151E68 /* TrackRepository.swift in Sources */,
 				37C1C4E326B9020600151E68 /* KeywordRepository.swift in Sources */,

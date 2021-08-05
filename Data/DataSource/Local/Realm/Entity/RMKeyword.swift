@@ -11,6 +11,10 @@ import RealmSwift
 final class RMKeyword: Object {
     @objc dynamic var text: String = ""
     @objc dynamic var date: Date = Date()
+    
+    override static func primaryKey() -> String? {
+        return "text"
+    }
 }
 
 extension RMKeyword: DomainConvertibleType {
@@ -21,7 +25,7 @@ extension RMKeyword: DomainConvertibleType {
 
 extension Keyword: RealmConvertableType {
     internal var id: String {
-        return ""
+        return UUID().uuidString
     }
     
     func asRealm() -> RMKeyword {

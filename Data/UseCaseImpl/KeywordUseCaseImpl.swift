@@ -8,17 +8,6 @@
 import Domain
 import RxSwift
 
-public struct KeywordUseCaseProviderImpl: KeywordUseCaseProvider {
-    
-    public init() {}
-    
-    public func createKeywordUseCase() -> KeywordUseCase {
-        let localSource: KeywordDataSource = KeywordRealmDataSource()
-        let repo: KeywordRepository = KeywordRepositoryImpl(localSource: localSource)
-        return KeywordUseCaseImpl(repo: repo)
-    }
-}
-
 final class KeywordUseCaseImpl: KeywordUseCase {
     private let repo: KeywordRepository
     
@@ -28,6 +17,10 @@ final class KeywordUseCaseImpl: KeywordUseCase {
     
     func getKeywords() -> Observable<[Keyword]> {
         repo.getKeywords()
+    }
+    
+    func getKeywordsContains(text: String) -> Observable<[Keyword]> {
+        repo.getKeywordsContains(text: text)
     }
     
     func saveKeyword(_ keyword: String) -> Observable<Void> {

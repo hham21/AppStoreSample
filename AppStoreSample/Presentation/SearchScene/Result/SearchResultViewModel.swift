@@ -22,32 +22,40 @@ struct SearchResult {
     enum Section {
         case none
     }
-
-    struct SearchViewItemModel {
-        func parseData(_ tracks: [Track]) -> [Item] {
-            return tracks.map {  buildTrackCellItem(with: $0) }
-        }
-        
-        private func buildTrackCellItem(with data: Track) -> Item {
-            let cellData: SearchTrackCell.Model = .init(
-                trackId: data.trackId,
-                trackName: data.trackName,
-                sellerName: data.sellerName,
-                screenshotURLs: data.screenshotURLs,
-                artworkURL: data.artworkURL,
-                rating: data.rating ?? 0,
-                ratingCount: data.ratingCount ?? 0
-            )
-            return .track(cellData)
-        }
-        
-        func parseData(text: String, keywords: [Keyword]) -> [Item] {
-            return keywords
-                .filter { $0.text.localizedCaseInsensitiveContains(text) }
-                .map { Item.recentKeyword($0.text) }
-        }
+    
+    enum Const {
+        static let recentKeywordCellHeight: CGFloat = 44.0
+        static let trackCellHeight: CGFloat = 280.0
     }
-
+    
+    func buildModel(_ data: [Track]) -> [Model] {
+        var items: [Item] = .init()
+        items.append(contentsOf: data.map { buildTrackCellItem(with: $0) })
+        return [.init(model: .none, items: items)]
+    }
+    
+    private func buildTrackCellItem(with data: Track) -> Item {
+        let cellData: SearchTrackCell.Model = .init(
+            trackId: data.trackId,
+            trackName: data.trackName,
+            sellerName: data.sellerName,
+            screenshotURLs: data.screenshotURLs,
+            artworkURL: data.artworkURL,
+            rating: data.rating ?? 0,
+            ratingCount: data.ratingCount ?? 0
+        )
+        return .track(cellData)
+    }
+    
+    func buildModel(_ data: [Keyword]) -> [Model] {
+        var items: [Item] = .init()
+        items.append(contentsOf: data.map { buildKeywordCellModel(with: $0) })
+        return [.init(model: .none, items: items)]
+    }
+    
+    private func buildKeywordCellModel(with data: Keyword) -> Item {
+        return Item.recentKeyword(data.text)
+    }
 }
 
 final class SearchResultViewModel: ViewModelType {
@@ -58,6 +66,7 @@ final class SearchResultViewModel: ViewModelType {
     
     struct Output {
         let dataSource: Driver<[SearchResult.Model]>
+        let error: Signal<Error>
     }
     
     lazy var input: Input = .init()
@@ -76,15 +85,69 @@ final class SearchResultViewModel: ViewModelType {
     }
     
     func mutate(input: Input) -> Output {
-        let saveKeyword = saveKeyword(input: input)
-        return Output(dataSource: .just([]))
-    }
-    
-    private func saveKeyword(input: Input) -> Observable<Void> {
-        input.searchButtonTapped
+        // getKeywords
+        let getKeywords = input.searchBarTextUpdated
+            .distinctUntilChanged()
+            .filter { !$0.isEmpty }
+            .withUnretained(self)
+            .flatMapLatest {
+                $0.0.keywordUseCase.getKeywordsContains(text: $0.1)
+            }
+            .materialize()
+            .share()
+        
+        let getKeywordsData = Observable.merge(getKeywords)
+            .compactMap { $0.element }
+            .compactMap { SearchResult().buildModel($0) }
+        
+        let getKeywordsError = getKeywords
+            .compactMap { $0.error }
+        
+        // saveKeyword
+        let saveKeyword = input.searchButtonTapped
             .withUnretained(self)
             .flatMapLatest {
                 $0.0.keywordUseCase.saveKeyword($0.1)
             }
+            .materialize()
+            .share()
+        
+        let saveKeywordError = saveKeyword
+            .compactMap { $0.error }
+        
+        // getTracks
+        let getTracks = input.searchButtonTapped
+            .withUnretained(self)
+            .flatMapLatest {
+                $0.0.trackUseCase.getTracks($0.1)
+            }
+            .materialize()
+            .share()
+        
+        let getTracksData = getTracks
+            .compactMap { $0.element }
+            .compactMap { SearchResult().buildModel($0) }
+        
+        let getTracksError = getTracks
+            .compactMap { $0.error }
+        
+        // dataSource binding
+        let dataSource = Observable
+            .merge(
+                getTracksData,
+                getKeywordsData
+            )
+            .asDriver(onErrorJustReturn: [])
+            
+        // errors binding
+        let error = Observable
+            .merge(
+                saveKeywordError,
+                getTracksError,
+                getKeywordsError
+            )
+            .asSignal(onErrorJustReturn: RxError.unknown)
+            
+        return Output(dataSource: dataSource, error: error)
     }
 }

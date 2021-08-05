@@ -1,37 +1,33 @@
 //
-//  AppDelegate.swift
+//  Application.swift
 //  AppStoreSample
 //
-//  Created by Hyoungsu Ham on 2021/08/02.
+//  Created by Hyoungsu Ham on 2021/08/05.
 //
 
-import UIKit
+import Foundation
+import Domain
+import Data
 import RxSwift
 import RxFlow
 
-@main
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    var window: UIWindow?
+final class Application {
+    static let shared: Application = .init()
+    
+    let useCaseProvider: Domain.UseCaseProvider
     
     private let coordinator: FlowCoordinator = .init()
     private let disposeBag: DisposeBag = .init()
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        startToLogCoordinator()
-        startApp()
-        return true
+    
+    private init() {
+        self.useCaseProvider = UseCaseProviderImpl()
     }
     
-    private func startApp() {
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        self.window = window
-        
+    func startApp(with window: UIWindow) {
         let appFlow: AppFlow = .init(with: window)
         let stepper: AppStepper = .init()
-        
+        startToLogCoordinator()
         coordinator.coordinate(flow: appFlow, with: stepper)
-        
         window.makeKeyAndVisible()
     }
     
@@ -44,4 +40,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .disposed(by: disposeBag)
     }
 }
-

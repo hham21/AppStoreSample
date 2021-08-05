@@ -30,6 +30,26 @@ public struct KeywordRealmDataSource: KeywordDataSource {
             return Disposables.create()
         }
     }
+    
+    public func getKeywordsContains(text: String) -> Observable<[Keyword]> {
+        .create { observer in
+            do {
+                let realm = try Realm()
+                let objects = realm.objects(RMKeyword.self)
+                    .sorted(byKeyPath: "date", ascending: false)
+                let data = Array(objects)
+                    .filter { $0.text.localizedCaseInsensitiveContains(text) }
+                    .compactMap { $0.asDomain() }
+                observer.onNext(data)
+                observer.onCompleted()
+            } catch {
+                dump(error)
+                observer.onError(error)
+            }
+
+            return Disposables.create()
+        }
+    }
 
     public func saveKeyword(_ keyword: Keyword) -> Observable<Void> {
         .create { observer in
@@ -43,7 +63,6 @@ public struct KeywordRealmDataSource: KeywordDataSource {
                 observer.onNext(())
                 observer.onCompleted()
             } catch {
-                dump(error)
                 observer.onError(error)
             }
 

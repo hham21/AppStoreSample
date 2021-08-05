@@ -10,9 +10,6 @@ import RxSwift
 
 public protocol KeywordUseCase {
     func getKeywords() -> Observable<[Keyword]>
+    func getKeywordsContains(text: String) -> Observable<[Keyword]>
     func saveKeyword(_ keyword: String) -> Observable<Void>
-}
-
-public protocol KeywordUseCaseProvider {
-    func createKeywordUseCase() -> KeywordUseCase
 }

@@ -12,20 +12,15 @@ import RxCocoa
 import Reusable
 
 protocol SearchResultViewControllerDelegate: AnyObject {
-    func showDetailViewController(with data: Track)
-    func resignSearchBarFirstResponder()
-    func didTapRecentKeyword(_ keyword: String)
+    func searchResultDidSelectTrack(with data: Track)
+    func searchResultScrollViewWillBeginDragging()
+    func searchResultDidSelectKeyword(_ keyword: String)
 }
 
 final class SearchResultViewController: UIViewController, StoryboardBased {
-    enum Const {
-        static let recentKeywordCellHeight: CGFloat = 44.0
-        static let trackCellHeight: CGFloat = 280.0
-    }
-    
     @IBOutlet weak var tableView: UITableView!
     
-    private let viewModel: SearchResultViewModel! = nil
+    private var viewModel: SearchResultViewModel! = nil
     private lazy var dataSource: SearchResult.DataSource = createDataSource()
     weak var delegate: SearchResultViewControllerDelegate?
     private var disposeBag: DisposeBag = .init()
@@ -51,16 +46,22 @@ final class SearchResultViewController: UIViewController, StoryboardBased {
     }
     
     private func bind() {
+        bindDataSource()
+        bindError()
+    }
+    
+    private func bindDataSource() {
         viewModel.output.dataSource
             .drive(tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
-        
-//        viewModel.errorMessage
-//            .delay(.milliseconds(500))
-//            .emit(onNext: { description in
-//                Toast(text: description, duration: 1.0).showCenter()
-//            })
-//            .disposed(by: disposeBag)
+    }
+    
+    private func bindError() {
+        viewModel.output.error
+            .emit(onNext: { error in
+                log.error(error)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func createDataSource() -> SearchResult.DataSource {
@@ -97,9 +98,9 @@ extension SearchResultViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         switch dataSource[indexPath] {
         case .recentKeyword:
-            return Const.recentKeywordCellHeight
+            return SearchResult.Const.recentKeywordCellHeight
         case .track:
-            return Const.trackCellHeight
+            return SearchResult.Const.trackCellHeight
         }
     }
     
@@ -107,7 +108,7 @@ extension SearchResultViewController: UITableViewDelegate {
         switch dataSource[indexPath] {
         case .recentKeyword(let text):
             viewModel.input.searchButtonTapped.accept(text)
-            delegate?.didTapRecentKeyword(text)
+            delegate?.searchResultDidSelectKeyword(text)
             tableView.deselectRow(at: indexPath, animated: true)
         case .track(let data):
             showDetailViewController(data.trackId)
@@ -115,7 +116,7 @@ extension SearchResultViewController: UITableViewDelegate {
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        delegate?.resignSearchBarFirstResponder()
+        delegate?.searchResultScrollViewWillBeginDragging()
     }
     
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -134,9 +135,9 @@ extension SearchResultViewController {
 }
 
 extension SearchResultViewController {
-    static func create(delegate: SearchResultViewControllerDelegate) -> SearchResultViewController {
+    static func create(viewModel: SearchResultViewModel) -> SearchResultViewController {
         let vc: SearchResultViewController = .instantiate()
-        vc.delegate = delegate
+        vc.viewModel = viewModel
         return vc
     }
 }

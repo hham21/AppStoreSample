@@ -25,6 +25,15 @@ struct SearchMain {
         case recentKeyword(String)
     }
     
+    enum Const {
+        static let title: String = "검색"
+        static let searchBarCancelButtonKey: String = "cancelButtonText"
+        static let searchBarCancelButtonTitle: String = "취소"
+        static let searchBarPlaceHodlerText: String = "게임, 앱, 스토리 등"
+        static let mainHeaderCellHeight: CGFloat = 66.0
+        static let recentKeywordCellHeight: CGFloat = 44.0
+    }
+    
     func buildModel(_ data: [Keyword]) -> [Model] {
         var items: [Item] = .init()
         items.append(buildHeaderItem())

@@ -49,8 +49,6 @@ final class MainFlow: Flow {
         ) { [unowned self] (search: UINavigationController,
                             setting: UINavigationController) in
             
-//            let searchImage: UIImage? = UIImage(systemName: "magnifyingglass")
-//            let settingImage: UIImage? = UIImage(systemName: "gearshape.fill")
             let searchImage: UIImage? = nil
             let settingImage: UIImage? = nil
             

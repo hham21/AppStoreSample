@@ -11,7 +11,3 @@ import RxSwift
 public protocol TrackUseCase {
     func getTracks(_ query: String) -> Observable<[Track]>
 }
-
-public protocol TrackUseCaseProvider {
-    func createTrackUseCase() -> TrackUseCase
-}
