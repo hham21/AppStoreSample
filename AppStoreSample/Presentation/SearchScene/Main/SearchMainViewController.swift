@@ -65,11 +65,20 @@ final class SearchMainViewController: UIViewController, StoryboardBased {
     
     private func bind() {
         bindDataSource()
+        bindError()
     }
     
     private func bindDataSource() {
         viewModel.output.dataSource
             .drive(tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindError() {
+        viewModel.output.error
+            .emit(onNext: { error in
+                log.error(error)
+            })
             .disposed(by: disposeBag)
     }
     

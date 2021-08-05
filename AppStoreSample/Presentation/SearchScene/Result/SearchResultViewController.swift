@@ -59,7 +59,7 @@ final class SearchResultViewController: UIViewController, StoryboardBased {
     private func bindError() {
         viewModel.output.error
             .emit(onNext: { error in
-                log.error(error)
+                log.error(<#T##message: Any##Any#>)
             })
             .disposed(by: disposeBag)
     }
