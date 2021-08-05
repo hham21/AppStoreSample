@@ -11,6 +11,8 @@
 		3781ED8F26BBB8EE00404A9D /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3781ED8E26BBB8EE00404A9D /* Application.swift */; };
 		3781ED9126BBB9BB00404A9D /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3781ED9026BBB9BB00404A9D /* UseCaseProvider.swift */; };
 		3781ED9326BBBA5400404A9D /* UseCaseProviderImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3781ED9226BBBA5400404A9D /* UseCaseProviderImpl.swift */; };
+		3781ED9526BBF9BF00404A9D /* SearchMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3781ED9426BBF9BF00404A9D /* SearchMainModel.swift */; };
+		3781ED9726BBFA0300404A9D /* SearchResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3781ED9626BBFA0300404A9D /* SearchResultModel.swift */; };
 		3782ED6C26B93FC300CB3711 /* KeywordUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3782ED6B26B93FC300CB3711 /* KeywordUseCaseImpl.swift */; };
 		37851DE726BA7BD100491D05 /* TrackUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37851DE626BA7BD100491D05 /* TrackUseCaseImpl.swift */; };
 		37851DEC26BA7D8900491D05 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37851DEB26BA7D8900491D05 /* Track.swift */; };
@@ -137,6 +139,8 @@
 		3781ED8E26BBB8EE00404A9D /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		3781ED9026BBB9BB00404A9D /* UseCaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
 		3781ED9226BBBA5400404A9D /* UseCaseProviderImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProviderImpl.swift; sourceTree = "<group>"; };
+		3781ED9426BBF9BF00404A9D /* SearchMainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMainModel.swift; sourceTree = "<group>"; };
+		3781ED9626BBFA0300404A9D /* SearchResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultModel.swift; sourceTree = "<group>"; };
 		3782ED6B26B93FC300CB3711 /* KeywordUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordUseCaseImpl.swift; sourceTree = "<group>"; };
 		37851DE626BA7BD100491D05 /* TrackUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackUseCaseImpl.swift; sourceTree = "<group>"; };
 		37851DEB26BA7D8900491D05 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
@@ -328,6 +332,7 @@
 				37C1C49526B8212E00151E68 /* Cell */,
 				37C1C48526B8145100151E68 /* SearchMainViewController.swift */,
 				37C1C49E26B8228900151E68 /* SearchMainViewModel.swift */,
+				3781ED9426BBF9BF00404A9D /* SearchMainModel.swift */,
 				37C1C48E26B8198E00151E68 /* SearchMainViewController.storyboard */,
 			);
 			path = Main;
@@ -363,6 +368,7 @@
 				37C1C4AA26B8386B00151E68 /* Cell */,
 				37C1C49126B81DE900151E68 /* SearchResultViewController.swift */,
 				37C1C4A826B8376800151E68 /* SearchResultViewModel.swift */,
+				3781ED9626BBFA0300404A9D /* SearchResultModel.swift */,
 				37C1C49326B81DF500151E68 /* SearchResultViewController.storyboard */,
 			);
 			path = Result;
@@ -1043,10 +1049,12 @@
 			files = (
 				3781ED8F26BBB8EE00404A9D /* Application.swift in Sources */,
 				37C1C4B026B8388B00151E68 /* SearchRecentKeywordCell.swift in Sources */,
+				3781ED9726BBFA0300404A9D /* SearchResultModel.swift in Sources */,
 				37C1C48726B8145100151E68 /* SearchMainViewController.swift in Sources */,
 				37C1C49D26B8214700151E68 /* MainRecentKeywordCell.swift in Sources */,
 				37E99BCE26B7BDBD002A840B /* AppFlow.swift in Sources */,
 				37C1C47A26B7E00400151E68 /* MainFlow.swift in Sources */,
+				3781ED9526BBF9BF00404A9D /* SearchMainModel.swift in Sources */,
 				37C1C47C26B7EA9E00151E68 /* SearchFlow.swift in Sources */,
 				37C1C47E26B7EAAF00151E68 /* SettingFlow.swift in Sources */,
 				37E99B7F26B7B892002A840B /* AppDelegate.swift in Sources */,
