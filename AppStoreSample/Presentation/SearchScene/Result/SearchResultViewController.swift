@@ -38,6 +38,7 @@ final class SearchResultViewController: UIViewController, StoryboardBased {
     
     private func setTableView() {
         tableView.delegate = self
+        tableView.separatorStyle = .none
     }
     
     private func registerCells() {
@@ -59,7 +60,7 @@ final class SearchResultViewController: UIViewController, StoryboardBased {
     private func bindError() {
         viewModel.output.error
             .emit(onNext: { error in
-                log.error(<#T##message: Any##Any#>)
+                log.error(error)
             })
             .disposed(by: disposeBag)
     }
@@ -81,10 +82,10 @@ final class SearchResultViewController: UIViewController, StoryboardBased {
     }
     
     private func showDetailViewController(_ trackId: Int) {
-//        guard let data = viewModel.getTrack(trackId) else {
-//            return
-//        }
-//        delegate?.showDetailViewController(with: data)
+        guard let data = viewModel.getTrack(trackId) else {
+            return
+        }
+        delegate?.searchResultDidSelectTrack(with: data)
     }
 }
 

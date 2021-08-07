@@ -9,11 +9,13 @@ import Domain
 import RxSwift
 import RxCocoa
 import RxDataSources
+import RxFlow
 
-final class SearchMainViewModel: ViewModelType {
+final class SearchMainViewModel: ViewModelType, Stepper {
     struct Input {
         let initialLoad: PublishRelay<Void> = .init()
         let reload: PublishRelay<Void> = .init()
+        let trackSelected: PublishRelay<Track> = .init()
     }
     
     struct Output {
@@ -24,6 +26,8 @@ final class SearchMainViewModel: ViewModelType {
     lazy var input: Input = .init()
     lazy var output: Output = mutate(input: input)
     
+    var steps: PublishRelay<Step> = .init()
+    
     private let keywordUseCase: KeywordUseCase
     private let disposeBag: DisposeBag = .init()
     
@@ -32,6 +36,13 @@ final class SearchMainViewModel: ViewModelType {
     }
     
     func mutate(input: Input) -> Output {
+        
+        input.trackSelected
+            .compactMap { AppStep.searchDetail(track: $0) }
+            .debug("trackSelected")
+            .bind(to: steps)
+            .disposed(by: disposeBag)
+        
         let getKeywords = getKeywords()
         let dataSource = getKeywords.data.asDriver(onErrorJustReturn: [])
         let error = getKeywords.error.asSignal(onErrorJustReturn: RxError.unknown)

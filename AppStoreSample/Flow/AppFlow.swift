@@ -5,6 +5,7 @@
 //  Created by Hyoungsu Ham on 2021/08/02.
 //
 
+import Domain
 import UIKit
 import RxSwift
 import RxCocoa
@@ -19,7 +20,7 @@ enum AppStep: Step {
     // Search
     case searchMain
     case searchResult
-    case searchDetail
+    case searchDetail(track: Track)
     
     // Setting
     case settingMain

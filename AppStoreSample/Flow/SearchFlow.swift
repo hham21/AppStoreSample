@@ -42,6 +42,8 @@ final class SearchFlow: Flow {
         switch step {
         case .searchMain:
             return coordinateToSearchMainVC()
+        case .searchDetail(let track):
+            return coordinateToSearchDetailVC(with: track)
         default:
             return .none
         }
@@ -56,7 +58,22 @@ final class SearchFlow: Flow {
         let mainVC: SearchMainViewController = .create(with: mainViewModel, searchResultVC: resultVC)
         
         rootViewController.setViewControllers([mainVC], animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: mainVC,
+                                                 withNextStepper: mainViewModel))
+    }
+    
+    private func coordinateToSearchDetailVC(with track: Track) -> FlowContributors {
+        let detailVC: SearchDetailViewController = .create(with: track)
+        rootViewController.pushViewController(detailVC, animated: true)
         return .none
+        
+        
+//        let reactor = HomeDetailReactor(provider: provider)
+//        let vc = HomeDetailVC(with: reactor, title: ID)
+//        self.rootViewController.pushViewController(vc, animated: true)
+//        return .one(flowContributor: .contribute(withNextPresentable: vc,
+//                                                 withNextStepper: reactor))
+        
     }
 }
 

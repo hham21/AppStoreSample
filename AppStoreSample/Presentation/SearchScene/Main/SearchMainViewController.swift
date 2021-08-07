@@ -56,6 +56,7 @@ final class SearchMainViewController: UIViewController, StoryboardBased {
     
     private func setTableView() {
         tableView.delegate = self
+        tableView.separatorStyle = .none
     }
     
     private func registerCells() {
@@ -166,11 +167,7 @@ extension SearchMainViewController: UISearchBarDelegate {
 
 extension SearchMainViewController: SearchResultViewControllerDelegate {
     func searchResultDidSelectTrack(with data: Track) {
-        guard let navigationController = navigationController else {
-            return
-        }
-//        let vc: DetailViewController = .create(with: data)
-//        navigationController.pushViewController(vc, animated: true)
+        viewModel.input.trackSelected.accept(data)
     }
     
     func searchResultScrollViewWillBeginDragging() {
@@ -190,6 +187,7 @@ extension SearchMainViewController {
         let vc: SearchMainViewController = SearchMainViewController.instantiate()
         vc.viewModel = viewModel
         vc.searchResultVC = searchResultVC
+        searchResultVC.delegate = vc
         return vc
     }
 }
