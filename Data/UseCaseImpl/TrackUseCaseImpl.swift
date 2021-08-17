@@ -8,14 +8,14 @@
 import Domain
 import RxSwift
 
-final class TrackUseCaseImpl: TrackUseCase {
+public final class TrackUseCaseImpl: TrackUseCase {
     private let repo: TrackRepository
     
-    init(repo: TrackRepository) {
+    public init(repo: TrackRepository) {
         self.repo = repo
     }
     
-    func getTracks(_ query: String) -> Observable<[Track]> {
+    public func getTracks(_ query: String) -> Observable<[Track]> {
         repo.getTracks(query)
     }
 }

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37242AFC26CAA41C008AF1C4 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37242AFB26CAA41C008AF1C4 /* AppDIContainer.swift */; };
+		37242AFE26CAA42B008AF1C4 /* SearchSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37242AFD26CAA42B008AF1C4 /* SearchSceneDIContainer.swift */; };
+		377874D226CB5CA100A9BF73 /* SettingSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377874D126CB5CA100A9BF73 /* SettingSceneDIContainer.swift */; };
+		377874D426CB5DAC00A9BF73 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377874D326CB5DAC00A9BF73 /* SettingViewController.swift */; };
+		377874D626CB5F5B00A9BF73 /* SettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 377874D526CB5F5B00A9BF73 /* SettingViewController.storyboard */; };
 		3781ED8D26BBA9EC00404A9D /* TrackAPIDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3781ED8C26BBA9EC00404A9D /* TrackAPIDataSource.swift */; };
 		3781ED8F26BBB8EE00404A9D /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3781ED8E26BBB8EE00404A9D /* Application.swift */; };
 		3781ED9126BBB9BB00404A9D /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3781ED9026BBB9BB00404A9D /* UseCaseProvider.swift */; };
@@ -159,6 +164,11 @@
 
 /* Begin PBXFileReference section */
 		33A1863F4A8B34B814F3DB8D /* Pods-AppStoreSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreSample.release.xcconfig"; path = "Target Support Files/Pods-AppStoreSample/Pods-AppStoreSample.release.xcconfig"; sourceTree = "<group>"; };
+		37242AFB26CAA41C008AF1C4 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
+		37242AFD26CAA42B008AF1C4 /* SearchSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSceneDIContainer.swift; sourceTree = "<group>"; };
+		377874D126CB5CA100A9BF73 /* SettingSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSceneDIContainer.swift; sourceTree = "<group>"; };
+		377874D326CB5DAC00A9BF73 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		377874D526CB5F5B00A9BF73 /* SettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingViewController.storyboard; sourceTree = "<group>"; };
 		3781ED8C26BBA9EC00404A9D /* TrackAPIDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackAPIDataSource.swift; sourceTree = "<group>"; };
 		3781ED8E26BBB8EE00404A9D /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		3781ED9026BBB9BB00404A9D /* UseCaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
@@ -327,6 +337,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		37242B0226CAAA76008AF1C4 /* ValueObject */ = {
+			isa = PBXGroup;
+			children = (
+				37E99BC026B7B964002A840B /* Keyword.swift */,
+			);
+			path = ValueObject;
+			sourceTree = "<group>";
+		};
 		3782ED6A26B93F7600CB3711 /* UseCaseImpl */ = {
 			isa = PBXGroup;
 			children = (
@@ -398,6 +416,16 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		3795A29926C3F2C30093C8BF /* DIContainer */ = {
+			isa = PBXGroup;
+			children = (
+				37242AFB26CAA41C008AF1C4 /* AppDIContainer.swift */,
+				37242AFD26CAA42B008AF1C4 /* SearchSceneDIContainer.swift */,
+				377874D126CB5CA100A9BF73 /* SettingSceneDIContainer.swift */,
+			);
+			path = DIContainer;
+			sourceTree = "<group>";
+		};
 		37C1C48126B80E6100151E68 /* Flow */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,6 +462,8 @@
 		37C1C48A26B816A300151E68 /* SettingScene */ = {
 			isa = PBXGroup;
 			children = (
+				377874D326CB5DAC00A9BF73 /* SettingViewController.swift */,
+				377874D526CB5F5B00A9BF73 /* SettingViewController.storyboard */,
 			);
 			path = SettingScene;
 			sourceTree = "<group>";
@@ -586,14 +616,6 @@
 			path = Conversion;
 			sourceTree = "<group>";
 		};
-		37C1C53026B910F300151E68 /* Conversion */ = {
-			isa = PBXGroup;
-			children = (
-				37C1C52E26B910E500151E68 /* DomainConvertableType.swift */,
-			);
-			path = Conversion;
-			sourceTree = "<group>";
-		};
 		37E99B7226B7B892002A840B = {
 			isa = PBXGroup;
 			children = (
@@ -624,7 +646,6 @@
 			isa = PBXGroup;
 			children = (
 				37E99BC826B7BBE6002A840B /* Application */,
-				37C1C48126B80E6100151E68 /* Flow */,
 				37E99BC926B7BBF2002A840B /* Presentation */,
 				37C1C4A526B828FD00151E68 /* Common */,
 				37C1C4B926B840FB00151E68 /* Util */,
@@ -640,8 +661,10 @@
 			isa = PBXGroup;
 			children = (
 				37E99BC226B7B969002A840B /* Entity */,
+				37242B0226CAAA76008AF1C4 /* ValueObject */,
 				37E99BC326B7B972002A840B /* UseCase */,
 				37C1C4DF26B901DE00151E68 /* Repository */,
+				37C1C52E26B910E500151E68 /* DomainConvertableType.swift */,
 				37E99B9926B7B92A002A840B /* Domain.h */,
 				37E99B9A26B7B92A002A840B /* Info.plist */,
 			);
@@ -660,8 +683,6 @@
 		37E99BC226B7B969002A840B /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				37C1C53026B910F300151E68 /* Conversion */,
-				37E99BC026B7B964002A840B /* Keyword.swift */,
 				37E99BBE26B7B95A002A840B /* Track.swift */,
 			);
 			path = Entity;
@@ -680,6 +701,8 @@
 		37E99BC826B7BBE6002A840B /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				3795A29926C3F2C30093C8BF /* DIContainer */,
+				37C1C48126B80E6100151E68 /* Flow */,
 				3781ED8E26BBB8EE00404A9D /* Application.swift */,
 			);
 			path = Application;
@@ -901,6 +924,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				377874D626CB5F5B00A9BF73 /* SettingViewController.storyboard in Resources */,
 				37C1C49426B81DF500151E68 /* SearchResultViewController.storyboard in Resources */,
 				37E99B8B26B7B892002A840B /* LaunchScreen.storyboard in Resources */,
 				3793D17D26BE931200999C81 /* DetailPreviewCell.xib in Resources */,
@@ -1143,6 +1167,7 @@
 				3793D18026BE931200999C81 /* DetailSellerInfoCell.swift in Sources */,
 				37C1C48726B8145100151E68 /* SearchMainViewController.swift in Sources */,
 				3793D19426BE982900999C81 /* Date+Ext.swift in Sources */,
+				37242AFC26CAA41C008AF1C4 /* AppDIContainer.swift in Sources */,
 				37C1C49D26B8214700151E68 /* MainRecentKeywordCell.swift in Sources */,
 				3793D17E26BE931200999C81 /* DetailPreviewCell.swift in Sources */,
 				3793D19026BE97DD00999C81 /* String+Ext.swift in Sources */,
@@ -1152,9 +1177,11 @@
 				3793D16926BE92AD00999C81 /* SearchDetailViewModel.swift in Sources */,
 				37C1C47A26B7E00400151E68 /* MainFlow.swift in Sources */,
 				3781ED9526BBF9BF00404A9D /* SearchMainModel.swift in Sources */,
+				377874D426CB5DAC00A9BF73 /* SettingViewController.swift in Sources */,
 				37C1C47C26B7EA9E00151E68 /* SearchFlow.swift in Sources */,
 				37C1C47E26B7EAAF00151E68 /* SettingFlow.swift in Sources */,
 				37E99B7F26B7B892002A840B /* AppDelegate.swift in Sources */,
+				377874D226CB5CA100A9BF73 /* SettingSceneDIContainer.swift in Sources */,
 				37C1C49F26B8228900151E68 /* SearchMainViewModel.swift in Sources */,
 				3793D16B26BE92E200999C81 /* SearchDetailModel.swift in Sources */,
 				37C1C4A926B8376800151E68 /* SearchResultViewModel.swift in Sources */,
@@ -1165,6 +1192,7 @@
 				37C1C49226B81DE900151E68 /* SearchResultViewController.swift in Sources */,
 				37C1C4BC26B8412000151E68 /* Double+Ext.swift in Sources */,
 				3793D19226BE980400999C81 /* Int64+Ext.swift in Sources */,
+				37242AFE26CAA42B008AF1C4 /* SearchSceneDIContainer.swift in Sources */,
 				3793D18126BE931200999C81 /* DetailReleaseNotesCell.swift in Sources */,
 				3793D18926BE931200999C81 /* DetailDescriptionCell.swift in Sources */,
 				3793D17F26BE931200999C81 /* DetailVerticalInfoCell.swift in Sources */,

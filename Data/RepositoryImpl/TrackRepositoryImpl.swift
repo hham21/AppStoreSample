@@ -11,7 +11,7 @@ import RxSwift
 public class TrackRepositoryImpl: TrackRepository {
     private let remoteSource: TrackDataSource
     
-    init(remoteSource: TrackDataSource) {
+    public init(remoteSource: TrackDataSource) {
         self.remoteSource = remoteSource
     }
     

@@ -42,13 +42,15 @@ struct AppStepper: Stepper {
 
 final class AppFlow: Flow {
     private let rootWindow: UIWindow
+    private let appDIContainer: AppDIContainer
     
     var root: Presentable {
         return rootWindow
     }
     
-    init(with rootWindow: UIWindow) {
+    init(with rootWindow: UIWindow, appDIContainer: AppDIContainer) {
         self.rootWindow = rootWindow
+        self.appDIContainer = appDIContainer
     }
     
     func navigate(to step: Step) -> FlowContributors {
@@ -65,7 +67,7 @@ final class AppFlow: Flow {
     }
     
     private func coordinatorToMainVC() -> FlowContributors {
-        let mainFlow: MainFlow = .init()
+        let mainFlow: MainFlow = .init(appDIContainer: appDIContainer)
         
         Flows.use(mainFlow, when: .created) { [unowned self] root in
             rootWindow.rootViewController = root

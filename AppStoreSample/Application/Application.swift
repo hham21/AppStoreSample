@@ -17,6 +17,7 @@ final class Application {
     let useCaseProvider: Domain.UseCaseProvider
     
     private let coordinator: FlowCoordinator = .init()
+    private let appDIContainer: AppDIContainer = .init()
     private let disposeBag: DisposeBag = .init()
     
     private init() {
@@ -24,7 +25,7 @@ final class Application {
     }
     
     func startApp(with window: UIWindow) {
-        let appFlow: AppFlow = .init(with: window)
+        let appFlow: AppFlow = .init(with: window, appDIContainer: appDIContainer)
         let stepper: AppStepper = .init()
         startToLogCoordinator()
         coordinator.coordinate(flow: appFlow, with: stepper)

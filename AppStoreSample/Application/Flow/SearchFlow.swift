@@ -26,12 +26,15 @@ final class SearchFlow: Flow {
     }
 
     let stepper: SearchStepper
+    private let diContainer: SearchSceneDIContainer
     
-    private let rootViewController = UINavigationController()
+    private let rootViewController: UINavigationController
     private let provider = Application.shared.useCaseProvider
     
-    init(stepper: SearchStepper) {
+    init(stepper: SearchStepper, diContainer: SearchSceneDIContainer) {
         self.stepper = stepper
+        self.diContainer = diContainer
+        self.rootViewController = diContainer.makeSearchSceneRootController()
     }
     
     func navigate(to step: Step) -> FlowContributors {
@@ -50,16 +53,15 @@ final class SearchFlow: Flow {
     }
     
     private func coordinateToSearchMainVC() -> FlowContributors {
-        let keywordUseCase: KeywordUseCase = provider.createKeywordUseCase()
-        let trackUseCase: TrackUseCase = provider.createTrackUseCase()
-        let resultViewModel: SearchResultViewModel = .init(keywordUseCase: keywordUseCase, trackUseCase: trackUseCase)
-        let resultVC: SearchResultViewController = .create(viewModel: resultViewModel)
-        let mainViewModel: SearchMainViewModel = .init(keywordUseCase: keywordUseCase)
-        let mainVC: SearchMainViewController = .create(with: mainViewModel, searchResultVC: resultVC)
+        let mainVC: SearchMainViewController = diContainer.makeSearchMainViewController()
         
         rootViewController.setViewControllers([mainVC], animated: true)
-        return .one(flowContributor: .contribute(withNextPresentable: mainVC,
-                                                 withNextStepper: mainViewModel))
+        return .one(
+            flowContributor: .contribute(
+                withNextPresentable: mainVC,
+                withNextStepper: mainVC.viewModel
+            )
+        )
     }
     
     private func coordinateToSearchDetailVC(with track: Track) -> FlowContributors {
@@ -79,3 +81,17 @@ final class SearchFlow: Flow {
 
 
 
+
+
+//    private func coordinateToSearchMainVC() -> FlowContributors {
+//        let keywordUseCase: KeywordUseCase = provider.createKeywordUseCase()
+//        let trackUseCase: TrackUseCase = provider.createTrackUseCase()
+//        let resultViewModel: SearchResultViewModel = .init(keywordUseCase: keywordUseCase, trackUseCase: trackUseCase)
+//        let resultVC: SearchResultViewController = .create(viewModel: resultViewModel)
+//        let mainViewModel: SearchMainViewModel = .init(keywordUseCase: keywordUseCase)
+//        let mainVC: SearchMainViewController = .create(with: mainViewModel, searchResultVC: resultVC)
+//
+//        rootViewController.setViewControllers([mainVC], animated: true)
+//        return .one(flowContributor: .contribute(withNextPresentable: mainVC,
+//                                                 withNextStepper: mainViewModel))
+//    }

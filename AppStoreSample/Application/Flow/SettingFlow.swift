@@ -23,12 +23,16 @@ final class SettingFlow: Flow {
         return rootViewController
     }
     
-    private let rootViewController = UINavigationController()
-
     let stepper: SettingStepper
     
-    init(stepper: SettingStepper) {
+    private let rootViewController: UINavigationController
+    private let diContainer: SettingSceneDIContainer
+
+    
+    init(stepper: SettingStepper, diContainer: SettingSceneDIContainer) {
         self.stepper = stepper
+        self.diContainer = diContainer
+        self.rootViewController = diContainer.makeSettingSceneRootController()
     }
     
     func navigate(to step: Step) -> FlowContributors {
@@ -36,9 +40,8 @@ final class SettingFlow: Flow {
     }
     
     private func coordinateToTestVC() -> FlowContributors {
-        let vc: UIViewController = .init()
-        vc.view.backgroundColor = .blue
-        rootViewController.setViewControllers([vc], animated: true)
+        let settingVC: SettingViewController = SettingViewController.instantiate()
+        rootViewController.setViewControllers([settingVC], animated: true)
 //        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: SearchStepper()))
         return .none
     }

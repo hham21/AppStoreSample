@@ -13,7 +13,7 @@ import Reusable
 final class SearchMainViewController: UIViewController, StoryboardBased {
     @IBOutlet weak var tableView: UITableView!
     
-    private var viewModel: SearchMainViewModel! = nil
+    var viewModel: SearchMainViewModel! = nil
     private lazy var dataSource: SearchMain.DataSource = createDataSource()
     private var searchResultVC: SearchResultViewController!
     private lazy var searchController: UISearchController = .init(searchResultsController: searchResultVC)
@@ -28,6 +28,7 @@ final class SearchMainViewController: UIViewController, StoryboardBased {
     
     private func setAttributes() {
         setSearchController()
+        setNavigationBar()
         setNavigationItem()
         setTableView()
         registerCells()
@@ -44,6 +45,10 @@ final class SearchMainViewController: UIViewController, StoryboardBased {
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         searchController.searchBar.setValue(cancelbuttonTitle, forKey: cancelButtonKey)
+    }
+    
+    private func setNavigationBar() {
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     private func setNavigationItem() {

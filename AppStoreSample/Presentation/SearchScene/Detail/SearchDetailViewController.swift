@@ -21,7 +21,7 @@ final class SearchDetailViewController: UIViewController, StoryboardBased {
     
     @IBOutlet weak var tableView: UITableView!
     
-    private var viewModel: DetailViewModel!
+    var viewModel: DetailViewModel!
     private var expandedRow: [IndexPath] = []
     private var isArtworkDisplaying: Bool = false
     

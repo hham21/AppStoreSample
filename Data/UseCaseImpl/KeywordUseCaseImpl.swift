@@ -8,22 +8,22 @@
 import Domain
 import RxSwift
 
-final class KeywordUseCaseImpl: KeywordUseCase {
+public final class KeywordUseCaseImpl: KeywordUseCase {
     private let repo: KeywordRepository
     
-    init(repo: KeywordRepository) {
+    public init(repo: KeywordRepository) {
         self.repo = repo
     }
     
-    func getKeywords() -> Observable<[Keyword]> {
+    public func getKeywords() -> Observable<[Keyword]> {
         repo.getKeywords()
     }
     
-    func getKeywordsContains(text: String) -> Observable<[Keyword]> {
+    public func getKeywordsContains(text: String) -> Observable<[Keyword]> {
         repo.getKeywordsContains(text: text)
     }
     
-    func saveKeyword(_ keyword: String) -> Observable<Void> {
+    public func saveKeyword(_ keyword: String) -> Observable<Void> {
         let keyword: Keyword = .init(text: keyword, date: Date())
         return repo.saveKeyword(keyword)
     }

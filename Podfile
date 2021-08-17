@@ -13,7 +13,8 @@ def shared_pods
   pod 'Alamofire', '~> 5.4'
   pod 'Moya', '~> 14.0'
   pod 'SwiftyBeaver'
-
+  pod 'Swinject'
+  pod 'SwinjectStoryboard'  
 end
 
 target 'AppStoreSample' do
