@@ -54,6 +54,7 @@
 		3793D19626BE988100999C81 /* SearchDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3793D19526BE988100999C81 /* SearchDetailViewController.storyboard */; };
 		37941E5926CEA0D600B23F69 /* SignInFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37941E5826CEA0D600B23F69 /* SignInFlow.swift */; };
 		37941E5B26CEA50F00B23F69 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37941E5A26CEA50F00B23F69 /* SignInViewModel.swift */; };
+		37941E5D26CEB59A00B23F69 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37941E5C26CEB59A00B23F69 /* SettingViewModel.swift */; };
 		37C1C47A26B7E00400151E68 /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1C47926B7E00400151E68 /* MainFlow.swift */; };
 		37C1C47C26B7EA9E00151E68 /* SearchFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1C47B26B7EA9E00151E68 /* SearchFlow.swift */; };
 		37C1C47E26B7EAAF00151E68 /* SettingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1C47D26B7EAAE00151E68 /* SettingFlow.swift */; };
@@ -217,6 +218,7 @@
 		3793D19526BE988100999C81 /* SearchDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchDetailViewController.storyboard; sourceTree = "<group>"; };
 		37941E5826CEA0D600B23F69 /* SignInFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInFlow.swift; sourceTree = "<group>"; };
 		37941E5A26CEA50F00B23F69 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		37941E5C26CEB59A00B23F69 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		37C1C47926B7E00400151E68 /* MainFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlow.swift; sourceTree = "<group>"; };
 		37C1C47B26B7EA9E00151E68 /* SearchFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFlow.swift; sourceTree = "<group>"; };
 		37C1C47D26B7EAAE00151E68 /* SettingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFlow.swift; sourceTree = "<group>"; };
@@ -495,6 +497,7 @@
 			isa = PBXGroup;
 			children = (
 				377874D326CB5DAC00A9BF73 /* SettingViewController.swift */,
+				37941E5C26CEB59A00B23F69 /* SettingViewModel.swift */,
 				377874D526CB5F5B00A9BF73 /* SettingViewController.storyboard */,
 			);
 			path = SettingScene;
@@ -1195,6 +1198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37941E5D26CEB59A00B23F69 /* SettingViewModel.swift in Sources */,
 				3781ED8F26BBB8EE00404A9D /* Application.swift in Sources */,
 				37C1C4B026B8388B00151E68 /* SearchRecentKeywordCell.swift in Sources */,
 				3793D18E26BE97B600999C81 /* UIView+Ext.swift in Sources */,

@@ -40,6 +40,8 @@ final class MainFlow: Flow {
         switch step {
         case .mainRequired:
             return coordinateToMainTapBar()
+        case .signedOut:
+            return .end(forwardToParentFlowWithStep: AppStep.signedOut)
         default:
             return .none
         }

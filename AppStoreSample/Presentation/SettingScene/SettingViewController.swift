@@ -8,13 +8,15 @@
 import UIKit
 import Reusable
 
-class SettingViewController: UIViewController, StoryboardBased {
+final class SettingViewController: UIViewController, StoryboardBased {
+    
+    let viewModel: SettingViewModel = .init()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setAttributes()
     }
     
-    private func setAttributes() {
+    @IBAction func signOutTapped(_ sender: UIButton) {
+        viewModel.input.signOutTapped.accept(())
     }
 }

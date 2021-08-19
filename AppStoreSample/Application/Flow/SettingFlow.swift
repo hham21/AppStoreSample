@@ -36,13 +36,24 @@ final class SettingFlow: Flow {
     }
     
     func navigate(to step: Step) -> FlowContributors {
-        coordinateToTestVC()
+        guard let step = step as? AppStep else {
+            return .none
+        }
+        
+        switch step {
+        case .settingMain:
+            return coordinateToSettingVC()
+        case .signedOut:
+            return .end(forwardToParentFlowWithStep: AppStep.signedOut)
+        default:
+            return .none
+        }
     }
     
-    private func coordinateToTestVC() -> FlowContributors {
+    private func coordinateToSettingVC() -> FlowContributors {
         let settingVC: SettingViewController = SettingViewController.instantiate()
+        let contributor: FlowContributor = .contribute(withNextPresentable: settingVC, withNextStepper: settingVC.viewModel)
         rootViewController.setViewControllers([settingVC], animated: true)
-//        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: SearchStepper()))
-        return .none
+        return .one(flowContributor: contributor)
     }
 }

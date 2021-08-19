@@ -20,6 +20,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DCd-1f-vrV">
                                 <rect key="frame" x="177" y="433" width="60" height="30"/>
                                 <state key="normal" title="Sign Out"/>
+                                <connections>
+                                    <action selector="signOutTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="jWX-ad-4wG"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
