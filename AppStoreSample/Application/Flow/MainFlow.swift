@@ -5,9 +5,9 @@
 //  Created by Hyoungsu Ham on 2021/08/02.
 //
 
+import UIKit
 import RxSwift
 import RxFlow
-import UIKit
 
 final class MainFlow: Flow {
     enum Tab: Int {
@@ -38,7 +38,7 @@ final class MainFlow: Flow {
         }
         
         switch step {
-        case .tapBarMain:
+        case .mainRequired:
             return coordinateToMainTapBar()
         default:
             return .none

@@ -12,6 +12,10 @@
 		377874D226CB5CA100A9BF73 /* SettingSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377874D126CB5CA100A9BF73 /* SettingSceneDIContainer.swift */; };
 		377874D426CB5DAC00A9BF73 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377874D326CB5DAC00A9BF73 /* SettingViewController.swift */; };
 		377874D626CB5F5B00A9BF73 /* SettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 377874D526CB5F5B00A9BF73 /* SettingViewController.storyboard */; };
+		377874DC26CE008100A9BF73 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377874DB26CE008100A9BF73 /* SignInViewController.swift */; };
+		377874DE26CE00AC00A9BF73 /* SignInViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 377874DD26CE00AC00A9BF73 /* SignInViewController.storyboard */; };
+		377874E126CE019000A9BF73 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377874E026CE019000A9BF73 /* AuthService.swift */; };
+		377874E326CE07ED00A9BF73 /* SignInSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377874E226CE07ED00A9BF73 /* SignInSceneDIContainer.swift */; };
 		3781ED8D26BBA9EC00404A9D /* TrackAPIDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3781ED8C26BBA9EC00404A9D /* TrackAPIDataSource.swift */; };
 		3781ED8F26BBB8EE00404A9D /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3781ED8E26BBB8EE00404A9D /* Application.swift */; };
 		3781ED9126BBB9BB00404A9D /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3781ED9026BBB9BB00404A9D /* UseCaseProvider.swift */; };
@@ -48,6 +52,8 @@
 		3793D19226BE980400999C81 /* Int64+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3793D19126BE980400999C81 /* Int64+Ext.swift */; };
 		3793D19426BE982900999C81 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3793D19326BE982900999C81 /* Date+Ext.swift */; };
 		3793D19626BE988100999C81 /* SearchDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3793D19526BE988100999C81 /* SearchDetailViewController.storyboard */; };
+		37941E5926CEA0D600B23F69 /* SignInFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37941E5826CEA0D600B23F69 /* SignInFlow.swift */; };
+		37941E5B26CEA50F00B23F69 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37941E5A26CEA50F00B23F69 /* SignInViewModel.swift */; };
 		37C1C47A26B7E00400151E68 /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1C47926B7E00400151E68 /* MainFlow.swift */; };
 		37C1C47C26B7EA9E00151E68 /* SearchFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1C47B26B7EA9E00151E68 /* SearchFlow.swift */; };
 		37C1C47E26B7EAAF00151E68 /* SettingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1C47D26B7EAAE00151E68 /* SettingFlow.swift */; };
@@ -169,6 +175,10 @@
 		377874D126CB5CA100A9BF73 /* SettingSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSceneDIContainer.swift; sourceTree = "<group>"; };
 		377874D326CB5DAC00A9BF73 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		377874D526CB5F5B00A9BF73 /* SettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingViewController.storyboard; sourceTree = "<group>"; };
+		377874DB26CE008100A9BF73 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		377874DD26CE00AC00A9BF73 /* SignInViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignInViewController.storyboard; sourceTree = "<group>"; };
+		377874E026CE019000A9BF73 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		377874E226CE07ED00A9BF73 /* SignInSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInSceneDIContainer.swift; sourceTree = "<group>"; };
 		3781ED8C26BBA9EC00404A9D /* TrackAPIDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackAPIDataSource.swift; sourceTree = "<group>"; };
 		3781ED8E26BBB8EE00404A9D /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		3781ED9026BBB9BB00404A9D /* UseCaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
@@ -205,6 +215,8 @@
 		3793D19126BE980400999C81 /* Int64+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int64+Ext.swift"; sourceTree = "<group>"; };
 		3793D19326BE982900999C81 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		3793D19526BE988100999C81 /* SearchDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchDetailViewController.storyboard; sourceTree = "<group>"; };
+		37941E5826CEA0D600B23F69 /* SignInFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInFlow.swift; sourceTree = "<group>"; };
+		37941E5A26CEA50F00B23F69 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		37C1C47926B7E00400151E68 /* MainFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlow.swift; sourceTree = "<group>"; };
 		37C1C47B26B7EA9E00151E68 /* SearchFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFlow.swift; sourceTree = "<group>"; };
 		37C1C47D26B7EAAE00151E68 /* SettingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFlow.swift; sourceTree = "<group>"; };
@@ -345,6 +357,24 @@
 			path = ValueObject;
 			sourceTree = "<group>";
 		};
+		377874D826CE005700A9BF73 /* SignInScene */ = {
+			isa = PBXGroup;
+			children = (
+				377874DB26CE008100A9BF73 /* SignInViewController.swift */,
+				37941E5A26CEA50F00B23F69 /* SignInViewModel.swift */,
+				377874DD26CE00AC00A9BF73 /* SignInViewController.storyboard */,
+			);
+			path = SignInScene;
+			sourceTree = "<group>";
+		};
+		377874DF26CE014C00A9BF73 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				377874E026CE019000A9BF73 /* AuthService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		3782ED6A26B93F7600CB3711 /* UseCaseImpl */ = {
 			isa = PBXGroup;
 			children = (
@@ -420,6 +450,7 @@
 			isa = PBXGroup;
 			children = (
 				37242AFB26CAA41C008AF1C4 /* AppDIContainer.swift */,
+				377874E226CE07ED00A9BF73 /* SignInSceneDIContainer.swift */,
 				37242AFD26CAA42B008AF1C4 /* SearchSceneDIContainer.swift */,
 				377874D126CB5CA100A9BF73 /* SettingSceneDIContainer.swift */,
 			);
@@ -430,6 +461,7 @@
 			isa = PBXGroup;
 			children = (
 				37E99BCD26B7BDBD002A840B /* AppFlow.swift */,
+				37941E5826CEA0D600B23F69 /* SignInFlow.swift */,
 				37C1C47926B7E00400151E68 /* MainFlow.swift */,
 				37C1C47B26B7EA9E00151E68 /* SearchFlow.swift */,
 				37C1C47D26B7EAAE00151E68 /* SettingFlow.swift */,
@@ -647,6 +679,7 @@
 			children = (
 				37E99BC826B7BBE6002A840B /* Application */,
 				37E99BC926B7BBF2002A840B /* Presentation */,
+				377874DF26CE014C00A9BF73 /* Service */,
 				37C1C4A526B828FD00151E68 /* Common */,
 				37C1C4B926B840FB00151E68 /* Util */,
 				37E99B8726B7B892002A840B /* Assets.xcassets */,
@@ -711,6 +744,7 @@
 		37E99BC926B7BBF2002A840B /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				377874D826CE005700A9BF73 /* SignInScene */,
 				37C1C48926B8168300151E68 /* SearchScene */,
 				37C1C48A26B816A300151E68 /* SettingScene */,
 			);
@@ -931,6 +965,7 @@
 				3793D18C26BE931200999C81 /* DetailPreviewImageCell.xib in Resources */,
 				37C1C48F26B8198E00151E68 /* SearchMainViewController.storyboard in Resources */,
 				37E99B8826B7B892002A840B /* Assets.xcassets in Resources */,
+				377874DE26CE00AC00A9BF73 /* SignInViewController.storyboard in Resources */,
 				3793D18226BE931200999C81 /* DetailDescriptionCell.xib in Resources */,
 				3793D18426BE931200999C81 /* DetailHorizontalInfoCell.xib in Resources */,
 				3793D18826BE931200999C81 /* DetailHeaderCell.xib in Resources */,
@@ -1165,7 +1200,10 @@
 				3793D18E26BE97B600999C81 /* UIView+Ext.swift in Sources */,
 				3781ED9726BBFA0300404A9D /* SearchResultModel.swift in Sources */,
 				3793D18026BE931200999C81 /* DetailSellerInfoCell.swift in Sources */,
+				377874E326CE07ED00A9BF73 /* SignInSceneDIContainer.swift in Sources */,
 				37C1C48726B8145100151E68 /* SearchMainViewController.swift in Sources */,
+				377874E126CE019000A9BF73 /* AuthService.swift in Sources */,
+				37941E5B26CEA50F00B23F69 /* SignInViewModel.swift in Sources */,
 				3793D19426BE982900999C81 /* Date+Ext.swift in Sources */,
 				37242AFC26CAA41C008AF1C4 /* AppDIContainer.swift in Sources */,
 				37C1C49D26B8214700151E68 /* MainRecentKeywordCell.swift in Sources */,
@@ -1188,8 +1226,10 @@
 				37C1C4A726B8291900151E68 /* ViewModelType.swift in Sources */,
 				37C1C4B226B8388B00151E68 /* SearchTrackCell.swift in Sources */,
 				3793D18A26BE931200999C81 /* DetailHorizontalInfoCell.swift in Sources */,
+				377874DC26CE008100A9BF73 /* SignInViewController.swift in Sources */,
 				37C1C49B26B8214700151E68 /* MainHeaderCell.swift in Sources */,
 				37C1C49226B81DE900151E68 /* SearchResultViewController.swift in Sources */,
+				37941E5926CEA0D600B23F69 /* SignInFlow.swift in Sources */,
 				37C1C4BC26B8412000151E68 /* Double+Ext.swift in Sources */,
 				3793D19226BE980400999C81 /* Int64+Ext.swift in Sources */,
 				37242AFE26CAA42B008AF1C4 /* SearchSceneDIContainer.swift in Sources */,

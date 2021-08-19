@@ -14,8 +14,12 @@ import RxFlow
 enum AppStep: Step {
     case initial
     
-    // TapBar
-    case tapBarMain
+    // SignIn
+    case signedOut
+    case didSignIn
+    
+    // Main
+    case mainRequired
     
     // Search
     case searchMain
@@ -28,15 +32,26 @@ enum AppStep: Step {
 
 struct AppStepper: Stepper {
     let steps: PublishRelay<Step> = .init()
+    private let authService: AuthService
+    
     private let disposeBag: DisposeBag = .init()
     
-    init() {}
+    
+    init(appDIcontainer: AppDIContainer) {
+        self.authService = appDIcontainer.makeAuthService()
+    }
     
     func readyToEmitSteps() {
-        // 로그인 없이 바로 시작
-        Observable.just(AppStep.initial)
-            .bind(to: steps)
-            .disposed(by: disposeBag)
+        switch authService.currentStatus {
+        case .SignedIn:
+            Observable.just(AppStep.mainRequired)
+                .bind(to: steps)
+                .disposed(by: disposeBag)
+        case .SignedOut:
+            Observable.just(AppStep.signedOut)
+                .bind(to: steps)
+                .disposed(by: disposeBag)
+        }
     }
 }
 
@@ -59,21 +74,35 @@ final class AppFlow: Flow {
         }
         
         switch step {
-        case .initial:
-            return coordinatorToMainVC()
+        case .signedOut:
+            return coordinateToSignInVC()
+        case .mainRequired:
+            return coordinateToMainVC()
         default:
             return .none
         }
     }
     
-    private func coordinatorToMainVC() -> FlowContributors {
+    private func coordinateToSignInVC() -> FlowContributors {
+        let signInFlow: SignInFlow = .init(diContainer: appDIContainer.makeSignInSceneDIContainer())
+        
+        Flows.use(signInFlow, when: .created) { [unowned self] rootVC in
+            self.rootWindow.rootViewController = rootVC
+        }
+        
+        let stepper: OneStepper = .init(withSingleStep: AppStep.signedOut)
+        let contributor: FlowContributor = .contribute(withNextPresentable: signInFlow, withNextStepper: stepper)
+        return .one(flowContributor: contributor)
+    }
+    
+    private func coordinateToMainVC() -> FlowContributors {
         let mainFlow: MainFlow = .init(appDIContainer: appDIContainer)
         
         Flows.use(mainFlow, when: .created) { [unowned self] root in
             rootWindow.rootViewController = root
         }
         
-        let stepper: OneStepper = .init(withSingleStep: AppStep.tapBarMain)
+        let stepper: OneStepper = .init(withSingleStep: AppStep.mainRequired)
         let contributor: FlowContributor = .contribute(withNextPresentable: mainFlow, withNextStepper: stepper)
         return .one(flowContributor: contributor)
     }

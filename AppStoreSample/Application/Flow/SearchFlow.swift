@@ -68,19 +68,18 @@ final class SearchFlow: Flow {
         let detailVC: SearchDetailViewController = .create(with: track)
         rootViewController.pushViewController(detailVC, animated: true)
         return .none
-        
-        
-//        let reactor = HomeDetailReactor(provider: provider)
-//        let vc = HomeDetailVC(with: reactor, title: ID)
-//        self.rootViewController.pushViewController(vc, animated: true)
-//        return .one(flowContributor: .contribute(withNextPresentable: vc,
-//                                                 withNextStepper: reactor))
-        
     }
 }
 
 
 
+
+
+//        let reactor = HomeDetailReactor(provider: provider)
+//        let vc = HomeDetailVC(with: reactor, title: ID)
+//        self.rootViewController.pushViewController(vc, animated: true)
+//        return .one(flowContributor: .contribute(withNextPresentable: vc,
+//
 
 
 //    private func coordinateToSearchMainVC() -> FlowContributors {

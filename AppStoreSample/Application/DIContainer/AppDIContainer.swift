@@ -13,6 +13,10 @@ final class AppDIContainer {
     
     // MARK: - Scene
     
+    func makeSignInSceneDIContainer() -> SignInSceneDIContainer {
+        return SignInSceneDIContainer()
+    }
+    
     func makeSearchSceneDIContainer() -> SearchSceneDIContainer {
         return SearchSceneDIContainer()
     }
@@ -47,5 +51,11 @@ final class AppDIContainer {
     
     func makeSearchStepper() -> SearchStepper {
         return .init()
+    }
+    
+    // MARK: - Service
+    
+    func makeAuthService() -> AuthService {
+        return AuthServiceImpl()
     }
 }

@@ -10,15 +10,7 @@ import Domain
 import RxSwift
 import Reusable
 
-final class SearchDetailViewController: UIViewController, StoryboardBased {
-    struct Const {
-        static let headerCellHeight: CGFloat = 150.0
-        static let horizontalInfoCellHeight: CGFloat = 90.0
-        static let releaseNoteCellHeight: CGFloat = 140.0
-        static let descriptionCellHeight: CGFloat = 116.0
-        static let defaultEstimatedHeight: CGFloat = 150.0
-    }
-    
+final class SearchDetailViewController: UIViewController, StoryboardBased {    
     @IBOutlet weak var tableView: UITableView!
     
     var viewModel: DetailViewModel!
@@ -165,20 +157,20 @@ extension SearchDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch dataSource[indexPath] {
         case .header:
-            return Const.headerCellHeight
+            return SearchDetail.Const.headerCellHeight
         case .horizaontalInfo:
-            return Const.horizontalInfoCellHeight
+            return SearchDetail.Const.horizontalInfoCellHeight
         case .releaseNotes:
             if expandedRow.contains(indexPath) {
                 return UITableView.automaticDimension
             } else {
-                return Const.releaseNoteCellHeight
+                return SearchDetail.Const.releaseNoteCellHeight
             }
         case .description:
             if expandedRow.contains(indexPath) {
                 return UITableView.automaticDimension
             } else {
-                return Const.descriptionCellHeight
+                return SearchDetail.Const.descriptionCellHeight
             }
         default:
             return UITableView.automaticDimension
@@ -186,7 +178,7 @@ extension SearchDetailViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Const.defaultEstimatedHeight
+        return SearchDetail.Const.defaultEstimatedHeight
     }
 }
 

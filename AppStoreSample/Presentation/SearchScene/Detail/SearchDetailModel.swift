@@ -11,6 +11,14 @@ import RxDataSources
 struct SearchDetail {
     typealias Model = SectionModel<DetailViewSection, DetailViewItem>
     typealias DataSource = RxTableViewSectionedReloadDataSource<Model>
+    
+    enum Const {
+        static let headerCellHeight: CGFloat = 150.0
+        static let horizontalInfoCellHeight: CGFloat = 90.0
+        static let releaseNoteCellHeight: CGFloat = 140.0
+        static let descriptionCellHeight: CGFloat = 116.0
+        static let defaultEstimatedHeight: CGFloat = 150.0
+    }
 
     enum DetailViewSection {
         case none

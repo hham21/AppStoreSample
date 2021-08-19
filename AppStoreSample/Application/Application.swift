@@ -26,7 +26,7 @@ final class Application {
     
     func startApp(with window: UIWindow) {
         let appFlow: AppFlow = .init(with: window, appDIContainer: appDIContainer)
-        let stepper: AppStepper = .init()
+        let stepper: AppStepper = .init(appDIcontainer: appDIContainer)
         startToLogCoordinator()
         coordinator.coordinate(flow: appFlow, with: stepper)
         window.makeKeyAndVisible()
