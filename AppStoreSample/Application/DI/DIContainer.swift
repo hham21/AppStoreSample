@@ -16,31 +16,31 @@ let DI: Container = .init { container in
     // Stepper
     
     container.register(SearchStepper.self) { _ in
-        return SearchStepper()
+        SearchStepper()
     }
     
     // Flow
     
     container.register(SignInFlow.self) { r in
-        return SignInFlow()
+        SignInFlow()
     }
     
     container.register(MainFlow.self) { r in
-        return MainFlow()
+        MainFlow()
     }
     
     container.register(SearchFlow.self) { r in
-        return SearchFlow(stepper: r.resolve(SearchStepper.self)!)
+        SearchFlow(stepper: r.resolve(SearchStepper.self)!)
     }
     
     container.register(SettingFlow.self) { _ in
-        return SettingFlow(stepper: .init())
+        SettingFlow(stepper: .init())
     }
     
     // Service
     
     container.register(AuthService.self) { _ in
-        return AuthServiceImpl()
+        AuthServiceImpl()
     }
     
     // MARK: - SignIn
@@ -48,13 +48,13 @@ let DI: Container = .init { container in
     // ViewModel
     
     container.register(SignInViewModel.self) { _ in
-        return SignInViewModel()
+        SignInViewModel()
     }
     
     // ViewController
     
     container.register(SignInViewController.self) { r in
-        return SignInViewController.create(with: r.resolve(SignInViewModel.self)!)
+        SignInViewController.create(with: r.resolve(SignInViewModel.self)!)
     }
     
     // MARK: - Search
@@ -62,11 +62,11 @@ let DI: Container = .init { container in
     // DataSource
     
     container.register(KeywordDataSource.self) { _ in
-        return KeywordRealmDataSource()
+        KeywordRealmDataSource()
     }
     
     container.register(TrackDataSource.self) { _ in
-        return TrackAPIDataSource()
+        TrackAPIDataSource()
     }
     
     // Repository

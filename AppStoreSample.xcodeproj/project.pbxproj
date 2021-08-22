@@ -445,6 +445,13 @@
 			path = DI;
 			sourceTree = "<group>";
 		};
+		37941E6326D245DC00B23F69 /* AggregateRoot */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AggregateRoot;
+			sourceTree = "<group>";
+		};
 		37C1C48126B80E6100151E68 /* Flow */ = {
 			isa = PBXGroup;
 			children = (
@@ -684,6 +691,7 @@
 			children = (
 				37E99BC226B7B969002A840B /* Entity */,
 				37242B0226CAAA76008AF1C4 /* ValueObject */,
+				37941E6326D245DC00B23F69 /* AggregateRoot */,
 				37E99BC326B7B972002A840B /* UseCase */,
 				37C1C4DF26B901DE00151E68 /* Repository */,
 				37C1C52E26B910E500151E68 /* DomainConvertableType.swift */,
