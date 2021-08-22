@@ -39,7 +39,6 @@ final class SearchMainViewModel: ViewModelType, Stepper {
         
         input.trackSelected
             .compactMap { AppStep.searchDetail(track: $0) }
-            .debug("trackSelected")
             .bind(to: steps)
             .disposed(by: disposeBag)
         

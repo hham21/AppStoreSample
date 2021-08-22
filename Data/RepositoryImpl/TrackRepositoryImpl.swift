@@ -9,13 +9,13 @@ import Domain
 import RxSwift
 
 public class TrackRepositoryImpl: TrackRepository {
-    private let remoteSource: TrackDataSource
+    private let remoteDataSource: TrackDataSource
     
-    public init(remoteSource: TrackDataSource) {
-        self.remoteSource = remoteSource
+    public init(remoteDataSource: TrackDataSource) {
+        self.remoteDataSource = remoteDataSource
     }
     
     public func getTracks(_ query: String) -> Observable<[Track]> {
-        remoteSource.getTracks(query)
+        remoteDataSource.getTracks(query)
     }
 }

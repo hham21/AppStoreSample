@@ -9,21 +9,21 @@ import Domain
 import RxSwift
 
 public struct KeywordRepositoryImpl: KeywordRepository {
-    private let localSource: KeywordDataSource
+    private let localDataSource: KeywordDataSource
     
-    public init(localSource: KeywordDataSource) {
-        self.localSource = localSource
+    public init(localDataSource: KeywordDataSource) {
+        self.localDataSource = localDataSource
     }
     
     public func getKeywords() -> Observable<[Keyword]> {
-        localSource.getKeywords()
+        localDataSource.getKeywords()
     }
     
     public func getKeywordsContains(text: String) -> Observable<[Keyword]> {
-        localSource.getKeywordsContains(text: text)
+        localDataSource.getKeywordsContains(text: text)
     }
     
     public func saveKeyword(_ keyword: Keyword) -> Observable<Void> {
-        localSource.saveKeyword(keyword)
+        localDataSource.saveKeyword(keyword)
     }
 }

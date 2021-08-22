@@ -376,20 +376,20 @@
 			path = UseCaseImpl;
 			sourceTree = "<group>";
 		};
-		37851DE826BA7C5C00491D05 /* Local */ = {
+		37851DE826BA7C5C00491D05 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
 				37C1C51A26B90A2E00151E68 /* Realm */,
 			);
-			path = Local;
+			path = Storage;
 			sourceTree = "<group>";
 		};
-		37851DE926BA7C6F00491D05 /* Remote */ = {
+		37851DE926BA7C6F00491D05 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				37C1C51926B90A1F00151E68 /* API */,
+				37C1C51926B90A1F00151E68 /* TrackAPI */,
 			);
-			path = Remote;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		37851DEA26BA7D7D00491D05 /* Entity */ = {
@@ -591,8 +591,8 @@
 		37C1C50926B9034C00151E68 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
-				37851DE826BA7C5C00491D05 /* Local */,
-				37851DE926BA7C6F00491D05 /* Remote */,
+				37851DE826BA7C5C00491D05 /* Storage */,
+				37851DE926BA7C6F00491D05 /* Network */,
 				37C1C51726B905CB00151E68 /* KeywordDataSource.swift */,
 				37C1C51526B904F700151E68 /* TrackDataSource.swift */,
 			);
@@ -608,14 +608,14 @@
 			path = RepositoryImpl;
 			sourceTree = "<group>";
 		};
-		37C1C51926B90A1F00151E68 /* API */ = {
+		37C1C51926B90A1F00151E68 /* TrackAPI */ = {
 			isa = PBXGroup;
 			children = (
 				37851DEA26BA7D7D00491D05 /* Entity */,
 				37851DF126BA994000491D05 /* TrackAPI.swift */,
 				3781ED8C26BBA9EC00404A9D /* TrackAPIDataSource.swift */,
 			);
-			path = API;
+			path = TrackAPI;
 			sourceTree = "<group>";
 		};
 		37C1C51A26B90A2E00151E68 /* Realm */ = {
@@ -676,9 +676,7 @@
 				37E99BC826B7BBE6002A840B /* Application */,
 				37E99BC926B7BBF2002A840B /* Presentation */,
 				377874DF26CE014C00A9BF73 /* Service */,
-				37C1C4A526B828FD00151E68 /* Common */,
 				37C1C4B926B840FB00151E68 /* Util */,
-				37E99B7E26B7B892002A840B /* AppDelegate.swift */,
 				37E99B8726B7B892002A840B /* Assets.xcassets */,
 				37E99B8926B7B892002A840B /* LaunchScreen.storyboard */,
 				37E99B8C26B7B892002A840B /* Info.plist */,
@@ -733,6 +731,7 @@
 				37941E5E26D235F800B23F69 /* DI */,
 				37C1C48126B80E6100151E68 /* Flow */,
 				3781ED8E26BBB8EE00404A9D /* Application.swift */,
+				37E99B7E26B7B892002A840B /* AppDelegate.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -740,6 +739,7 @@
 		37E99BC926B7BBF2002A840B /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				37C1C4A526B828FD00151E68 /* Common */,
 				377874D826CE005700A9BF73 /* SignInScene */,
 				37C1C48926B8168300151E68 /* SearchScene */,
 				37C1C48A26B816A300151E68 /* SettingScene */,

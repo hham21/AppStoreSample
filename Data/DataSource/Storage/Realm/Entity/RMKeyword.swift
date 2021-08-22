@@ -25,7 +25,7 @@ extension RMKeyword: DomainConvertibleType {
 
 extension Keyword: RealmConvertableType {
     internal var id: String {
-        return UUID().uuidString
+        return text
     }
     
     func asRealm() -> RMKeyword {

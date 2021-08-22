@@ -9,24 +9,33 @@ import RxSwift
 import RxCocoa
 import RxFlow
 
-final class SettingViewModel: Stepper {
+final class SettingViewModel: ViewModelType, Stepper {
     struct Input {
         let signOutTapped: PublishRelay<Void> = .init()
     }
     
-    let input: Input = .init()
+    struct Output {
+        let signedOut: PublishRelay<Void> = .init()
+    }
+    
+    lazy var input: Input = .init()
+    lazy var output: Output = mutate(input: input)
     var steps: PublishRelay<Step> = .init()
     
     private let disposeBag: DisposeBag = .init()
     
-    init() {
-        bind()
-    }
-    
-    private func bind() {
+    func mutate(input: Input) -> Output {
+        let output: Output = .init()
+        
+        input.signOutTapped
+            .bind(to: output.signedOut)
+            .disposed(by: disposeBag)
+        
         input.signOutTapped
             .map { _ in AppStep.signedOut }
             .bind(to: steps)
             .disposed(by: disposeBag)
+        
+        return output
     }
 }

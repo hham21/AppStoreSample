@@ -31,7 +31,6 @@ final class SignInViewModel: ViewModelType, Stepper {
             .asDriver(onErrorJustReturn: false)
         
         input.signInButtonTapped
-            .debug("signInButtonTapped")
             .map { _ in AppStep.didSignIn }
             .bind(to: steps)
             .disposed(by: disposeBag)

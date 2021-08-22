@@ -72,11 +72,11 @@ let DI: Container = .init { container in
     // Repository
     
     container.register(KeywordRepository.self) { r in
-        KeywordRepositoryImpl(localSource: r.resolve(KeywordDataSource.self)!)
+        KeywordRepositoryImpl(localDataSource: r.resolve(KeywordDataSource.self)!)
     }
     
     container.register(TrackRepository.self) { r in
-        TrackRepositoryImpl(remoteSource: r.resolve(TrackDataSource.self)!)
+        TrackRepositoryImpl(remoteDataSource: r.resolve(TrackDataSource.self)!)
     }
     
     // UseCase
