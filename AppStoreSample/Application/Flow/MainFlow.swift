@@ -22,14 +22,12 @@ final class MainFlow: Flow {
         return rootViewController
     }
     
-    let appDIContainer: AppDIContainer
     let rootViewController: UITabBarController
     
-    init(appDIContainer: AppDIContainer) {
-        self.appDIContainer = appDIContainer
-        self.rootViewController = appDIContainer.makeRootViewController()
-        self.searchFlow = appDIContainer.makeSearchFlow()
-        self.settingFlow = appDIContainer.makeSettingFlow()
+    init() {
+        self.rootViewController = .init()
+        self.searchFlow = DI.resolve(SearchFlow.self)!
+        self.settingFlow = DI.resolve(SettingFlow.self)!
     }
     
     func navigate(to step: Step) -> FlowContributors {

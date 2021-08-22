@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftyBeaver
+import Swinject
 
 let log = SwiftyBeaver.self
 

@@ -10,23 +10,19 @@ import Domain
 import Data
 import RxSwift
 import RxFlow
+import Swinject
 
 final class Application {
     static let shared: Application = .init()
-    
-    let useCaseProvider: Domain.UseCaseProvider
-    
+        
     private let coordinator: FlowCoordinator = .init()
-    private let appDIContainer: AppDIContainer = .init()
     private let disposeBag: DisposeBag = .init()
     
-    private init() {
-        self.useCaseProvider = UseCaseProviderImpl()
-    }
+    private init() {}
     
     func startApp(with window: UIWindow) {
-        let appFlow: AppFlow = .init(with: window, appDIContainer: appDIContainer)
-        let stepper: AppStepper = .init(appDIcontainer: appDIContainer)
+        let appFlow: AppFlow = .init(with: window)
+        let stepper: AppStepper = .init()
         startToLogCoordinator()
         coordinator.coordinate(flow: appFlow, with: stepper)
         window.makeKeyAndVisible()

@@ -12,12 +12,10 @@ final class SignInFlow: Flow {
         return rootViewController
     }
     
-    private let diContainer: SignInSceneDIContainer
     private let rootViewController: UINavigationController
     
-    init(diContainer: SignInSceneDIContainer) {
-        self.diContainer = diContainer
-        self.rootViewController = diContainer.makeSignInRootViewController()
+    init() {
+        self.rootViewController = .init()
     }
     
     func navigate(to step: Step) -> FlowContributors {
@@ -36,7 +34,7 @@ final class SignInFlow: Flow {
     }
     
     private func coordinateToSignIn() -> FlowContributors {
-        let vc: SignInViewController = diContainer.makeSignInViewController()
+        let vc: SignInViewController = DI.resolve(SignInViewController.self)!
         let contributor: FlowContributor = .contribute(withNextPresentable: vc, withNextStepper: vc.viewModel)
         rootViewController.pushViewController(vc, animated: true)
         return .one(flowContributor: contributor)

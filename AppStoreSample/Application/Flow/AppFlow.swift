@@ -31,14 +31,14 @@ enum AppStep: Step {
 }
 
 struct AppStepper: Stepper {
-    let steps: PublishRelay<Step> = .init()
+    internal let steps: PublishRelay<Step> = .init()
     private let authService: AuthService
     
     private let disposeBag: DisposeBag = .init()
     
     
-    init(appDIcontainer: AppDIContainer) {
-        self.authService = appDIcontainer.makeAuthService()
+    init() {
+        self.authService = DI.resolve(AuthService.self)!
     }
     
     func readyToEmitSteps() {
@@ -57,15 +57,13 @@ struct AppStepper: Stepper {
 
 final class AppFlow: Flow {
     private let rootWindow: UIWindow
-    private let appDIContainer: AppDIContainer
     
     var root: Presentable {
         return rootWindow
     }
     
-    init(with rootWindow: UIWindow, appDIContainer: AppDIContainer) {
+    init(with rootWindow: UIWindow) {
         self.rootWindow = rootWindow
-        self.appDIContainer = appDIContainer
     }
     
     func navigate(to step: Step) -> FlowContributors {
@@ -84,7 +82,7 @@ final class AppFlow: Flow {
     }
     
     private func coordinateToSignInVC() -> FlowContributors {
-        let signInFlow: SignInFlow = .init(diContainer: appDIContainer.makeSignInSceneDIContainer())
+        let signInFlow: SignInFlow = DI.resolve(SignInFlow.self)!
         
         Flows.use(signInFlow, when: .created) { [unowned self] rootVC in
             self.rootWindow.rootViewController = rootVC
@@ -96,7 +94,7 @@ final class AppFlow: Flow {
     }
     
     private func coordinateToMainVC() -> FlowContributors {
-        let mainFlow: MainFlow = .init(appDIContainer: appDIContainer)
+        let mainFlow: MainFlow = DI.resolve(MainFlow.self)!
         
         Flows.use(mainFlow, when: .created) { [unowned self] root in
             rootWindow.rootViewController = root

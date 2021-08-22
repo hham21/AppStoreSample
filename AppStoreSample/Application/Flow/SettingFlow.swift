@@ -26,13 +26,10 @@ final class SettingFlow: Flow {
     let stepper: SettingStepper
     
     private let rootViewController: UINavigationController
-    private let diContainer: SettingSceneDIContainer
-
     
-    init(stepper: SettingStepper, diContainer: SettingSceneDIContainer) {
+    init(stepper: SettingStepper) {
         self.stepper = stepper
-        self.diContainer = diContainer
-        self.rootViewController = diContainer.makeSettingSceneRootController()
+        self.rootViewController = .init()
     }
     
     func navigate(to step: Step) -> FlowContributors {
