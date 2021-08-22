@@ -14,4 +14,3 @@ protocol RealmConvertableType {
 
     func asRealm() -> RealmType
 }
-

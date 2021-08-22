@@ -18,4 +18,3 @@ final class MainHeaderCell: UITableViewCell, NibReusable {
         isUserInteractionEnabled = false
     }    
 }
-

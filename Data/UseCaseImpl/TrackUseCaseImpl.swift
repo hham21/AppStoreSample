@@ -19,4 +19,3 @@ public final class TrackUseCaseImpl: TrackUseCase {
         repo.getTracks(query)
     }
 }
-

@@ -12,4 +12,3 @@ protocol DBObjectConvertableType {
 
     func asDBObject() -> DBObjectType
 }
-

@@ -21,11 +21,11 @@ let DI: Container = .init { container in
     
     // Flow
     
-    container.register(SignInFlow.self) { r in
+    container.register(SignInFlow.self) { _ in
         SignInFlow()
     }
     
-    container.register(MainFlow.self) { r in
+    container.register(MainFlow.self) { _ in
         MainFlow()
     }
     

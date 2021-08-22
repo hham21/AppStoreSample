@@ -32,7 +32,6 @@ final class SearchResultViewModel: ViewModelType {
     
     private let disposeBag: DisposeBag = .init()
     
-    
     init(
         keywordUseCase: KeywordUseCase,
         trackUseCase: TrackUseCase

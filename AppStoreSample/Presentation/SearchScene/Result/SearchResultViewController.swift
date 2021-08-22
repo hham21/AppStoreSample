@@ -66,7 +66,7 @@ final class SearchResultViewController: UIViewController, StoryboardBased {
     }
     
     private func createDataSource() -> SearchResult.DataSource {
-        .init(configureCell: { ds, tv, indexPath, data -> UITableViewCell in
+        .init(configureCell: { _, tv, indexPath, data -> UITableViewCell in
             switch data {
             case .recentKeyword(let data):
                 let cell: SearchRecentKeywordCell = tv.dequeueReusableCell(for: indexPath)

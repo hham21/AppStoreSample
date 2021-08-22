@@ -89,7 +89,7 @@ final class SearchMainViewController: UIViewController, StoryboardBased {
     }
     
     private func createDataSource() -> SearchMain.DataSource {
-        .init(configureCell: { ds, tv, indexPath, item -> UITableViewCell in
+        .init(configureCell: { _, tv, indexPath, item -> UITableViewCell in
             switch item {
             case .header:
                 let cell: MainHeaderCell = tv.dequeueReusableCell(for: indexPath)
@@ -166,7 +166,6 @@ extension SearchMainViewController: UISearchBarDelegate {
         }
     }
 }
-
 
 // MARK: - SearchViewControllerDelegate
 

@@ -13,4 +13,3 @@ public protocol KeywordDataSource {
     func getKeywordsContains(text: String) -> Observable<[Keyword]>
     func saveKeyword(_ keyword: Keyword) -> Observable<Void>
 }
-

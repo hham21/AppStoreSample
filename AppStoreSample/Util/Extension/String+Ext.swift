@@ -15,4 +15,3 @@ extension String {
         return ceil(boundingBox.height)
     }
 }
-

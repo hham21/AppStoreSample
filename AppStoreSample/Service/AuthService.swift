@@ -8,8 +8,8 @@
 import Foundation
 
 enum AuthStatus {
-    case SignedIn
-    case SignedOut
+    case signedIn
+    case signedOut
 }
 
 protocol AuthService {
@@ -26,7 +26,7 @@ final class AuthServiceImpl: AuthService {
     
     var currentStatus: AuthStatus {
         let didSignIn = UserDefaults.standard.bool(forKey: Const.didSignIn)
-        return didSignIn ? .SignedIn : .SignedOut
+        return didSignIn ? .signedIn : .signedOut
     }
     
     func signIn() {

@@ -36,18 +36,17 @@ struct AppStepper: Stepper {
     
     private let disposeBag: DisposeBag = .init()
     
-    
     init() {
         self.authService = DI.resolve(AuthService.self)!
     }
     
     func readyToEmitSteps() {
         switch authService.currentStatus {
-        case .SignedIn:
+        case .signedIn:
             Observable.just(AppStep.mainRequired)
                 .bind(to: steps)
                 .disposed(by: disposeBag)
-        case .SignedOut:
+        case .signedOut:
             Observable.just(AppStep.signedOut)
                 .bind(to: steps)
                 .disposed(by: disposeBag)

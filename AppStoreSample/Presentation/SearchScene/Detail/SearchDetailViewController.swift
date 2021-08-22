@@ -50,7 +50,7 @@ final class SearchDetailViewController: UIViewController, StoryboardBased {
     }
     
     private func createDataSource() -> SearchDetail.DataSource {
-        .init(configureCell: { [weak self] ds, tv, indexPath, item -> UITableViewCell in
+        .init(configureCell: { [weak self] _, tv, indexPath, item -> UITableViewCell in
             guard let self = self else {
                 return UITableViewCell()
             }

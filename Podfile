@@ -14,7 +14,8 @@ def shared_pods
   pod 'Moya', '~> 14.0'
   pod 'SwiftyBeaver'
   pod 'Swinject'
-  pod 'SwinjectStoryboard'  
+  pod 'SwinjectStoryboard'
+  pod 'SwiftLint'  
 end
 
 target 'AppStoreSample' do
