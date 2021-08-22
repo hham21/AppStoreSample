@@ -10,7 +10,7 @@ import Domain
 import Data
 import Swinject
 
-let DI: Container = .init { container in
+let DIContainer: Container = .init { container in
     // MARK: - App
     
     // Stepper

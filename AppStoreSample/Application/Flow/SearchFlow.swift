@@ -51,7 +51,7 @@ final class SearchFlow: Flow {
     }
     
     private func coordinateToSearchMainVC() -> FlowContributors {
-        let mainVC: SearchMainViewController = DI.resolve(SearchMainViewController.self)!
+        let mainVC: SearchMainViewController = DIContainer.resolve(SearchMainViewController.self)!
         
         rootViewController.setViewControllers([mainVC], animated: true)
         

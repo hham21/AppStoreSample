@@ -26,8 +26,8 @@ final class MainFlow: Flow {
     
     init() {
         self.rootViewController = .init()
-        self.searchFlow = DI.resolve(SearchFlow.self)!
-        self.settingFlow = DI.resolve(SettingFlow.self)!
+        self.searchFlow = DIContainer.resolve(SearchFlow.self)!
+        self.settingFlow = DIContainer.resolve(SettingFlow.self)!
     }
     
     func navigate(to step: Step) -> FlowContributors {

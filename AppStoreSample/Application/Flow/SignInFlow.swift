@@ -34,7 +34,7 @@ final class SignInFlow: Flow {
     }
     
     private func coordinateToSignIn() -> FlowContributors {
-        let vc: SignInViewController = DI.resolve(SignInViewController.self)!
+        let vc: SignInViewController = DIContainer.resolve(SignInViewController.self)!
         let contributor: FlowContributor = .contribute(withNextPresentable: vc, withNextStepper: vc.viewModel)
         rootViewController.pushViewController(vc, animated: true)
         return .one(flowContributor: contributor)

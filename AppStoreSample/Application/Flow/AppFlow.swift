@@ -37,7 +37,7 @@ struct AppStepper: Stepper {
     private let disposeBag: DisposeBag = .init()
     
     init() {
-        self.authService = DI.resolve(AuthService.self)!
+        self.authService = DIContainer.resolve(AuthService.self)!
     }
     
     func readyToEmitSteps() {
@@ -81,7 +81,7 @@ final class AppFlow: Flow {
     }
     
     private func coordinateToSignInVC() -> FlowContributors {
-        let signInFlow: SignInFlow = DI.resolve(SignInFlow.self)!
+        let signInFlow: SignInFlow = DIContainer.resolve(SignInFlow.self)!
         
         Flows.use(signInFlow, when: .created) { [unowned self] rootVC in
             self.rootWindow.rootViewController = rootVC
@@ -93,7 +93,7 @@ final class AppFlow: Flow {
     }
     
     private func coordinateToMainVC() -> FlowContributors {
-        let mainFlow: MainFlow = DI.resolve(MainFlow.self)!
+        let mainFlow: MainFlow = DIContainer.resolve(MainFlow.self)!
         
         Flows.use(mainFlow, when: .created) { [unowned self] root in
             rootWindow.rootViewController = root

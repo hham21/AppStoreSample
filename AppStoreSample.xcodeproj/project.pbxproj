@@ -452,6 +452,16 @@
 			path = AggregateRoot;
 			sourceTree = "<group>";
 		};
+		37941E6A26D2975700B23F69 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				37E99B8726B7B892002A840B /* Assets.xcassets */,
+				37E99B8926B7B892002A840B /* LaunchScreen.storyboard */,
+				37E99B8C26B7B892002A840B /* Info.plist */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		37C1C48126B80E6100151E68 /* Flow */ = {
 			isa = PBXGroup;
 			children = (
@@ -677,9 +687,7 @@
 				37E99BC926B7BBF2002A840B /* Presentation */,
 				377874DF26CE014C00A9BF73 /* Service */,
 				37C1C4B926B840FB00151E68 /* Util */,
-				37E99B8726B7B892002A840B /* Assets.xcassets */,
-				37E99B8926B7B892002A840B /* LaunchScreen.storyboard */,
-				37E99B8C26B7B892002A840B /* Info.plist */,
+				37941E6A26D2975700B23F69 /* Resource */,
 			);
 			path = AppStoreSample;
 			sourceTree = "<group>";
@@ -1550,7 +1558,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T6DB2VB7L7;
-				INFOPLIST_FILE = AppStoreSample/Info.plist;
+				INFOPLIST_FILE = AppStoreSample/Resource/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1571,7 +1579,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T6DB2VB7L7;
-				INFOPLIST_FILE = AppStoreSample/Info.plist;
+				INFOPLIST_FILE = AppStoreSample/Resource/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
