@@ -15,7 +15,8 @@ def shared_pods
   pod 'SwiftyBeaver'
   pod 'Swinject'
   pod 'SwinjectStoryboard'
-  pod 'SwiftLint'  
+  pod 'SwiftLint'
+  pod 'SwiftGen', '~> 6.0' 
 end
 
 target 'AppStoreSample' do

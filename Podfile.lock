@@ -32,6 +32,7 @@ PODS:
   - RxRelay (6.0.0):
     - RxSwift (= 6.0.0)
   - RxSwift (6.0.0)
+  - SwiftGen (6.4.0)
   - SwiftLint (0.43.1)
   - SwiftyBeaver (1.9.5)
   - Swinject (2.7.1)
@@ -49,6 +50,7 @@ DEPENDENCIES:
   - RxDataSources (~> 5.0)
   - RxFlow
   - RxSwift (~> 6.0.0)
+  - SwiftGen (~> 6.0)
   - SwiftLint
   - SwiftyBeaver
   - Swinject
@@ -69,6 +71,7 @@ SPEC REPOS:
     - RxFlow
     - RxRelay
     - RxSwift
+    - SwiftGen
     - SwiftLint
     - SwiftyBeaver
     - Swinject
@@ -88,11 +91,12 @@ SPEC CHECKSUMS:
   RxFlow: fa434215aca391d10d4d5048c0a035c9502b3666
   RxRelay: 8d593be109c06ea850df027351beba614b012ffb
   RxSwift: c14e798c59b9f6e9a2df8fd235602e85cc044295
+  SwiftGen: 67860cc7c3cfc2ed25b9b74cfd55495fc89f9108
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
   SwiftyBeaver: 84069991dd5dca07d7069100985badaca7f0ce82
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
   SwinjectStoryboard: fe54ea9494a75348b1f3126e5e278e674f5684ad
 
-PODFILE CHECKSUM: baa3fc657820849e1655d3eefbfc3b821c664d5b
+PODFILE CHECKSUM: a7af7da7d0a83219d8eccb0241f11f6e950c40cf
 
 COCOAPODS: 1.10.1

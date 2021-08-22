@@ -51,6 +51,9 @@
 		37941E5D26CEB59A00B23F69 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37941E5C26CEB59A00B23F69 /* SettingViewModel.swift */; };
 		37941E6226D2370B00B23F69 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37941E6126D2370B00B23F69 /* DIContainer.swift */; };
 		37941E6C26D29BEA00B23F69 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 37941E6B26D29BEA00B23F69 /* README.md */; };
+		37941E7326D2AD2600B23F69 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 37941E7226D2AD2600B23F69 /* swiftgen.yml */; };
+		37941E7626D2AE5A00B23F69 /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37941E7526D2AE5A00B23F69 /* XCAssets+Generated.swift */; };
+		37941E7826D2AFA600B23F69 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 37941E7726D2AFA600B23F69 /* .swiftlint.yml */; };
 		37C1C47A26B7E00400151E68 /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1C47926B7E00400151E68 /* MainFlow.swift */; };
 		37C1C47C26B7EA9E00151E68 /* SearchFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1C47B26B7EA9E00151E68 /* SearchFlow.swift */; };
 		37C1C47E26B7EAAF00151E68 /* SettingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1C47D26B7EAAE00151E68 /* SettingFlow.swift */; };
@@ -211,6 +214,9 @@
 		37941E5C26CEB59A00B23F69 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		37941E6126D2370B00B23F69 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		37941E6B26D29BEA00B23F69 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		37941E7226D2AD2600B23F69 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
+		37941E7526D2AE5A00B23F69 /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
+		37941E7726D2AFA600B23F69 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		37C1C47926B7E00400151E68 /* MainFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlow.swift; sourceTree = "<group>"; };
 		37C1C47B26B7EA9E00151E68 /* SearchFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFlow.swift; sourceTree = "<group>"; };
 		37C1C47D26B7EAAE00151E68 /* SettingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFlow.swift; sourceTree = "<group>"; };
@@ -457,11 +463,20 @@
 		37941E6A26D2975700B23F69 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				37941E7426D2AE3E00B23F69 /* Generated */,
 				37E99B8726B7B892002A840B /* Assets.xcassets */,
 				37E99B8926B7B892002A840B /* LaunchScreen.storyboard */,
 				37E99B8C26B7B892002A840B /* Info.plist */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		37941E7426D2AE3E00B23F69 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				37941E7526D2AE5A00B23F69 /* XCAssets+Generated.swift */,
+			);
+			path = Generated;
 			sourceTree = "<group>";
 		};
 		37C1C48126B80E6100151E68 /* Flow */ = {
@@ -660,6 +675,8 @@
 			isa = PBXGroup;
 			children = (
 				37941E6B26D29BEA00B23F69 /* README.md */,
+				37941E7226D2AD2600B23F69 /* swiftgen.yml */,
+				37941E7726D2AFA600B23F69 /* .swiftlint.yml */,
 				37E99B7D26B7B892002A840B /* AppStoreSample */,
 				37E99B9826B7B92A002A840B /* Domain */,
 				37C1C4ED26B9033A00151E68 /* Data */,
@@ -842,7 +859,8 @@
 				37E99B7926B7B892002A840B /* Resources */,
 				37E99BAE26B7B92A002A840B /* Embed Frameworks */,
 				058C53B869D75615E7FCB5BE /* [CP] Embed Pods Frameworks */,
-				37941E6926D2929200B23F69 /* ShellScript */,
+				37941E6926D2929200B23F69 /* SwiftLint */,
+				37941E7126D2A8B600B23F69 /* SwiftGen */,
 			);
 			buildRules = (
 			);
@@ -974,7 +992,9 @@
 				3793D18C26BE931200999C81 /* DetailPreviewImageCell.xib in Resources */,
 				37C1C48F26B8198E00151E68 /* SearchMainViewController.storyboard in Resources */,
 				37E99B8826B7B892002A840B /* Assets.xcassets in Resources */,
+				37941E7326D2AD2600B23F69 /* swiftgen.yml in Resources */,
 				377874DE26CE00AC00A9BF73 /* SignInViewController.storyboard in Resources */,
+				37941E7826D2AFA600B23F69 /* .swiftlint.yml in Resources */,
 				3793D18226BE931200999C81 /* DetailDescriptionCell.xib in Resources */,
 				3793D18426BE931200999C81 /* DetailHorizontalInfoCell.xib in Resources */,
 				3793D18826BE931200999C81 /* DetailHeaderCell.xib in Resources */,
@@ -1101,7 +1121,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		37941E6926D2929200B23F69 /* ShellScript */ = {
+		37941E6926D2929200B23F69 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1110,6 +1130,7 @@
 			);
 			inputPaths = (
 			);
+			name = SwiftLint;
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -1117,6 +1138,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${PODS_ROOT}/SwiftLint/swiftlint\n";
+		};
+		37941E7126D2A8B600B23F69 /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ -f \"${PODS_ROOT}/SwiftGen/bin/swiftgen\" ]]; then\n  \"${PODS_ROOT}/SwiftGen/bin/swiftgen\"\nelse\n  echo \"warning: SwiftGen is not installed. Run 'pod install --repo-update' to install it.\"\nfi \n";
 		};
 		7DD621F59CDE464C40C65E2A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1226,6 +1265,7 @@
 				3793D18E26BE97B600999C81 /* UIView+Ext.swift in Sources */,
 				3781ED9726BBFA0300404A9D /* SearchResultModel.swift in Sources */,
 				3793D18026BE931200999C81 /* DetailSellerInfoCell.swift in Sources */,
+				37941E7626D2AE5A00B23F69 /* XCAssets+Generated.swift in Sources */,
 				37C1C48726B8145100151E68 /* SearchMainViewController.swift in Sources */,
 				377874E126CE019000A9BF73 /* AuthService.swift in Sources */,
 				37941E5B26CEA50F00B23F69 /* SignInViewModel.swift in Sources */,
