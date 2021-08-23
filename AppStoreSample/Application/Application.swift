@@ -23,6 +23,7 @@ final class Application {
     func startApp(with window: UIWindow) {
         let appFlow: AppFlow = .init(with: window)
         let stepper: AppStepper = .init()
+        Container.loggingFunction = nil
         startToLogCoordinator()
         coordinator.coordinate(flow: appFlow, with: stepper)
         window.makeKeyAndVisible()

@@ -6,17 +6,17 @@
 # input_dir: MyLib/Sources/
 # output_dir: MyLib/Generated/
 
-input_dir: AppStoreSample/Resource/
-output_dir: AppStoreSample/Resource/Generated/
+# input_dir: AppStoreSample/Resource/
+# output_dir: AppStoreSample/Resource/Generated/
 
 ## XCAssets
 
-xcassets:
-  inputs:
-    - Assets.xcassets
-  outputs:
-    templateName: swift5
-    output: XCAssets+Generated.swift
+# xcassets:
+#  inputs:
+#    - Assets.xcassets
+#  outputs:
+#    templateName: swift5
+#    output: XCAssets+Generated.swift
 
 ## Generate constants for your localized strings.
 ##   Be sure that SwiftGen only parses ONE locale (typically Base.lproj, or en.lproj, or whichever your development region is); otherwise it will generate the same keys multiple times.
@@ -68,3 +68,12 @@ xcassets:
 ## For more info, use `swiftgen config doc` to open the full documentation on GitHub.
 ## https://github.com/SwiftGen/SwiftGen/tree/6.4.0/Documentation/
 
+input_dir: AppStoreSample/Resource/
+output_dir: AppStoreSample/Resource/Generated/
+
+xcassets:
+  inputs:
+    - Assets.xcassets
+  outputs:
+    templateName: swift5
+    output: XCAssets+Generated.swift
