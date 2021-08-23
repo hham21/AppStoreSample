@@ -14,7 +14,6 @@ final class SearchResultViewModel: ViewModelType {
     struct Input {
         let searchBarTextUpdated: PublishRelay<String> = .init()
         let searchButtonTapped: PublishRelay<String> = .init()
-        let trackSelected: PublishRelay<Int> = .init()
     }
     
     struct Output {

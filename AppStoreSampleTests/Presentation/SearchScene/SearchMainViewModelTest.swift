@@ -20,6 +20,7 @@ class SearchMainViewModelTest: XCTestCase {
         super.setUp()
         
         do {
+            // given
             let data = try Data.fromJSON(fileName: "SampleTrack")
             let trackDTO = try JSONDecoder().decode(TrackDTO.self, from: data)
             mockTrack = trackDTO.asDomain()
@@ -40,10 +41,9 @@ class SearchMainViewModelTest: XCTestCase {
         super.tearDown()
     }
     
-    func test_output_givenInitialLoad() {
+    func test_output_whenInitialLoad() {
         let expectaion: XCTestExpectation = .init()
         
-        // when
         sut.output.dataSource
             .drive(onNext: { _ in
                 // then
@@ -51,15 +51,15 @@ class SearchMainViewModelTest: XCTestCase {
             })
             .disposed(by: disposeBag)
         
+        // when
         sut.input.initialLoad.accept(())
         
         wait(for: [expectaion], timeout: 5)
     }
     
-    func test_output_givenReload() {
+    func test_output_whenReload() {
         let expectaion: XCTestExpectation = .init()
         
-        // when
         sut.output.dataSource
             .drive(onNext: { _ in
                 // then
@@ -67,22 +67,30 @@ class SearchMainViewModelTest: XCTestCase {
             })
             .disposed(by: disposeBag)
         
+        // when
         sut.input.reload.accept(())
         
         wait(for: [expectaion], timeout: 5)
     }
     
-    func test_output_givenTrackSelected() {
+    func test_output_whenTrackSelected() {
         let expectaion: XCTestExpectation = .init()
         
-        // when
+        // given
+        sut.output.dataSource.drive().disposed(by: disposeBag)
+        
         sut.steps
             .subscribe(onNext: { step in
                 print("steps.onNext: ", step)
+                // then
                 expectaion.fulfill()
+            }, onError: { error in
+                // then
+                XCTFail(error.localizedDescription)
             })
             .disposed(by: disposeBag)
         
+        // when
         sut.input.trackSelected.accept(mockTrack)
         
         wait(for: [expectaion], timeout: 5)

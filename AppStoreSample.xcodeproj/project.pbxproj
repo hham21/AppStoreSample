@@ -18,6 +18,7 @@
 		3715EC4D26D4131700B6751C /* TrackRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3715EC4C26D4131700B6751C /* TrackRepositoryTest.swift */; };
 		3715EC4F26D4133D00B6751C /* TrackUseCaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3715EC4E26D4133D00B6751C /* TrackUseCaseTest.swift */; };
 		3715EC5226D4137000B6751C /* SearchMainViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3715EC5126D4137000B6751C /* SearchMainViewModelTest.swift */; };
+		3715EC5526D4157200B6751C /* SearchResultViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3715EC5426D4157200B6751C /* SearchResultViewModelTest.swift */; };
 		377874D426CB5DAC00A9BF73 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377874D326CB5DAC00A9BF73 /* SettingViewController.swift */; };
 		377874D626CB5F5B00A9BF73 /* SettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 377874D526CB5F5B00A9BF73 /* SettingViewController.storyboard */; };
 		377874DC26CE008100A9BF73 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377874DB26CE008100A9BF73 /* SignInViewController.swift */; };
@@ -111,7 +112,7 @@
 		46E3F3ECA7455F3C2F23552D /* Pods_AppStoreSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3EBF40F1B004C813CF16071 /* Pods_AppStoreSample.framework */; };
 		484DDF5A740A7459AAE5CAA2 /* Pods_AppStoreSample_AppStoreSampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9CEB65ABA04CF93A2939DA /* Pods_AppStoreSample_AppStoreSampleTests.framework */; };
 		699858BDB903C18CC27A3AB3 /* Pods_Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B8226809ED3FB13749A0045 /* Pods_Domain.framework */; };
-		CAB33C64954644FF22CAA4A0 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		CAB33C64954644FF22CAA4A0 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		D1696E225F4942150695276C /* Pods_Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8739C34AE11320B9272BCF52 /* Pods_Data.framework */; };
 /* End PBXBuildFile section */
 
@@ -170,6 +171,7 @@
 		3715EC4C26D4131700B6751C /* TrackRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackRepositoryTest.swift; sourceTree = "<group>"; };
 		3715EC4E26D4133D00B6751C /* TrackUseCaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackUseCaseTest.swift; sourceTree = "<group>"; };
 		3715EC5126D4137000B6751C /* SearchMainViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMainViewModelTest.swift; sourceTree = "<group>"; };
+		3715EC5426D4157200B6751C /* SearchResultViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModelTest.swift; sourceTree = "<group>"; };
 		377874D326CB5DAC00A9BF73 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		377874D526CB5F5B00A9BF73 /* SettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingViewController.storyboard; sourceTree = "<group>"; };
 		377874DB26CE008100A9BF73 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -304,7 +306,7 @@
 				37C1C50126B9033A00151E68 /* Data.framework in Frameworks */,
 				37E99BAC26B7B92A002A840B /* Domain.framework in Frameworks */,
 				46E3F3ECA7455F3C2F23552D /* Pods_AppStoreSample.framework in Frameworks */,
-				CAB33C64954644FF22CAA4A0 /* BuildFile in Frameworks */,
+				CAB33C64954644FF22CAA4A0 /* (null) in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +419,7 @@
 			isa = PBXGroup;
 			children = (
 				3715EC5126D4137000B6751C /* SearchMainViewModelTest.swift */,
+				3715EC5426D4157200B6751C /* SearchResultViewModelTest.swift */,
 			);
 			path = SearchScene;
 			sourceTree = "<group>";
@@ -1219,6 +1222,7 @@
 				3715EC4726D4125000B6751C /* MockTrackDataSource.swift in Sources */,
 				3715EC5226D4137000B6751C /* SearchMainViewModelTest.swift in Sources */,
 				3715EC4D26D4131700B6751C /* TrackRepositoryTest.swift in Sources */,
+				3715EC5526D4157200B6751C /* SearchResultViewModelTest.swift in Sources */,
 				3715EC3F26D411CD00B6751C /* Data+JSON.swift in Sources */,
 				3715EC4F26D4133D00B6751C /* TrackUseCaseTest.swift in Sources */,
 			);
