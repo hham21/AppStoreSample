@@ -1,13 +1,12 @@
 //
 //  TrackUseCaseTest.swift
-//  DataTests
+//  AppStoreSampleTests
 //
-//  Created by Hyoungsu Ham on 2021/08/23.
+//  Created by Hyoungsu Ham on 2021/08/24.
 //
 
 @testable import Domain
 @testable import Data
-import Foundation
 import XCTest
 import RxSwift
 
@@ -19,7 +18,7 @@ class TrackUseCaseTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        mockDataSource = MocTrackDataSource()
+        mockDataSource = MockTrackDataSource()
         trackRespository = TrackRepositoryImpl(remoteDataSource: mockDataSource)
     }
     

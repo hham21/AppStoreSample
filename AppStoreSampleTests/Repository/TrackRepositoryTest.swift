@@ -1,8 +1,8 @@
 //
 //  TrackRepositoryTest.swift
-//  DataTests
+//  AppStoreSampleTests
 //
-//  Created by Hyoungsu Ham on 2021/08/23.
+//  Created by Hyoungsu Ham on 2021/08/24.
 //
 
 @testable import Domain
@@ -18,7 +18,7 @@ class TrackRepositoryTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        mockDataSource = MocTrackDataSource()
+        mockDataSource = MockTrackDataSource()
     }
     
     override func tearDown() {
@@ -45,3 +45,4 @@ class TrackRepositoryTest: XCTestCase {
             .disposed(by: disposeBag)
     }
 }
+

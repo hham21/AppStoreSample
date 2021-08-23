@@ -28,6 +28,7 @@
     1. SwiftyBeaver
 11. 테스트
     1. Xcode - XCTest
+    2. Nimble
 12. 기타
     1. SwiftLint
     2. SnapKit

@@ -1,17 +1,16 @@
 //
 //  MockTrackDataSource.swift
-//  DataTests
+//  AppStoreSampleTests
 //
-//  Created by Hyoungsu Ham on 2021/08/23.
+//  Created by Hyoungsu Ham on 2021/08/24.
 //
-
 
 @testable import AppStoreSample
 @testable import Data
 @testable import Domain
 import RxSwift
 
-class MocTrackDataSource: TrackDataSource {
+class MockTrackDataSource: TrackDataSource {
     private func getMockTracks() -> Observable<[Track]> {
         do {
             let data = try Data.fromJSON(fileName: "SampleData")

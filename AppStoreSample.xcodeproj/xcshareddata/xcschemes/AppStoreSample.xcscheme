@@ -44,8 +44,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "37C1C4F326B9033A00151E68"
-               BuildableName = "DataTests.xctest"
-               BlueprintName = "DataTests"
+               BuildableName = "AppStoreSampleTests.xctest"
+               BlueprintName = "AppStoreSampleTests"
                ReferencedContainer = "container:AppStoreSample.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -53,7 +53,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3779BF4226D3E9730094F204"
+               BlueprintIdentifier = "3715EC0326D40B2200B6751C"
                BuildableName = "AppStoreSampleTests.xctest"
                BlueprintName = "AppStoreSampleTests"
                ReferencedContainer = "container:AppStoreSample.xcodeproj">

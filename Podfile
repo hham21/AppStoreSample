@@ -26,6 +26,10 @@ target 'AppStoreSample' do
 
   # Pods for AppStoreSample
   shared_pods
+  
+  target 'AppStoreSampleTests' do
+    # Pods for testing
+  end
 end
 
 target 'Data' do
@@ -35,9 +39,9 @@ target 'Data' do
   # Pods for Data
   shared_pods
 
-  target 'DataTests' do
+  # target 'DataTests' do
     # Pods for testing
-  end
+  # end
 
 end
 
@@ -47,9 +51,4 @@ target 'Domain' do
 
   # Pods for Domain
   shared_pods
-
-  target 'DomainTests' do
-    # Pods for testing
-  end
-
 end

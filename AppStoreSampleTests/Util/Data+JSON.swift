@@ -1,8 +1,8 @@
 //
 //  Data+JSON.swift
-//  DataTests
+//  AppStoreSampleTests
 //
-//  Created by Hyoungsu Ham on 2021/08/23.
+//  Created by Hyoungsu Ham on 2021/08/24.
 //
 
 import Foundation
@@ -22,3 +22,4 @@ extension Data {
 }
 
 private class TestBundleClass {}
+
