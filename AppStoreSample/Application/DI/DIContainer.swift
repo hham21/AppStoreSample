@@ -9,6 +9,7 @@ import UIKit
 import Domain
 import Data
 import Swinject
+import SwinjectStoryboard
 
 let DIContainer: Container = .init { container in
     // MARK: - App
@@ -25,8 +26,11 @@ let DIContainer: Container = .init { container in
         SignInFlow()
     }
     
-    container.register(MainFlow.self) { _ in
-        MainFlow()
+    container.register(MainFlow.self) { r in
+        MainFlow(
+            searchFlow: r.resolve(SearchFlow.self)!,
+            settingFlow: r.resolve(SettingFlow.self)!
+        )
     }
     
     container.register(SearchFlow.self) { r in
@@ -103,17 +107,24 @@ let DIContainer: Container = .init { container in
         )
     }
     
+    container.register(DetailViewModel.self) { _, track in
+        DetailViewModel(with: track)
+    }
+    
     // ViewController
     
     container.register(SearchResultViewController.self) { r in
         .create(viewModel: r.resolve(SearchResultViewModel.self)!)
     }
-    
+
     container.register(SearchMainViewController.self) { r in
         .create(
             with: r.resolve(SearchMainViewModel.self)!,
             searchResultVC: r.resolve(SearchResultViewController.self)!
         )
     }
-    
+
+    container.register(SearchDetailViewController.self) { _ in
+        .instantiate()
+    }
 }

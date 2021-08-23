@@ -183,9 +183,8 @@ extension SearchDetailViewController: UITableViewDelegate {
 }
 
 extension SearchDetailViewController {
-    static func create(with data: Track) -> SearchDetailViewController {
-        let vc: SearchDetailViewController = SearchDetailViewController.instantiate()
-        let viewModel: DetailViewModel = .init(with: .just(data))
+    static func create(with viewModel: DetailViewModel) -> SearchDetailViewController {
+        let vc: SearchDetailViewController = .instantiate()
         vc.viewModel = viewModel
         return vc
     }

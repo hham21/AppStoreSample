@@ -15,7 +15,7 @@ final class SearchMainViewController: UIViewController, StoryboardBased {
     
     var viewModel: SearchMainViewModel! = nil
     private lazy var dataSource: SearchMain.DataSource = createDataSource()
-    private var searchResultVC: SearchResultViewController!
+    var searchResultVC: SearchResultViewController!
     private lazy var searchController: UISearchController = .init(searchResultsController: searchResultVC)
     private let disposeBag: DisposeBag = .init()
     

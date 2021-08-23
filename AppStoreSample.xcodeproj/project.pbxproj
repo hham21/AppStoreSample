@@ -375,13 +375,13 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		3782ED6A26B93F7600CB3711 /* UseCaseImpl */ = {
+		3782ED6A26B93F7600CB3711 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
 				3782ED6B26B93FC300CB3711 /* KeywordUseCaseImpl.swift */,
 				37851DE626BA7BD100491D05 /* TrackUseCaseImpl.swift */,
 			);
-			path = UseCaseImpl;
+			path = UseCase;
 			sourceTree = "<group>";
 		};
 		37851DE826BA7C5C00491D05 /* Storage */ = {
@@ -597,8 +597,8 @@
 		37C1C4ED26B9033A00151E68 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				3782ED6A26B93F7600CB3711 /* UseCaseImpl */,
-				37C1C50A26B9035200151E68 /* RepositoryImpl */,
+				3782ED6A26B93F7600CB3711 /* UseCase */,
+				37C1C50A26B9035200151E68 /* Repository */,
 				37C1C50926B9034C00151E68 /* DataSource */,
 				37C1C4EE26B9033A00151E68 /* Data.h */,
 				37C1C4EF26B9033A00151E68 /* Info.plist */,
@@ -626,13 +626,13 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
-		37C1C50A26B9035200151E68 /* RepositoryImpl */ = {
+		37C1C50A26B9035200151E68 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
 				37C1C50F26B9039100151E68 /* TrackRepositoryImpl.swift */,
 				37C1C51126B9039A00151E68 /* KeywordRepositoryImpl.swift */,
 			);
-			path = RepositoryImpl;
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		37C1C51926B90A1F00151E68 /* TrackAPI */ = {
@@ -758,8 +758,8 @@
 			children = (
 				37941E5E26D235F800B23F69 /* DI */,
 				37C1C48126B80E6100151E68 /* Flow */,
-				3781ED8E26BBB8EE00404A9D /* Application.swift */,
 				37E99B7E26B7B892002A840B /* AppDelegate.swift */,
+				3781ED8E26BBB8EE00404A9D /* Application.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";

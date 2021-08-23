@@ -20,7 +20,7 @@ protocol SearchResultViewControllerDelegate: AnyObject {
 final class SearchResultViewController: UIViewController, StoryboardBased {
     @IBOutlet weak var tableView: UITableView!
     
-    private var viewModel: SearchResultViewModel! = nil
+    var viewModel: SearchResultViewModel! = nil
     private lazy var dataSource: SearchResult.DataSource = createDataSource()
     weak var delegate: SearchResultViewControllerDelegate?
     private var disposeBag: DisposeBag = .init()
