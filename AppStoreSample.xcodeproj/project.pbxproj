@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3715EC2826D4109300B6751C /* AppStoreSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3715EC2626D4109300B6751C /* AppStoreSampleTests.swift */; };
 		3715EC3F26D411CD00B6751C /* Data+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3715EC3E26D411CD00B6751C /* Data+JSON.swift */; };
 		3715EC4126D4120200B6751C /* SampleData.json in Resources */ = {isa = PBXBuildFile; fileRef = 3715EC4026D4120200B6751C /* SampleData.json */; };
 		3715EC4326D4122000B6751C /* SampleTrack.json in Resources */ = {isa = PBXBuildFile; fileRef = 3715EC4226D4122000B6751C /* SampleTrack.json */; };
@@ -159,7 +158,6 @@
 		12E72FF7E9EED8C6E6295A45 /* Pods-AppStoreSample-AppStoreSampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreSample-AppStoreSampleTests.release.xcconfig"; path = "Target Support Files/Pods-AppStoreSample-AppStoreSampleTests/Pods-AppStoreSample-AppStoreSampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		33A1863F4A8B34B814F3DB8D /* Pods-AppStoreSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreSample.release.xcconfig"; path = "Target Support Files/Pods-AppStoreSample/Pods-AppStoreSample.release.xcconfig"; sourceTree = "<group>"; };
 		3715EC1C26D4107200B6751C /* AppStoreSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppStoreSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3715EC2626D4109300B6751C /* AppStoreSampleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStoreSampleTests.swift; sourceTree = "<group>"; };
 		3715EC2726D4109300B6751C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3715EC3E26D411CD00B6751C /* Data+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+JSON.swift"; sourceTree = "<group>"; };
 		3715EC4026D4120200B6751C /* SampleData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SampleData.json; sourceTree = "<group>"; };
@@ -349,7 +347,6 @@
 				3715EC3726D4115700B6751C /* DataSource */,
 				3715EC3926D4117000B6751C /* Mock */,
 				3715EC3D26D4119000B6751C /* Util */,
-				3715EC2626D4109300B6751C /* AppStoreSampleTests.swift */,
 				3715EC2726D4109300B6751C /* Info.plist */,
 			);
 			path = AppStoreSampleTests;
@@ -1217,7 +1214,6 @@
 			files = (
 				3715EC4926D412CC00B6751C /* TrackDataSourceTest.swift in Sources */,
 				3715EC4526D4124200B6751C /* MockKeywordDataSource.swift in Sources */,
-				3715EC2826D4109300B6751C /* AppStoreSampleTests.swift in Sources */,
 				3715EC4B26D412F500B6751C /* TrackDTOTest.swift in Sources */,
 				3715EC4726D4125000B6751C /* MockTrackDataSource.swift in Sources */,
 				3715EC5226D4137000B6751C /* SearchMainViewModelTest.swift in Sources */,
