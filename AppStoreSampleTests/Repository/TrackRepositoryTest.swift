@@ -45,4 +45,3 @@ class TrackRepositoryTest: XCTestCase {
             .disposed(by: disposeBag)
     }
 }
-

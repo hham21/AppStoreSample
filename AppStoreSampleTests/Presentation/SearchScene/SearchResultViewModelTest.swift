@@ -26,6 +26,7 @@ class SearchResultViewModelTest: XCTestCase {
         let trackRepo: TrackRepository = TrackRepositoryImpl(remoteDataSource: trackDataSource)
         let trackUseCase: TrackUseCase = TrackUseCaseImpl(repo: trackRepo)
         
+        // given
         sut = SearchResultViewModel(keywordUseCase: keywordUseCase, trackUseCase: trackUseCase)
     }
     
@@ -41,6 +42,7 @@ class SearchResultViewModelTest: XCTestCase {
         sut.output.dataSource
             .drive(onNext: { dataSource in
                 print("dataSource.onNext: ", dataSource)
+                // then
                 expectaion.fulfill()
             })
             .disposed(by: disposeBag)
@@ -57,6 +59,7 @@ class SearchResultViewModelTest: XCTestCase {
         sut.output.dataSource
             .drive(onNext: { dataSource in
                 print("dataSource.onNext: ", dataSource.count)
+                // then
                 expectaion.fulfill()
             })
             .disposed(by: disposeBag)
