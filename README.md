@@ -6,8 +6,8 @@
 2. Coordinator
     1. Rxflow
 3. Networking
-    2. Moya
-    4. Alamofire 
+    1. Moya
+    2. Alamofire 
 4. 라이브러리 관리
     1. CocoaPods
 5. 리소스 관리
