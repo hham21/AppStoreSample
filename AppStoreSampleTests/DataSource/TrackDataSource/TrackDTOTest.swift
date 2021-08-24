@@ -9,7 +9,6 @@
 @testable import Data
 @testable import Domain
 import XCTest
-import Nimble
 
 class TrackDTOTest: XCTestCase {
     var sut: TrackDTO!
