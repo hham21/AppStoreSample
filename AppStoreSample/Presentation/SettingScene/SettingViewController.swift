@@ -19,6 +19,17 @@ final class SettingViewController: UIViewController, StoryboardBased {
     override func viewDidLoad() {
         super.viewDidLoad()
         bind()
+        setAttributes()
+    }
+    
+    private func setAttributes() {
+        setNavigationTabBarItem()
+    }
+    
+    private func setNavigationTabBarItem() {
+        let settingImage: UIImage = Asset.settings.image
+        let settingItem: UITabBarItem = .init(title: "Setting", image: settingImage, selectedImage: nil)
+        navigationController?.tabBarItem = settingItem
     }
     
     private func bind() {

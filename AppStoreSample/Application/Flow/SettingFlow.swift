@@ -51,6 +51,7 @@ final class SettingFlow: Flow {
         let settingVC: SettingViewController = SettingViewController.instantiate()
         let contributor: FlowContributor = .contribute(withNextPresentable: settingVC, withNextStepper: settingVC.viewModel)
         rootViewController.setViewControllers([settingVC], animated: true)
+        settingVC.loadViewIfNeeded()
         return .one(flowContributor: contributor)
     }
 }

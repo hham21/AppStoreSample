@@ -51,14 +51,13 @@ final class SearchFlow: Flow {
     }
     
     private func coordinateToSearchMainVC() -> FlowContributors {
-        let mainVC: SearchMainViewController = DIContainer.resolve(SearchMainViewController.self)!
-        
-        rootViewController.setViewControllers([mainVC], animated: true)
-        
+        let searchMainVC: SearchMainViewController = DIContainer.resolve(SearchMainViewController.self)!
+        rootViewController.setViewControllers([searchMainVC], animated: true)
+        searchMainVC.loadViewIfNeeded()
         return .one(
             flowContributor: .contribute(
-                withNextPresentable: mainVC,
-                withNextStepper: mainVC.viewModel
+                withNextPresentable: searchMainVC,
+                withNextStepper: searchMainVC.viewModel
             )
         )
     }

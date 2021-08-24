@@ -51,15 +51,6 @@ final class MainFlow: Flow {
         ) { [unowned self] (search: UINavigationController,
                             setting: UINavigationController) in
             
-            let searchImage: UIImage = Asset.search.image
-            let settingImage: UIImage = Asset.settings.image
-            
-            let homeItem: UITabBarItem = .init(title: "Search", image: searchImage, selectedImage: nil)
-            let settingItem: UITabBarItem = .init(title: "Setting", image: settingImage, selectedImage: nil)
-            
-            search.tabBarItem = homeItem
-            setting.tabBarItem = settingItem
-            
             self.rootViewController.setViewControllers([search, setting], animated: true)
         }
         

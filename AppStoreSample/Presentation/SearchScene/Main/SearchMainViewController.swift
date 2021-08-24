@@ -27,11 +27,18 @@ final class SearchMainViewController: UIViewController, StoryboardBased {
     }
     
     private func setAttributes() {
+        setNavigationTabBarItem()
         setSearchController()
         setNavigationBar()
         setNavigationItem()
         setTableView()
         registerCells()
+    }
+    
+    private func setNavigationTabBarItem() {
+        let searchImage: UIImage = Asset.search.image
+        let homeItem: UITabBarItem = .init(title: "Search", image: searchImage, selectedImage: nil)
+        navigationController?.tabBarItem = homeItem
     }
     
     private func setSearchController() {
