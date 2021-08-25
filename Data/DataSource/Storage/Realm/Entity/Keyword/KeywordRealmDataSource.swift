@@ -16,7 +16,7 @@ public struct KeywordRealmDataSource: KeywordDataSource {
     public func getKeywords() -> Observable<[Keyword]> {
         .create { observer in
             do {
-                let realm = try Realm()
+                let realm = try Realm(of: RMKeyword.self)
                 let objects = realm.objects(RMKeyword.self)
                     .sorted(byKeyPath: #keyPath(RMKeyword.date), ascending: false)
                 let data = Array(objects).compactMap { $0.asDomain() }
@@ -34,7 +34,7 @@ public struct KeywordRealmDataSource: KeywordDataSource {
     public func getKeywordsContains(text: String) -> Observable<[Keyword]> {
         .create { observer in
             do {
-                let realm = try Realm()
+                let realm = try Realm(of: RMKeyword.self)
                 let predicate = NSPredicate(format: "\(#keyPath(RMKeyword.text)) CONTAINS[cd] %@", argumentArray: [text as NSString])
                 let objects = realm.objects(RMKeyword.self)
                     .filter(predicate)
@@ -56,7 +56,7 @@ public struct KeywordRealmDataSource: KeywordDataSource {
         .create { observer in
             do {
                 let item = keyword.asRealm()
-                let realm = try Realm()
+                let realm = try Realm(of: RMKeyword.self)
                 
                 let semaphore = DispatchSemaphore(value: 0)
                 
