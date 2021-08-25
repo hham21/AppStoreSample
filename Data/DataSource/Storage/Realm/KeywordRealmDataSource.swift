@@ -18,7 +18,7 @@ public struct KeywordRealmDataSource: KeywordDataSource {
             do {
                 let realm = try Realm()
                 let objects = realm.objects(RMKeyword.self)
-                    .sorted(byKeyPath: "date", ascending: false)
+                    .sorted(byKeyPath: #keyPath(RMKeyword.date), ascending: false)
                 let data = Array(objects).compactMap { $0.asDomain() }
                 observer.onNext(data)
                 observer.onCompleted()
@@ -36,7 +36,7 @@ public struct KeywordRealmDataSource: KeywordDataSource {
             do {
                 let realm = try Realm()
                 let objects = realm.objects(RMKeyword.self)
-                    .sorted(byKeyPath: "date", ascending: false)
+                    .sorted(byKeyPath: #keyPath(RMKeyword.date), ascending: false)
                 let data = Array(objects)
                     .filter { $0.text.localizedCaseInsensitiveContains(text) }
                     .compactMap { $0.asDomain() }
