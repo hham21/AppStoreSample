@@ -35,10 +35,11 @@ public struct KeywordRealmDataSource: KeywordDataSource {
         .create { observer in
             do {
                 let realm = try Realm()
+                let predicate = NSPredicate(format: "\(#keyPath(RMKeyword.text)) CONTAINS[cd] %@", argumentArray: [text as NSString])
                 let objects = realm.objects(RMKeyword.self)
+                    .filter(predicate)
                     .sorted(byKeyPath: #keyPath(RMKeyword.date), ascending: false)
                 let data = Array(objects)
-                    .filter { $0.text.localizedCaseInsensitiveContains(text) }
                     .compactMap { $0.asDomain() }
                 observer.onNext(data)
                 observer.onCompleted()
