@@ -27,8 +27,6 @@
 		3781ED8F26BBB8EE00404A9D /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3781ED8E26BBB8EE00404A9D /* Application.swift */; };
 		3781ED9526BBF9BF00404A9D /* SearchMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3781ED9426BBF9BF00404A9D /* SearchMainModel.swift */; };
 		3781ED9726BBFA0300404A9D /* SearchResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3781ED9626BBFA0300404A9D /* SearchResultModel.swift */; };
-		3782ED6C26B93FC300CB3711 /* KeywordUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3782ED6B26B93FC300CB3711 /* KeywordUseCaseImpl.swift */; };
-		37851DE726BA7BD100491D05 /* TrackUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37851DE626BA7BD100491D05 /* TrackUseCaseImpl.swift */; };
 		37851DEC26BA7D8900491D05 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37851DEB26BA7D8900491D05 /* Track.swift */; };
 		37851DEE26BA7E3F00491D05 /* DBObjectConvertableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37851DED26BA7E3F00491D05 /* DBObjectConvertableType.swift */; };
 		37851DF026BA89B500491D05 /* DBObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37851DEF26BA89B500491D05 /* DBObject.swift */; };
@@ -179,8 +177,6 @@
 		3781ED8E26BBB8EE00404A9D /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		3781ED9426BBF9BF00404A9D /* SearchMainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMainModel.swift; sourceTree = "<group>"; };
 		3781ED9626BBFA0300404A9D /* SearchResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultModel.swift; sourceTree = "<group>"; };
-		3782ED6B26B93FC300CB3711 /* KeywordUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordUseCaseImpl.swift; sourceTree = "<group>"; };
-		37851DE626BA7BD100491D05 /* TrackUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackUseCaseImpl.swift; sourceTree = "<group>"; };
 		37851DEB26BA7D8900491D05 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		37851DED26BA7E3F00491D05 /* DBObjectConvertableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBObjectConvertableType.swift; sourceTree = "<group>"; };
 		37851DEF26BA89B500491D05 /* DBObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBObject.swift; sourceTree = "<group>"; };
@@ -447,15 +443,6 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		3782ED6A26B93F7600CB3711 /* UseCase */ = {
-			isa = PBXGroup;
-			children = (
-				3782ED6B26B93FC300CB3711 /* KeywordUseCaseImpl.swift */,
-				37851DE626BA7BD100491D05 /* TrackUseCaseImpl.swift */,
-			);
-			path = UseCase;
-			sourceTree = "<group>";
-		};
 		37851DE826BA7C5C00491D05 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
@@ -669,7 +656,6 @@
 		37C1C4ED26B9033A00151E68 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				3782ED6A26B93F7600CB3711 /* UseCase */,
 				37C1C50A26B9035200151E68 /* Repository */,
 				37C1C50926B9034C00151E68 /* DataSource */,
 				37C1C4EE26B9033A00151E68 /* Data.h */,
@@ -1233,11 +1219,9 @@
 				37C1C51226B9039A00151E68 /* KeywordRepositoryImpl.swift in Sources */,
 				3781ED8D26BBA9EC00404A9D /* TrackAPIDataSource.swift in Sources */,
 				37C1C51826B905CB00151E68 /* KeywordDataSource.swift in Sources */,
-				3782ED6C26B93FC300CB3711 /* KeywordUseCaseImpl.swift in Sources */,
 				37C1C51626B904F700151E68 /* TrackDataSource.swift in Sources */,
 				37851DF026BA89B500491D05 /* DBObject.swift in Sources */,
 				37C1C52D26B910D300151E68 /* RealmConvertableType.swift in Sources */,
-				37851DE726BA7BD100491D05 /* TrackUseCaseImpl.swift in Sources */,
 				37851DEE26BA7E3F00491D05 /* DBObjectConvertableType.swift in Sources */,
 				37C1C53C26B9159B00151E68 /* RMKeyword.swift in Sources */,
 				37851DF226BA994000491D05 /* TrackAPI.swift in Sources */,
