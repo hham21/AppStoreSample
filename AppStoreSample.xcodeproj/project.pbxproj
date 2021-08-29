@@ -19,6 +19,8 @@
 		3715EC5226D4137000B6751C /* SearchMainViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3715EC5126D4137000B6751C /* SearchMainViewModelTest.swift */; };
 		3715EC5526D4157200B6751C /* SearchResultViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3715EC5426D4157200B6751C /* SearchResultViewModelTest.swift */; };
 		3777F26426DBC3C000B6E164 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3777F26326DBC3C000B6E164 /* APIError.swift */; };
+		3777F26726DBC78200B6E164 /* Realm+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3777F26626DBC78200B6E164 /* Realm+Ext.swift */; };
+		3777F26926DBD1A300B6E164 /* RealmDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3777F26826DBD1A300B6E164 /* RealmDB.swift */; };
 		377874D426CB5DAC00A9BF73 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377874D326CB5DAC00A9BF73 /* SettingViewController.swift */; };
 		377874D626CB5F5B00A9BF73 /* SettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 377874D526CB5F5B00A9BF73 /* SettingViewController.storyboard */; };
 		377874DC26CE008100A9BF73 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377874DB26CE008100A9BF73 /* SignInViewController.swift */; };
@@ -168,6 +170,8 @@
 		3715EC5126D4137000B6751C /* SearchMainViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMainViewModelTest.swift; sourceTree = "<group>"; };
 		3715EC5426D4157200B6751C /* SearchResultViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModelTest.swift; sourceTree = "<group>"; };
 		3777F26326DBC3C000B6E164 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		3777F26626DBC78200B6E164 /* Realm+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Ext.swift"; sourceTree = "<group>"; };
+		3777F26826DBD1A300B6E164 /* RealmDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDB.swift; sourceTree = "<group>"; };
 		377874D326CB5DAC00A9BF73 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		377874D526CB5F5B00A9BF73 /* SettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingViewController.storyboard; sourceTree = "<group>"; };
 		377874DB26CE008100A9BF73 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -418,9 +422,16 @@
 		37242B0226CAAA76008AF1C4 /* ValueObject */ = {
 			isa = PBXGroup;
 			children = (
-				37E99BC026B7B964002A840B /* Keyword.swift */,
 			);
 			path = ValueObject;
+			sourceTree = "<group>";
+		};
+		3777F26526DBC76700B6E164 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				3777F26626DBC78200B6E164 /* Realm+Ext.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		377874D826CE005700A9BF73 /* SignInScene */ = {
@@ -695,6 +706,8 @@
 			isa = PBXGroup;
 			children = (
 				37C1C52426B90F6E00151E68 /* Entity */,
+				3777F26526DBC76700B6E164 /* Common */,
+				3777F26826DBD1A300B6E164 /* RealmDB.swift */,
 				37C1C51B26B90AB900151E68 /* KeywordRealmDataSource.swift */,
 			);
 			path = Realm;
@@ -775,6 +788,7 @@
 			isa = PBXGroup;
 			children = (
 				37E99BBE26B7B95A002A840B /* Track.swift */,
+				37E99BC026B7B964002A840B /* Keyword.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1214,10 +1228,12 @@
 				37C1C51026B9039100151E68 /* TrackRepositoryImpl.swift in Sources */,
 				37851DEC26BA7D8900491D05 /* TrackDTO.swift in Sources */,
 				37C1C51226B9039A00151E68 /* KeywordRepositoryImpl.swift in Sources */,
+				3777F26926DBD1A300B6E164 /* RealmDB.swift in Sources */,
 				3781ED8D26BBA9EC00404A9D /* TrackAPIDataSource.swift in Sources */,
 				37C1C51826B905CB00151E68 /* KeywordDataSource.swift in Sources */,
 				37C1C51626B904F700151E68 /* TrackDataSource.swift in Sources */,
 				37C1C52D26B910D300151E68 /* RealmConvertableType.swift in Sources */,
+				3777F26726DBC78200B6E164 /* Realm+Ext.swift in Sources */,
 				37C1C53C26B9159B00151E68 /* RMKeyword.swift in Sources */,
 				37851DF226BA994000491D05 /* TrackAPI.swift in Sources */,
 				37C1C51C26B90AB900151E68 /* KeywordRealmDataSource.swift in Sources */,

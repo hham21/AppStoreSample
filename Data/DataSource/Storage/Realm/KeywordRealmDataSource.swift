@@ -10,63 +10,35 @@ import RxSwift
 import RealmSwift
 
 public struct KeywordRealmDataSource: KeywordDataSource {
+    private let DB: RealmDB = .init()
 
     public init() {}
 
     public func getKeywords() -> Observable<[Keyword]> {
-        .create { observer in
-            do {
-                let realm = try Realm()
-                let objects = realm.objects(RMKeyword.self)
-                    .sorted(byKeyPath: "date", ascending: false)
-                let data = Array(objects).compactMap { $0.asDomain() }
-                observer.onNext(data)
-                observer.onCompleted()
-            } catch {
-                dump(error)
-                observer.onError(error)
-            }
-
-            return Disposables.create()
-        }
+        return readKeywords()
+            .compactMap { $0.compactMap { $0.asDomain() } }
     }
     
     public func getKeywordsContains(text: String) -> Observable<[Keyword]> {
-        .create { observer in
-            do {
-                let realm = try Realm()
-                let objects = realm.objects(RMKeyword.self)
-                    .sorted(byKeyPath: "date", ascending: false)
-                let data = Array(objects)
-                    .filter { $0.text.localizedCaseInsensitiveContains(text) }
-                    .compactMap { $0.asDomain() }
-                observer.onNext(data)
-                observer.onCompleted()
-            } catch {
-                dump(error)
-                observer.onError(error)
-            }
-
-            return Disposables.create()
-        }
+        let predicate: NSPredicate = .init(
+            format: "\(#keyPath(RMKeyword.text)) CONTAINS[cd] %@",
+            argumentArray: [text as NSString]
+        )
+        return readKeywords(predicate: predicate)
+            .compactMap { $0.compactMap { $0.asDomain() } }
     }
-
+    
     public func saveKeyword(_ keyword: Keyword) -> Observable<Void> {
-        .create { observer in
-            do {
-                let item = keyword.asRealm()
-                let realm = try Realm()
-                try realm.write {
-                    realm.add(item, update: .modified)
-                }
-
-                observer.onNext(())
-                observer.onCompleted()
-            } catch {
-                observer.onError(error)
-            }
-
-            return Disposables.create()
-        }
+        return updateKeyword(keyword)
+    }
+    
+    private func readKeywords(predicate: NSPredicate? = nil) -> Observable<[RMKeyword]> {
+        return DB.read(predicate: predicate)
+    }
+    
+    private func updateKeyword(_ keyword: Keyword) -> Observable<Void> {
+        return DB.update(object: keyword.asRealm())
+            .observe(on: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+            .subscribe(on: MainScheduler.instance)
     }
 }
