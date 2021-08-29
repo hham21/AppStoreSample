@@ -79,6 +79,8 @@ final class RealmDB {
             }
             return Disposables.create()
         }
+        .observe(on: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+        .subscribe(on: MainScheduler.instance)
     }
     
     private func realmStore(type: Object.Type) throws -> Realm {

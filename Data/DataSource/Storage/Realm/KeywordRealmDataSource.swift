@@ -38,7 +38,5 @@ public struct KeywordRealmDataSource: KeywordDataSource {
     
     private func updateKeyword(_ keyword: Keyword) -> Observable<Void> {
         return DB.update(object: keyword.asRealm())
-            .observe(on: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
-            .subscribe(on: MainScheduler.instance)
     }
 }
