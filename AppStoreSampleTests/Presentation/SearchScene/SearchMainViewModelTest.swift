@@ -27,8 +27,8 @@ class SearchMainViewModelTest: XCTestCase {
             
             let dataSource: KeywordDataSource = MockKeywordDataSource()
             let repo: KeywordRepository = KeywordRepositoryImpl(localDataSource: dataSource)
-            let useCase: KeywordUseCase = KeywordUseCaseImpl(repo: repo)
-            sut = SearchMainViewModel(keywordUseCase: useCase)
+            let useCase: GetKeywordUseCase = GetKeywordUseCaseImple(keywordRepo: repo)
+            sut = SearchMainViewModel(getKeywordUseCase: useCase)
         } catch {
             XCTFail(error.localizedDescription)
         }

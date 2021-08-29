@@ -23,6 +23,7 @@
 		377874DC26CE008100A9BF73 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377874DB26CE008100A9BF73 /* SignInViewController.swift */; };
 		377874DE26CE00AC00A9BF73 /* SignInViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 377874DD26CE00AC00A9BF73 /* SignInViewController.storyboard */; };
 		377874E126CE019000A9BF73 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377874E026CE019000A9BF73 /* AuthService.swift */; };
+		377C2E3C26DB86FA000ABD73 /* SearchTrackUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377C2E3B26DB86FA000ABD73 /* SearchTrackUseCase.swift */; };
 		3781ED8D26BBA9EC00404A9D /* TrackAPIDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3781ED8C26BBA9EC00404A9D /* TrackAPIDataSource.swift */; };
 		3781ED8F26BBB8EE00404A9D /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3781ED8E26BBB8EE00404A9D /* Application.swift */; };
 		3781ED9526BBF9BF00404A9D /* SearchMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3781ED9426BBF9BF00404A9D /* SearchMainModel.swift */; };
@@ -103,8 +104,7 @@
 		37E99BAD26B7B92A002A840B /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 37E99B9726B7B92A002A840B /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		37E99BBF26B7B95A002A840B /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E99BBE26B7B95A002A840B /* Track.swift */; };
 		37E99BC126B7B964002A840B /* Keyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E99BC026B7B964002A840B /* Keyword.swift */; };
-		37E99BC526B7B9D5002A840B /* TrackUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E99BC426B7B9D5002A840B /* TrackUseCase.swift */; };
-		37E99BC726B7B9DD002A840B /* KeywordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E99BC626B7B9DD002A840B /* KeywordUseCase.swift */; };
+		37E99BC726B7B9DD002A840B /* GetKeywordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E99BC626B7B9DD002A840B /* GetKeywordUseCase.swift */; };
 		37E99BCE26B7BDBD002A840B /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E99BCD26B7BDBD002A840B /* AppFlow.swift */; };
 		46E3F3ECA7455F3C2F23552D /* Pods_AppStoreSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3EBF40F1B004C813CF16071 /* Pods_AppStoreSample.framework */; };
 		484DDF5A740A7459AAE5CAA2 /* Pods_AppStoreSample_AppStoreSampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9CEB65ABA04CF93A2939DA /* Pods_AppStoreSample_AppStoreSampleTests.framework */; };
@@ -173,6 +173,7 @@
 		377874DB26CE008100A9BF73 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		377874DD26CE00AC00A9BF73 /* SignInViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignInViewController.storyboard; sourceTree = "<group>"; };
 		377874E026CE019000A9BF73 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		377C2E3B26DB86FA000ABD73 /* SearchTrackUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTrackUseCase.swift; sourceTree = "<group>"; };
 		3781ED8C26BBA9EC00404A9D /* TrackAPIDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackAPIDataSource.swift; sourceTree = "<group>"; };
 		3781ED8E26BBB8EE00404A9D /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		3781ED9426BBF9BF00404A9D /* SearchMainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMainModel.swift; sourceTree = "<group>"; };
@@ -255,8 +256,7 @@
 		37E99B9A26B7B92A002A840B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		37E99BBE26B7B95A002A840B /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		37E99BC026B7B964002A840B /* Keyword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyword.swift; sourceTree = "<group>"; };
-		37E99BC426B7B9D5002A840B /* TrackUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackUseCase.swift; sourceTree = "<group>"; };
-		37E99BC626B7B9DD002A840B /* KeywordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordUseCase.swift; sourceTree = "<group>"; };
+		37E99BC626B7B9DD002A840B /* GetKeywordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetKeywordUseCase.swift; sourceTree = "<group>"; };
 		37E99BCD26B7BDBD002A840B /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
 		4776530808CACFF4FA0C7223 /* Pods-Data.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Data.release.xcconfig"; path = "Target Support Files/Pods-Data/Pods-Data.release.xcconfig"; sourceTree = "<group>"; };
 		6B8226809ED3FB13749A0045 /* Pods_Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -785,8 +785,8 @@
 		37E99BC326B7B972002A840B /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				37E99BC426B7B9D5002A840B /* TrackUseCase.swift */,
-				37E99BC626B7B9DD002A840B /* KeywordUseCase.swift */,
+				37E99BC626B7B9DD002A840B /* GetKeywordUseCase.swift */,
+				377C2E3B26DB86FA000ABD73 /* SearchTrackUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -1282,12 +1282,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				37E99BBF26B7B95A002A840B /* Track.swift in Sources */,
-				37E99BC726B7B9DD002A840B /* KeywordUseCase.swift in Sources */,
-				37E99BC526B7B9D5002A840B /* TrackUseCase.swift in Sources */,
+				37E99BC726B7B9DD002A840B /* GetKeywordUseCase.swift in Sources */,
 				37E99BC126B7B964002A840B /* Keyword.swift in Sources */,
 				37C1C52F26B910E500151E68 /* DomainConvertableType.swift in Sources */,
 				37C1C4E126B901FB00151E68 /* TrackRepository.swift in Sources */,
 				37C1C4E326B9020600151E68 /* KeywordRepository.swift in Sources */,
+				377C2E3C26DB86FA000ABD73 /* SearchTrackUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

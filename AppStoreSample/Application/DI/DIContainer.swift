@@ -85,25 +85,28 @@ let DIContainer: Container = .init { container in
     
     // UseCase
     
-    container.register(KeywordUseCase.self) { r in
-        KeywordUseCaseImpl(repo: r.resolve(KeywordRepository.self)!)
+    container.register(GetKeywordUseCase.self) { r in
+        GetKeywordUseCaseImple(keywordRepo: r.resolve(KeywordRepository.self)!)
     }
     
-    container.register(TrackUseCase.self) { r in
-        TrackUseCaseImpl(repo: r.resolve(TrackRepository.self)!)
+    container.register(SearchTrackUseCase.self) { r in
+        SearchTrackUseCaseImpl(
+            trackRepo: r.resolve(TrackRepository.self)!,
+            keywordRepo: r.resolve(KeywordRepository.self)!
+        )
     }
     
     // ViewModel
     
     container.register(SearchResultViewModel.self) { r in
         SearchResultViewModel(
-            keywordUseCase: r.resolve(KeywordUseCase.self)!,
-            trackUseCase: r.resolve(TrackUseCase.self)!)
+            getKeywordUseCase: r.resolve(GetKeywordUseCase.self)!,
+            searchTrackUseCase: r.resolve(SearchTrackUseCase.self)!)
     }
     
     container.register(SearchMainViewModel.self) { r in
         SearchMainViewModel(
-            keywordUseCase: r.resolve(KeywordUseCase.self)!
+            getKeywordUseCase: r.resolve(GetKeywordUseCase.self)!
         )
     }
     

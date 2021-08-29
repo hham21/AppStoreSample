@@ -12,14 +12,18 @@ import RxSwift
 
 class TrackUseCaseTest: XCTestCase {
     var mockDataSource: TrackDataSource!
+    var mockKeywordDataSource: KeywordDataSource!
     var trackRespository: TrackRepository!
-    var sut: TrackUseCase!
+    var keywordRepository: KeywordRepository!
+    var sut: SearchTrackUseCase!
     var disposeBag: DisposeBag = .init()
     
     override func setUp() {
         super.setUp()
         mockDataSource = MockTrackDataSource()
         trackRespository = TrackRepositoryImpl(remoteDataSource: mockDataSource)
+        mockKeywordDataSource = MockKeywordDataSource()
+        keywordRepository = KeywordRepositoryImpl(localDataSource: mockKeywordDataSource)
     }
     
     override func tearDown() {
@@ -32,7 +36,7 @@ class TrackUseCaseTest: XCTestCase {
     
     func test_getTracks_givenUseCase() {
         // given
-        sut = TrackUseCaseImpl(repo: trackRespository)
+        sut = SearchTrackUseCaseImpl(trackRepo: trackRespository, keywordRepo: keywordRepository)
         
         // when
         sut.getTracks("스무디")

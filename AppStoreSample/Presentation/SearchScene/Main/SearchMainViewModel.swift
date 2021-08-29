@@ -28,11 +28,11 @@ final class SearchMainViewModel: ViewModelType, Stepper {
     
     var steps: PublishRelay<Step> = .init()
     
-    private let keywordUseCase: KeywordUseCase
+    private let getKeywordUseCase: GetKeywordUseCase
     private let disposeBag: DisposeBag = .init()
     
-    init(keywordUseCase: KeywordUseCase) {
-        self.keywordUseCase = keywordUseCase
+    init(getKeywordUseCase: GetKeywordUseCase) {
+        self.getKeywordUseCase = getKeywordUseCase
     }
     
     func mutate(input: Input) -> Output {
@@ -41,15 +41,8 @@ final class SearchMainViewModel: ViewModelType, Stepper {
             .compactMap { AppStep.searchDetail(track: $0) }
             .bind(to: steps)
             .disposed(by: disposeBag)
-        
-        let getKeywords = getKeywords()
-        let dataSource = getKeywords.data.asDriver(onErrorJustReturn: [])
-        let error = getKeywords.error.asSignal(onErrorJustReturn: RxError.unknown)
-        
-        return Output(dataSource: dataSource, error: error)
-    }
-    
-    private func getKeywords() -> (data: Observable<[SearchMain.Model]>, error: Observable<Error>) {
+
+        // getKeywords
         let getKeywords = Observable
             .merge(
                 input.initialLoad.asObservable(),
@@ -57,7 +50,7 @@ final class SearchMainViewModel: ViewModelType, Stepper {
             )
             .withUnretained(self)
             .flatMapLatest {
-                $0.0.keywordUseCase.getKeywords()
+                $0.0.getKeywordUseCase.getKeywords()
             }
             .materialize()
             .share()
@@ -69,6 +62,16 @@ final class SearchMainViewModel: ViewModelType, Stepper {
         let getKeywordsError = getKeywords
             .compactMap { $0.error }
         
-        return (getKeywordsData, getKeywordsError)
+        // Merge DataSources
+        let dataSource = Observable
+            .merge(getKeywordsData)
+            .asDriver(onErrorJustReturn: [])
+        
+        // Merge Errors
+        let error = Observable
+            .merge(getKeywordsError)
+            .asSignal(onErrorJustReturn: RxError.unknown)
+        
+        return Output(dataSource: dataSource, error: error)
     }
 }

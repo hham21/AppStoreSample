@@ -24,19 +24,19 @@ final class SearchResultViewModel: ViewModelType {
     lazy var input: Input = .init()
     lazy var output: Output = mutate(input: input)
     
-    private let keywordUseCase: KeywordUseCase
-    private let trackUseCase: TrackUseCase
+    private let getKeywordUseCase: GetKeywordUseCase
+    private let searchTrackUseCase: SearchTrackUseCase!
     
     private var tracks: BehaviorRelay<[Track]> = .init(value: [])
-    
+        
     private let disposeBag: DisposeBag = .init()
     
     init(
-        keywordUseCase: KeywordUseCase,
-        trackUseCase: TrackUseCase
+        getKeywordUseCase: GetKeywordUseCase,
+        searchTrackUseCase: SearchTrackUseCase
     ) {
-        self.keywordUseCase = keywordUseCase
-        self.trackUseCase = trackUseCase
+        self.getKeywordUseCase = getKeywordUseCase
+        self.searchTrackUseCase = searchTrackUseCase
     }
     
     func mutate(input: Input) -> Output {
@@ -46,7 +46,7 @@ final class SearchResultViewModel: ViewModelType {
             .filter { !$0.isEmpty }
             .withUnretained(self)
             .flatMapLatest {
-                $0.0.keywordUseCase.getKeywordsContains(text: $0.1)
+                $0.0.getKeywordUseCase.getKeywordsContains(text: $0.1)
             }
             .materialize()
             .share()
@@ -58,23 +58,11 @@ final class SearchResultViewModel: ViewModelType {
         let getKeywordsError = getKeywords
             .compactMap { $0.error }
         
-        // saveKeyword
-        let saveKeyword = input.searchButtonTapped
-            .withUnretained(self)
-            .flatMapLatest {
-                $0.0.keywordUseCase.saveKeyword($0.1)
-            }
-            .materialize()
-            .share()
-        
-        let saveKeywordError = saveKeyword
-            .compactMap { $0.error }
-        
         // getTracks
         let getTracks = input.searchButtonTapped
             .withUnretained(self)
             .flatMapLatest {
-                $0.0.trackUseCase.getTracks($0.1)
+                $0.0.searchTrackUseCase.getTracks($0.1)
             }
             .materialize()
             .share()
@@ -100,7 +88,6 @@ final class SearchResultViewModel: ViewModelType {
         // errors binding
         let error = Observable
             .merge(
-                saveKeywordError,
                 getTracksError,
                 getKeywordsError
             )
