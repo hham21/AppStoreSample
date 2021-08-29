@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 
-struct Response: Codable {
+struct Response: Decodable {
     let count: Int
     let results: [TrackDTO]
     
@@ -18,7 +18,7 @@ struct Response: Codable {
     }
 }
 
-struct TrackDTO: DBObject {
+struct TrackDTO: Decodable, Identifiable {
     let trackId: Int
     let trackName: String
     let sellerName: String
@@ -126,28 +126,6 @@ struct TrackDTO: DBObject {
 
 extension TrackDTO: DomainConvertibleType {
     func asDomain() -> Track {
-        return .init(trackId: trackId,
-                     trackName: trackName,
-                     sellerName: sellerName,
-                     artistName: artistName,
-                     artWorkURL: artworkURL,
-                     screenshotURLs: screenshotURLs,
-                     rating: rating,
-                     ratingCount: ratingCount,
-                     contentRating: contentRating,
-                     releaseNotes: releaseNotes,
-                     languageCodes: languageCodes,
-                     version: version,
-                     description: description,
-                     fileSizeBytes: fileSizeBytes,
-                     genres: genres,
-                     sellerURL: sellerURL,
-                     releaseData: releaseDate)
-    }
-}
-
-extension Track: DBObjectConvertableType {
-    func asDBObject() -> TrackDTO {
         return .init(trackId: trackId,
                      trackName: trackName,
                      sellerName: sellerName,
