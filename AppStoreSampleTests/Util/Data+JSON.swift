@@ -22,4 +22,3 @@ extension Data {
 }
 
 private class TestBundleClass {}
-
