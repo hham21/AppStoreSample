@@ -7,7 +7,11 @@
 
 import Foundation
 
-public class Track {
+public class Track: Identifiable {
+    public var id: Int {
+        return trackId
+    }
+    
     public let trackId: Int
     public let trackName: String
     public let sellerName: String
