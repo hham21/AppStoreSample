@@ -18,6 +18,7 @@
 		3715EC4F26D4133D00B6751C /* TrackUseCaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3715EC4E26D4133D00B6751C /* TrackUseCaseTest.swift */; };
 		3715EC5226D4137000B6751C /* SearchMainViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3715EC5126D4137000B6751C /* SearchMainViewModelTest.swift */; };
 		3715EC5526D4157200B6751C /* SearchResultViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3715EC5426D4157200B6751C /* SearchResultViewModelTest.swift */; };
+		3777F26426DBC3C000B6E164 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3777F26326DBC3C000B6E164 /* APIError.swift */; };
 		377874D426CB5DAC00A9BF73 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377874D326CB5DAC00A9BF73 /* SettingViewController.swift */; };
 		377874D626CB5F5B00A9BF73 /* SettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 377874D526CB5F5B00A9BF73 /* SettingViewController.storyboard */; };
 		377874DC26CE008100A9BF73 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377874DB26CE008100A9BF73 /* SignInViewController.swift */; };
@@ -168,6 +169,7 @@
 		3715EC4E26D4133D00B6751C /* TrackUseCaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackUseCaseTest.swift; sourceTree = "<group>"; };
 		3715EC5126D4137000B6751C /* SearchMainViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMainViewModelTest.swift; sourceTree = "<group>"; };
 		3715EC5426D4157200B6751C /* SearchResultViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModelTest.swift; sourceTree = "<group>"; };
+		3777F26326DBC3C000B6E164 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		377874D326CB5DAC00A9BF73 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		377874D526CB5F5B00A9BF73 /* SettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingViewController.storyboard; sourceTree = "<group>"; };
 		377874DB26CE008100A9BF73 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -465,6 +467,7 @@
 				37851DEF26BA89B500491D05 /* DBObject.swift */,
 				37851DED26BA7E3F00491D05 /* DBObjectConvertableType.swift */,
 				37851DEB26BA7D8900491D05 /* Track.swift */,
+				3777F26326DBC3C000B6E164 /* APIError.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1226,6 +1229,7 @@
 				37C1C53C26B9159B00151E68 /* RMKeyword.swift in Sources */,
 				37851DF226BA994000491D05 /* TrackAPI.swift in Sources */,
 				37C1C51C26B90AB900151E68 /* KeywordRealmDataSource.swift in Sources */,
+				3777F26426DBC3C000B6E164 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

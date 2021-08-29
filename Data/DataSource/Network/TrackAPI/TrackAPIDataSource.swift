@@ -14,24 +14,27 @@ public struct TrackAPIDataSource: TrackDataSource {
     public init() {}
     public func getTracks(_ query: String) -> Observable<[Track]> {
         .create { observer in
-            
             let provider: MoyaProvider<TrackAPI> = .init()
-            
-            provider.request(.searchTracks(query: query)) { result in
+            let trackAPI: TrackAPI = .searchTracks(query: query)
+            let request: Cancellable = provider.request(trackAPI) { result in
                 switch result {
                 case .success(let response):
                     do {
                         let responseData = try JSONDecoder().decode(Response.self, from: response.data)
                         observer.onNext(responseData.results.compactMap { $0.asDomain() })
                     } catch {
-                        observer.onError(error)
+                        observer.onError(APIError.invalidJSON)
                     }
                 case .failure(let error):
                     observer.onError(error)
                 }
             }
             
-            return Disposables.create()
+            return Disposables.create {
+                request.cancel()
+            }
         }
+        .observe(on: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+        .subscribe(on: MainScheduler.instance)
     }
 }
