@@ -71,23 +71,4 @@ final class SearchMainViewModel: ViewModelType, Stepper {
         
         return (getKeywordsData, getKeywordsError)
     }
-    
-//    func mutate(input: Input) -> Output {
-//        let dataSource = createDataSource(input: input)
-//        return Output(dataSource: dataSource)
-//    }
-//
-//    private func createDataSource(input: Input) -> Driver<[SearchMain.Model]> {
-//        Observable
-//            .merge(
-//                input.initialLoad.asObservable(),
-//                input.reload.asObservable()
-//            )
-//            .withUnretained(self)
-//            .flatMapLatest {
-//                $0.0.keywordUseCase.getKeywords()
-//            }
-//            .compactMap(SearchMain().buildModel)
-//            .asDriver(onErrorJustReturn: [])
-//    }
 }
