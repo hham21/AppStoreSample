@@ -28,6 +28,7 @@ enum AppStep: Step {
     
     // Setting
     case settingMain
+    case pushToInternal
 }
 
 struct AppStepper: Stepper {

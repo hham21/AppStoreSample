@@ -13,7 +13,7 @@ final class RMKeyword: Object {
     @objc dynamic var date: Date = Date()
     
     override static func primaryKey() -> String? {
-        return "text"
+        return #keyPath(RMKeyword.text)
     }
 }
 
@@ -24,10 +24,6 @@ extension RMKeyword: DomainConvertibleType {
 }
 
 extension Keyword: RealmConvertableType {
-    internal var id: String {
-        return text
-    }
-    
     func asRealm() -> RMKeyword {
         let keyword = RMKeyword()
         keyword.text = text

@@ -8,17 +8,6 @@
 import RealmSwift
 import RxSwift
 
-enum LocalError: Error, LocalizedError {
-    case realmThreadSolveFailed
-    
-    var errorDescription: String? {
-        switch self {
-        case .realmThreadSolveFailed:
-            return "RealmStore Solve error"
-        }
-    }
-}
-
 final class RealmDB {
     func read<T: Object>(predicate: NSPredicate?) -> Observable<[T]> {
         return .create { observer in
@@ -83,15 +72,90 @@ final class RealmDB {
         .subscribe(on: MainScheduler.instance)
     }
     
+    func delete<T: Object>(object: T) -> Observable<Void> {
+        return .create { observer in
+            autoreleasepool {
+                do {
+                    let realmStore: Realm = try self.realmStore(type: T.self)
+                    
+                    try realmStore.write {
+                        realmStore.delete(object)
+                        observer.onNext(())
+                        observer.onCompleted()
+                    }
+                } catch {
+                    observer.onError(error)
+                }
+            }
+            
+            return Disposables.create()
+        }
+        .observe(on: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+        .subscribe(on: MainScheduler.instance)
+    }
+    
+    func deleteAll<T: Object>(type: T.Type) -> Observable<Void> {
+        return .create { observer in
+            autoreleasepool {
+                do {
+                    let realmStore: Realm = try self.realmStore(type: T.self)
+                    
+                    let objects: Results<T> = realmStore.objects(T.self)
+                    
+                    try realmStore.write {
+                        realmStore.delete(objects)
+                        observer.onNext(())
+                        observer.onCompleted()
+                    }
+                } catch {
+                    observer.onError(error)
+                }
+                
+                return Disposables.create()
+            }
+        }
+        .observe(on: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+        .subscribe(on: MainScheduler.instance)
+    }
+    
+    func observe<T: Object>(type: T.Type) -> Observable<Void> {
+        return .create { observer in
+            do {
+                let realm = try self.realmStore(type: T.self)
+                
+                let token = realm.observe { _, _ in
+                    observer.onNext(())
+                }
+                
+                return Disposables.create {
+                    token.invalidate()
+                }
+            } catch {
+                observer.onError(error)
+                return Disposables.create()
+            }
+        }
+        .observe(on: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+        .subscribe(on: MainScheduler.instance)
+    }
+    
     private func realmStore(type: Object.Type) throws -> Realm {
-        let name: String = String(describing: type)
+        let name = String(describing: type)
         
-        var config: Realm.Configuration = .defaultConfiguration
-        config.fileURL?.deleteLastPathComponent()
-        config.fileURL?.appendPathComponent(name)
-        config.fileURL?.appendPathExtension("realm")
+        let realmsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            .appendingPathComponent("Realms")
         
-        let realmStore: Realm = try .init(configuration: config)
-        return realmStore
+        if !FileManager.default.fileExists(atPath: realmsUrl.path) {
+            try FileManager.default.createDirectory(at: realmsUrl, withIntermediateDirectories: true, attributes: nil)
+        }
+        
+        let realmUrl = realmsUrl
+            .appendingPathComponent(name)
+            .appendingPathExtension("realm")
+        
+        var config = Realm.Configuration.defaultConfiguration
+        config.fileURL = realmUrl
+        
+        return try Realm(configuration: config)
     }
 }

@@ -42,16 +42,29 @@ final class SettingFlow: Flow {
             return coordinateToSettingVC()
         case .signedOut:
             return .end(forwardToParentFlowWithStep: AppStep.signedOut)
+        case .pushToInternal:
+            return coordinateToInternalVC()
         default:
             return .none
         }
     }
     
     private func coordinateToSettingVC() -> FlowContributors {
-        let settingVC: SettingViewController = SettingViewController.instantiate()
+        let settingVC: SettingMainViewController = DIContainer.resolve(SettingMainViewController.self)!
         let contributor: FlowContributor = .contribute(withNextPresentable: settingVC, withNextStepper: settingVC.viewModel)
         rootViewController.setViewControllers([settingVC], animated: true)
         settingVC.loadViewIfNeeded()
         return .one(flowContributor: contributor)
+    }
+    
+    private func coordinateToInternalVC() -> FlowContributors {
+        let stepper: InternalStepper = .init()
+        let flow: InternalFlow = .init(stepper: stepper)
+        
+        Flows.use(flow, when: .created) { [weak self] root in
+            self?.rootViewController.pushViewController(root, animated: true)
+        }
+        
+        return .one(flowContributor: .contribute(withNextPresentable: flow, withNextStepper: stepper))
     }
 }
