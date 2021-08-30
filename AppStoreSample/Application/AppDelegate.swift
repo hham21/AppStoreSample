@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwiftyBeaver
 import Swinject
 
 @main
