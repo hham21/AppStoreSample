@@ -9,7 +9,7 @@ import Domain
 import RxSwift
 
 public protocol SettingDataSource {
-    func getSetting() -> Single<Setting>
-    func saveSetting(_ setting: Setting) -> Completable
+    func getSetting() -> Observable<Setting>
+    func saveSetting(_ setting: Setting) -> Observable<Void>
     func observeSetting() -> Observable<Void>
 }

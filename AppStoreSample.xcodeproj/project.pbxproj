@@ -120,7 +120,6 @@
 		4FDE02D226D61586003009C0 /* SettingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDE02D126D61586003009C0 /* SettingDataSource.swift */; };
 		4FDE02D726D617C4003009C0 /* RMSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDE02D626D617C4003009C0 /* RMSetting.swift */; };
 		4FDE02D926D61BD3003009C0 /* SettingRealmDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDE02D826D61BD3003009C0 /* SettingRealmDataSource.swift */; };
-		4FDE02DD26D61FF9003009C0 /* Realm+initOfObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDE02DC26D61FF9003009C0 /* Realm+initOfObject.swift */; };
 		4FDE02DF26D62250003009C0 /* SettingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDE02DE26D62250003009C0 /* SettingRepository.swift */; };
 		4FDE02E126D62314003009C0 /* SettingRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDE02E026D62314003009C0 /* SettingRepositoryImpl.swift */; };
 		4FDE02E326D623A5003009C0 /* SettingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDE02E226D623A5003009C0 /* SettingUseCase.swift */; };
@@ -288,7 +287,6 @@
 		4FDE02D126D61586003009C0 /* SettingDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDataSource.swift; sourceTree = "<group>"; };
 		4FDE02D626D617C4003009C0 /* RMSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMSetting.swift; sourceTree = "<group>"; };
 		4FDE02D826D61BD3003009C0 /* SettingRealmDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRealmDataSource.swift; sourceTree = "<group>"; };
-		4FDE02DC26D61FF9003009C0 /* Realm+initOfObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+initOfObject.swift"; sourceTree = "<group>"; };
 		4FDE02DE26D62250003009C0 /* SettingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRepository.swift; sourceTree = "<group>"; };
 		4FDE02E026D62314003009C0 /* SettingRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRepositoryImpl.swift; sourceTree = "<group>"; };
 		4FDE02E226D623A5003009C0 /* SettingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUseCase.swift; sourceTree = "<group>"; };
@@ -741,6 +739,7 @@
 				3777F26526DBC76700B6E164 /* Common */,
 				3777F26826DBD1A300B6E164 /* RealmDB.swift */,
 				4FAA678F26DCB91C00BE8467 /* KeywordRealmDataSource.swift */,
+				4FDE02D826D61BD3003009C0 /* SettingRealmDataSource.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -869,7 +868,6 @@
 			isa = PBXGroup;
 			children = (
 				4FDE02D626D617C4003009C0 /* RMSetting.swift */,
-				4FDE02D826D61BD3003009C0 /* SettingRealmDataSource.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -885,7 +883,6 @@
 		4FDE02DB26D61FE0003009C0 /* RealmSwift */ = {
 			isa = PBXGroup;
 			children = (
-				4FDE02DC26D61FF9003009C0 /* Realm+initOfObject.swift */,
 			);
 			path = RealmSwift;
 			sourceTree = "<group>";
@@ -1332,7 +1329,6 @@
 				3777F26726DBC78200B6E164 /* Realm+Ext.swift in Sources */,
 				37C1C53C26B9159B00151E68 /* RMKeyword.swift in Sources */,
 				4FDE02E526D623C6003009C0 /* SettingUseCaseImpl.swift in Sources */,
-				4FDE02DD26D61FF9003009C0 /* Realm+initOfObject.swift in Sources */,
 				37851DF226BA994000491D05 /* TrackAPI.swift in Sources */,
 				3777F26426DBC3C000B6E164 /* APIError.swift in Sources */,
 			);

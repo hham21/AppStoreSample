@@ -10,6 +10,11 @@ import RealmSwift
 
 final class RMSetting: Object {
     @objc dynamic var isInternalMode: Bool = false
+    @objc dynamic var uuid: UUID = .init()
+    
+    override class func primaryKey() -> String? {
+        return #keyPath(RMSetting.uuid)
+    }
 }
 
 extension RMSetting: DomainConvertibleType {

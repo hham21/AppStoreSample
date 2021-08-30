@@ -8,7 +8,7 @@
 import RxSwift
 
 public protocol SettingUseCase {
-    func getSetting() -> Single<Setting>
-    func saveSetting(_ setting: Setting) -> Completable
+    func getSetting() -> Observable<Setting>
+    func saveSetting(_ setting: Setting) -> Observable<Void>
     func observeSetting() -> Observable<Void>
 }

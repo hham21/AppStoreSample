@@ -15,11 +15,11 @@ public struct SettingUseCaseImpl: SettingUseCase {
         self.repo = repo
     }
     
-    public func getSetting() -> Single<Setting> {
+    public func getSetting() -> Observable<Setting> {
         repo.getSetting()
     }
     
-    public func saveSetting(_ setting: Setting) -> Completable {
+    public func saveSetting(_ setting: Setting) -> Observable<Void> {
         repo.saveSetting(setting)
     }
     

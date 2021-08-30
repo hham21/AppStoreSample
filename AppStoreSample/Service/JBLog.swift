@@ -43,7 +43,7 @@ final class JBLog {
     
     static let triggeredLog: PublishRelay<LogData> = .init()
     
-    static var isEnabledSaveToFile: Bool = false {
+    static var isEnabledSaveToFile: Bool = true {
         didSet {
             if isEnabledSaveToFile {
                 if !Log.destinations.contains(fileDestination) {

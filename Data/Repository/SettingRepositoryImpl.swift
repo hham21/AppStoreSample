@@ -15,11 +15,11 @@ public struct SettingRepositoryImpl: SettingRepository {
         self.settingDataSource = settingDataSource
     }
     
-    public func getSetting() -> Single<Setting> {
+    public func getSetting() -> Observable<Setting> {
         settingDataSource.getSetting()
     }
     
-    public func saveSetting(_ setting: Setting) -> Completable {
+    public func saveSetting(_ setting: Setting) -> Observable<Void> {
         settingDataSource.saveSetting(setting)
     }
     
