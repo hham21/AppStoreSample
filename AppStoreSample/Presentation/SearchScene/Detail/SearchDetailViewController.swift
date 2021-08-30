@@ -104,13 +104,16 @@ extension SearchDetailViewController: UITableViewDelegate {
     }
     
     private func holdFristCellPositionWhenScrollingDown(_ scrollView: UIScrollView) {
-        guard scrollView.contentOffset.y < 0 else {
+        let barHeight: CGFloat = navigationController?.navigationBar.frame.height ?? 0
+        let barY: CGFloat = navigationController?.navigationBar.frame.origin.y ?? 0
+        
+        guard scrollView.contentOffset.y + barHeight + barY < 0 else {
             return
         }
         guard let cell = tableView.cellForRow(at: .init(row: 0, section: 0)) else {
             return
         }
-        cell.frame.origin.y = tableView.contentOffset.y
+        cell.frame.origin.y = tableView.contentOffset.y + barHeight + barY
     }
     
     private func setTitleViewImage(_ scollView: UIScrollView) {

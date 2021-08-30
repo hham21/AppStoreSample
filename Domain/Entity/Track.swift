@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Track {
+public class Track: Identifiable {
     public let trackId: Int
     public let trackName: String
     public let sellerName: String
@@ -25,6 +25,10 @@ public class Track {
     public let genres: [String]
     public let sellerURL: String?
     public let releaseDate: Date?
+    
+    public var id: Int {
+        return trackId
+    }
     
     public init(trackId: Int,
                 trackName: String,

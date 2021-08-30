@@ -20,14 +20,14 @@ class SearchResultViewModelTest: XCTestCase {
         
         let keywordDataSource: KeywordDataSource = MockKeywordDataSource()
         let keywordRepo: KeywordRepository = KeywordRepositoryImpl(localDataSource: keywordDataSource)
-        let keywordUseCase: KeywordUseCase = KeywordUseCaseImpl(repo: keywordRepo)
+        let keywordUseCase: GetKeywordUseCase = GetKeywordUseCaseImple(keywordRepo: keywordRepo)
         
         let trackDataSource: TrackDataSource = MockTrackDataSource()
         let trackRepo: TrackRepository = TrackRepositoryImpl(remoteDataSource: trackDataSource)
-        let trackUseCase: TrackUseCase = TrackUseCaseImpl(repo: trackRepo)
+        let searchTrackUseCase: SearchTrackUseCase = SearchTrackUseCaseImpl(trackRepo: trackRepo, keywordRepo: keywordRepo)
         
         // given
-        sut = SearchResultViewModel(keywordUseCase: keywordUseCase, trackUseCase: trackUseCase)
+        sut = SearchResultViewModel(getKeywordUseCase: keywordUseCase, searchTrackUseCase: searchTrackUseCase)
     }
     
     override func tearDown() {

@@ -10,10 +10,12 @@ import RxSwift
 import RealmSwift
 
 public struct KeywordRealmDataSource: KeywordDataSource {
+    private let DB: RealmDB = .init()
 
     public init() {}
 
     public func getKeywords() -> Observable<[Keyword]> {
+<<<<<<< HEAD:Data/DataSource/Storage/Realm/Entity/Keyword/KeywordRealmDataSource.swift
         .create { observer in
             do {
                 let realm = try Realm(of: RMKeyword.self)
@@ -50,9 +52,23 @@ public struct KeywordRealmDataSource: KeywordDataSource {
 
             return Disposables.create()
         }
+=======
+        return readKeywords()
+            .compactMap { $0.compactMap { $0.asDomain() } }
     }
-
+    
+    public func getKeywordsContains(text: String) -> Observable<[Keyword]> {
+        let predicate: NSPredicate = .init(
+            format: "\(#keyPath(RMKeyword.text)) CONTAINS[cd] %@",
+            argumentArray: [text as NSString]
+        )
+        return readKeywords(predicate: predicate)
+            .compactMap { $0.compactMap { $0.asDomain() } }
+>>>>>>> 66b0c3b7ff8c3618950c968a4fb74b60a4cfeeb4:Data/DataSource/Storage/Realm/KeywordRealmDataSource.swift
+    }
+    
     public func saveKeyword(_ keyword: Keyword) -> Observable<Void> {
+<<<<<<< HEAD:Data/DataSource/Storage/Realm/Entity/Keyword/KeywordRealmDataSource.swift
         .create { observer in
             do {
                 let item = keyword.asRealm()
@@ -75,5 +91,16 @@ public struct KeywordRealmDataSource: KeywordDataSource {
 
             return Disposables.create()
         }
+=======
+        return updateKeyword(keyword)
+    }
+    
+    private func readKeywords(predicate: NSPredicate? = nil) -> Observable<[RMKeyword]> {
+        return DB.read(predicate: predicate)
+    }
+    
+    private func updateKeyword(_ keyword: Keyword) -> Observable<Void> {
+        return DB.update(object: keyword.asRealm())
+>>>>>>> 66b0c3b7ff8c3618950c968a4fb74b60a4cfeeb4:Data/DataSource/Storage/Realm/KeywordRealmDataSource.swift
     }
 }
