@@ -11,10 +11,19 @@ extension Realm {
     init(of object: Object.Type) throws {
         let name = String(describing: object)
         
+        let realmsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            .appendingPathComponent("Realms")
+        
+        if !FileManager.default.fileExists(atPath: realmsUrl.path) {
+            try FileManager.default.createDirectory(at: realmsUrl, withIntermediateDirectories: true, attributes: nil)
+        }
+        
+        let realmUrl = realmsUrl
+            .appendingPathComponent(name)
+            .appendingPathExtension("realm")
+        
         var config = Configuration.defaultConfiguration
-        config.fileURL?.deleteLastPathComponent()
-        config.fileURL?.appendPathComponent(name)
-        config.fileURL?.appendPathExtension("realm")
+        config.fileURL = realmUrl
         
         try self.init(configuration: config)
     }

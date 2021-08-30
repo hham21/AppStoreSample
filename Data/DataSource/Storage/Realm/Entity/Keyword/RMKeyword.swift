@@ -24,10 +24,6 @@ extension RMKeyword: DomainConvertibleType {
 }
 
 extension Keyword: RealmConvertableType {
-    internal var id: String {
-        return text
-    }
-    
     func asRealm() -> RMKeyword {
         let keyword = RMKeyword()
         keyword.text = text

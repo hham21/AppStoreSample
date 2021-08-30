@@ -73,6 +73,10 @@ let DIContainer: Container = .init { container in
         TrackAPIDataSource()
     }
     
+    container.register(SettingDataSource.self) { _ in
+        SettingRealmDataSource()
+    }
+    
     // Repository
     
     container.register(KeywordRepository.self) { r in
@@ -83,6 +87,10 @@ let DIContainer: Container = .init { container in
         TrackRepositoryImpl(remoteDataSource: r.resolve(TrackDataSource.self)!)
     }
     
+    container.register(SettingRepository.self) { r in
+        SettingRepositoryImpl(settingDataSource: r.resolve(SettingDataSource.self)!)
+    }
+    
     // UseCase
     
     container.register(KeywordUseCase.self) { r in
@@ -91,6 +99,10 @@ let DIContainer: Container = .init { container in
     
     container.register(TrackUseCase.self) { r in
         TrackUseCaseImpl(repo: r.resolve(TrackRepository.self)!)
+    }
+    
+    container.register(SettingUseCase.self) { r in
+        SettingUseCaseImpl(repo: r.resolve(SettingRepository.self)!)
     }
     
     // ViewModel
@@ -111,6 +123,14 @@ let DIContainer: Container = .init { container in
         DetailViewModel(with: track)
     }
     
+    container.register(SettingMainViewModel.self) { r in
+        SettingMainViewModel(settingUseCase: r.resolve(SettingUseCase.self)!)
+    }
+    
+    container.register(InternalMainViewModel.self) { _ in
+        InternalMainViewModel()
+    }
+    
     // ViewController
     
     container.register(SearchResultViewController.self) { r in
@@ -126,5 +146,13 @@ let DIContainer: Container = .init { container in
 
     container.register(SearchDetailViewController.self) { _ in
         .instantiate()
+    }
+    
+    container.register(SettingMainViewController.self) { r in
+        .create(with: r.resolve(SettingMainViewModel.self)!)
+    }
+    
+    container.register(InternalMainViewController.self) { r in
+        .create(with: r.resolve(InternalMainViewModel.self)!)
     }
 }

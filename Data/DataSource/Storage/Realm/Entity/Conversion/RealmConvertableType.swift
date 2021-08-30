@@ -10,7 +10,5 @@ import Domain
 protocol RealmConvertableType {
     associatedtype RealmType: DomainConvertibleType
 
-    var id: String { get }
-
     func asRealm() -> RealmType
 }

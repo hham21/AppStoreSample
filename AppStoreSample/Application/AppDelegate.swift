@@ -9,8 +9,6 @@ import UIKit
 import SwiftyBeaver
 import Swinject
 
-let log = SwiftyBeaver.self
-
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -18,10 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        // MARK: - SwiftBeaver
+        // MARK: - Log
+        JBLog.initialize()
         
-        let console = ConsoleDestination()
-        log.addDestination(console)
+        JBLog.print(.info("Hello!"))
 
         // MARK: - App Start
         

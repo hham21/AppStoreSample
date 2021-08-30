@@ -9,33 +9,35 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Setting View Controller-->
+        <!--Internal Main View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="SettingViewController" customModule="AppStoreSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="InternalMainViewController" customModule="AppStoreSample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DCd-1f-vrV">
-                                <rect key="frame" x="177" y="433" width="60" height="30"/>
-                                <state key="normal" title="Sign Out"/>
-                                <connections>
-                                    <action selector="signOutTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="jWX-ad-4wG"/>
-                                </connections>
-                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Jdz-5G-xfi">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="DCd-1f-vrV" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="kep-oz-NPx"/>
-                            <constraint firstItem="DCd-1f-vrV" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="zGd-Fz-VgO"/>
+                            <constraint firstItem="Jdz-5G-xfi" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="7kQ-yQ-KcT"/>
+                            <constraint firstItem="Jdz-5G-xfi" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="LR5-Uz-N4o"/>
+                            <constraint firstAttribute="bottom" secondItem="Jdz-5G-xfi" secondAttribute="bottom" id="c7C-ev-fGa"/>
+                            <constraint firstAttribute="trailing" secondItem="Jdz-5G-xfi" secondAttribute="trailing" id="faj-Ju-o0C"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="Jdz-5G-xfi" id="gdp-Ql-Rb7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="101" y="132"/>
+            <point key="canvasLocation" x="-30" y="99"/>
         </scene>
     </scenes>
     <resources>
