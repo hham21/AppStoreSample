@@ -690,7 +690,6 @@
 		37C1C4ED26B9033A00151E68 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				4FDE02DA26D61FCC003009C0 /* Extension */,
 				3782ED6A26B93F7600CB3711 /* UseCase */,
 				37C1C50A26B9035200151E68 /* Repository */,
 				37C1C50926B9034C00151E68 /* DataSource */,
@@ -870,21 +869,6 @@
 				4FDE02D626D617C4003009C0 /* RMSetting.swift */,
 			);
 			path = Setting;
-			sourceTree = "<group>";
-		};
-		4FDE02DA26D61FCC003009C0 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				4FDE02DB26D61FE0003009C0 /* RealmSwift */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
-		4FDE02DB26D61FE0003009C0 /* RealmSwift */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = RealmSwift;
 			sourceTree = "<group>";
 		};
 		4FDE02E626D62481003009C0 /* Main */ = {
