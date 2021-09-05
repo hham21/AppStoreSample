@@ -25,7 +25,6 @@
 		377874D626CB5F5B00A9BF73 /* SettingMainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 377874D526CB5F5B00A9BF73 /* SettingMainViewController.storyboard */; };
 		377874DC26CE008100A9BF73 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377874DB26CE008100A9BF73 /* SignInViewController.swift */; };
 		377874DE26CE00AC00A9BF73 /* SignInViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 377874DD26CE00AC00A9BF73 /* SignInViewController.storyboard */; };
-		377874E126CE019000A9BF73 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377874E026CE019000A9BF73 /* AuthService.swift */; };
 		377C2E3C26DB86FA000ABD73 /* SearchTrackUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377C2E3B26DB86FA000ABD73 /* SearchTrackUseCase.swift */; };
 		3781ED8D26BBA9EC00404A9D /* TrackAPIDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3781ED8C26BBA9EC00404A9D /* TrackAPIDataSource.swift */; };
 		3781ED8F26BBB8EE00404A9D /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3781ED8E26BBB8EE00404A9D /* Application.swift */; };
@@ -190,7 +189,6 @@
 		377874D526CB5F5B00A9BF73 /* SettingMainViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingMainViewController.storyboard; sourceTree = "<group>"; };
 		377874DB26CE008100A9BF73 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		377874DD26CE00AC00A9BF73 /* SignInViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignInViewController.storyboard; sourceTree = "<group>"; };
-		377874E026CE019000A9BF73 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		377C2E3B26DB86FA000ABD73 /* SearchTrackUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTrackUseCase.swift; sourceTree = "<group>"; };
 		3781ED8C26BBA9EC00404A9D /* TrackAPIDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackAPIDataSource.swift; sourceTree = "<group>"; };
 		3781ED8E26BBB8EE00404A9D /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
@@ -468,7 +466,6 @@
 		377874DF26CE014C00A9BF73 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				377874E026CE019000A9BF73 /* AuthService.swift */,
 				4FAA677926DC82DE00BE8467 /* JBLog.swift */,
 			);
 			path = Service;
@@ -1318,7 +1315,6 @@
 				3793D18026BE931200999C81 /* DetailSellerInfoCell.swift in Sources */,
 				37941E7626D2AE5A00B23F69 /* XCAssets+Generated.swift in Sources */,
 				37C1C48726B8145100151E68 /* SearchMainViewController.swift in Sources */,
-				377874E126CE019000A9BF73 /* AuthService.swift in Sources */,
 				37941E5B26CEA50F00B23F69 /* SignInViewModel.swift in Sources */,
 				3793D19426BE982900999C81 /* Date+Ext.swift in Sources */,
 				37941E6226D2370B00B23F69 /* DIContainer.swift in Sources */,
