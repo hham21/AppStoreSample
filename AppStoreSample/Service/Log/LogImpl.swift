@@ -32,7 +32,7 @@ final class LogImpl: Log {
     static let logFileURL: URL = {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
             .appendingPathComponent("Logs")
-            .appendingPathComponent("JBLog")
+            .appendingPathComponent("log")
             .appendingPathExtension("txt")
     }()
     
