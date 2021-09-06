@@ -16,7 +16,7 @@ final class SignInViewController: UIViewController, StoryboardBased {
     private let disposeBag: DisposeBag = .init()
     
     deinit {
-        JBLog.print(.debug("deinit"))
+        log.debug("deinit")
     }
 
     override func viewDidLoad() {
@@ -27,7 +27,7 @@ final class SignInViewController: UIViewController, StoryboardBased {
     private func bind() {
         viewModel.output.signInSuccess
             .drive(onNext: { bool in
-                JBLog.print(.debug("signInsuccess: \(bool)"))
+                log.debug("signInsuccess: \(bool)")
             })
             .disposed(by: disposeBag)
     }

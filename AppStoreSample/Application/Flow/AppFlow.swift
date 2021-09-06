@@ -33,25 +33,16 @@ enum AppStep: Step {
 
 struct AppStepper: Stepper {
     internal let steps: PublishRelay<Step> = .init()
-    private let authService: AuthService
     
     private let disposeBag: DisposeBag = .init()
     
     init() {
-        self.authService = DIContainer.resolve(AuthService.self)!
     }
     
     func readyToEmitSteps() {
-        switch authService.currentStatus {
-        case .signedIn:
-            Observable.just(AppStep.mainRequired)
-                .bind(to: steps)
-                .disposed(by: disposeBag)
-        case .signedOut:
-            Observable.just(AppStep.signedOut)
-                .bind(to: steps)
-                .disposed(by: disposeBag)
-        }
+        Observable.just(AppStep.signedOut)
+            .bind(to: steps)
+            .disposed(by: disposeBag)
     }
 }
 

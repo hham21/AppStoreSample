@@ -13,7 +13,7 @@ import RxFlow
 
 final class InternalMainViewModel: ViewModelType, Stepper {
     struct Input {
-        let changeLoggingToFileEnabled: BehaviorRelay<Bool> = .init(value: JBLog.isEnabledSaveToFile)
+        let changeLoggingToFileEnabled: BehaviorRelay<Bool> = .init(value: log.isEnabledSaveToFile)
         let requestLogFileUrl: PublishRelay<Void> = .init()
     }
     
@@ -56,7 +56,7 @@ final class InternalMainViewModel: ViewModelType, Stepper {
                 
                 data[0].items.append(.isLoggingToFileEnabled(isEnabled))
                 
-                JBLog.isEnabledSaveToFile = isEnabled
+                log.isEnabledSaveToFile = isEnabled
                 
                 return data
             }
@@ -67,13 +67,13 @@ final class InternalMainViewModel: ViewModelType, Stepper {
         
         input.requestLogFileUrl
             .filter { _ in
-                guard JBLog.doesLogFileExists else {
+                guard log.doesLogFileExists else {
                     errorRelay.accept(InternalMainError.noLogFile)
                     return false
                 }
                 return true
             }
-            .map { _ in JBLog.logFileURL }
+            .map { _ in log.logFileURL }
             .bind(to: requestedLogFileUrl)
             .disposed(by: disposeBag)
         

@@ -60,7 +60,7 @@ final class SettingMainViewController: UIViewController, StoryboardBased {
         viewModel.output
             .signedOut
             .subscribe(onNext: {
-                JBLog.print(.debug("signed out"))
+                log.debug("signed out")
             })
             .disposed(by: disposeBag)
         

@@ -106,7 +106,8 @@
 		37E99BCE26B7BDBD002A840B /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E99BCD26B7BDBD002A840B /* AppFlow.swift */; };
 		46E3F3ECA7455F3C2F23552D /* Pods_AppStoreSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3EBF40F1B004C813CF16071 /* Pods_AppStoreSample.framework */; };
 		484DDF5A740A7459AAE5CAA2 /* Pods_AppStoreSample_AppStoreSampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9CEB65ABA04CF93A2939DA /* Pods_AppStoreSample_AppStoreSampleTests.framework */; };
-		4FAA677A26DC82DE00BE8467 /* JBLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAA677926DC82DE00BE8467 /* JBLog.swift */; };
+		4F6F797E26E5E13C00039891 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6F797D26E5E13C00039891 /* Log.swift */; };
+		4FAA677A26DC82DE00BE8467 /* LogImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAA677926DC82DE00BE8467 /* LogImpl.swift */; };
 		4FAA677C26DC9A8B00BE8467 /* InternalFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAA677B26DC9A8B00BE8467 /* InternalFlow.swift */; };
 		4FAA677E26DC9AA500BE8467 /* InternalMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAA677D26DC9AA500BE8467 /* InternalMainViewController.swift */; };
 		4FAA678026DC9AB000BE8467 /* InternalMainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FAA677F26DC9AB000BE8467 /* InternalMainViewController.storyboard */; };
@@ -271,7 +272,8 @@
 		37E99BC626B7B9DD002A840B /* GetKeywordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetKeywordUseCase.swift; sourceTree = "<group>"; };
 		37E99BCD26B7BDBD002A840B /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
 		4776530808CACFF4FA0C7223 /* Pods-Data.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Data.release.xcconfig"; path = "Target Support Files/Pods-Data/Pods-Data.release.xcconfig"; sourceTree = "<group>"; };
-		4FAA677926DC82DE00BE8467 /* JBLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JBLog.swift; sourceTree = "<group>"; };
+		4F6F797D26E5E13C00039891 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		4FAA677926DC82DE00BE8467 /* LogImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogImpl.swift; sourceTree = "<group>"; };
 		4FAA677B26DC9A8B00BE8467 /* InternalFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalFlow.swift; sourceTree = "<group>"; };
 		4FAA677D26DC9AA500BE8467 /* InternalMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalMainViewController.swift; sourceTree = "<group>"; };
 		4FAA677F26DC9AB000BE8467 /* InternalMainViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InternalMainViewController.storyboard; sourceTree = "<group>"; };
@@ -466,7 +468,7 @@
 		377874DF26CE014C00A9BF73 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				4FAA677926DC82DE00BE8467 /* JBLog.swift */,
+				4F6F797C26E5E13100039891 /* Log */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -839,6 +841,15 @@
 				37C1C48A26B816A300151E68 /* SettingScene */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		4F6F797C26E5E13100039891 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				4F6F797D26E5E13C00039891 /* Log.swift */,
+				4FAA677926DC82DE00BE8467 /* LogImpl.swift */,
+			);
+			path = Log;
 			sourceTree = "<group>";
 		};
 		4FDE02CF26D61552003009C0 /* Keyword */ = {
@@ -1307,6 +1318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F6F797E26E5E13C00039891 /* Log.swift in Sources */,
 				37941E5D26CEB59A00B23F69 /* SettingMainViewModel.swift in Sources */,
 				3781ED8F26BBB8EE00404A9D /* Application.swift in Sources */,
 				37C1C4B026B8388B00151E68 /* SearchRecentKeywordCell.swift in Sources */,
@@ -1338,7 +1350,7 @@
 				3793D16B26BE92E200999C81 /* SearchDetailModel.swift in Sources */,
 				37C1C4A926B8376800151E68 /* SearchResultViewModel.swift in Sources */,
 				37C1C4A726B8291900151E68 /* ViewModelType.swift in Sources */,
-				4FAA677A26DC82DE00BE8467 /* JBLog.swift in Sources */,
+				4FAA677A26DC82DE00BE8467 /* LogImpl.swift in Sources */,
 				37C1C4B226B8388B00151E68 /* SearchTrackCell.swift in Sources */,
 				3793D18A26BE931200999C81 /* DetailHorizontalInfoCell.swift in Sources */,
 				377874DC26CE008100A9BF73 /* SignInViewController.swift in Sources */,

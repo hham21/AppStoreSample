@@ -39,7 +39,7 @@ final class InternalMainViewController: UIViewController, StoryboardBased {
             .errorOccured
             .asObservable()
             .subscribe(onNext: { error in
-                JBLog.print(.error(error))
+                log.warning(error)
             })
             .disposed(by: disposeBag)
         

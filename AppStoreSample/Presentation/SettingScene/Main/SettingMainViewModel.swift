@@ -47,7 +47,7 @@ final class SettingMainViewModel: ViewModelType, Stepper {
             .map { $0.0 }
             .flatMap { $0.settingUseCase.getSetting() }
             .map { SettingMain().buildModel($0) }
-            .do(onNext: { JBLog.print(.debug($0)) })
+            .do(onNext: { log.debug($0) })
             .bind(to: dataSourceRelay)
             .disposed(by: disposeBag)
         
