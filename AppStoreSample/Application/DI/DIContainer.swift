@@ -43,10 +43,6 @@ let DIContainer: Container = .init { container in
     
     // Service
     
-    container.register(AuthService.self) { _ in
-        AuthServiceImpl()
-    }
-    
     // MARK: - SignIn
     
     // ViewModel

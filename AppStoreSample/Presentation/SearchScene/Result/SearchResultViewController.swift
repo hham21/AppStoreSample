@@ -60,7 +60,7 @@ final class SearchResultViewController: UIViewController, StoryboardBased {
     private func bindError() {
         viewModel.output.error
             .emit(onNext: { error in
-                JBLog.print(.error(error))
+                log.error(error)
             })
             .disposed(by: disposeBag)
     }

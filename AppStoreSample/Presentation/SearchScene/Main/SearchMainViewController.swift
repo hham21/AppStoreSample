@@ -90,7 +90,7 @@ final class SearchMainViewController: UIViewController, StoryboardBased {
     private func bindError() {
         viewModel.output.error
             .emit(onNext: { error in
-                JBLog.print(.error(error))
+                log.warning(error)
             })
             .disposed(by: disposeBag)
     }

@@ -16,9 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // MARK: - Log
-        JBLog.initialize()
-        
-        JBLog.print(.info("Hello!"))
+        log.info("Hello!")
 
         // MARK: - App Start
         
