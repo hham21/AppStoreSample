@@ -282,6 +282,7 @@
 		4FAA678526DCB7DE00BE8467 /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		4FAA678626DCB7DE00BE8467 /* Keyword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyword.swift; sourceTree = "<group>"; };
 		4FAA678F26DCB91C00BE8467 /* KeywordRealmDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordRealmDataSource.swift; sourceTree = "<group>"; };
+		4FBEB49226E798B600DDE70C /* AppStoreSample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppStoreSample-Bridging-Header.h"; sourceTree = "<group>"; };
 		4FDE02CD26D6070E003009C0 /* SettingMainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMainModel.swift; sourceTree = "<group>"; };
 		4FDE02D126D61586003009C0 /* SettingDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDataSource.swift; sourceTree = "<group>"; };
 		4FDE02D626D617C4003009C0 /* RMSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMSetting.swift; sourceTree = "<group>"; };
@@ -828,6 +829,7 @@
 				37C1C48126B80E6100151E68 /* Flow */,
 				37E99B7E26B7B892002A840B /* AppDelegate.swift */,
 				3781ED8E26BBB8EE00404A9D /* Application.swift */,
+				4FBEB49226E798B600DDE70C /* AppStoreSample-Bridging-Header.h */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -1026,6 +1028,7 @@
 					};
 					37E99B7A26B7B892002A840B = {
 						CreatedOnToolsVersion = 12.5;
+						LastSwiftMigration = 1250;
 					};
 					37E99B9626B7B92A002A840B = {
 						CreatedOnToolsVersion = 12.5;
@@ -1646,6 +1649,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
 				INFOPLIST_FILE = AppStoreSample/Resource/Info.plist;
@@ -1656,6 +1660,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pookjw.AppStoreSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AppStoreSample/Application/AppStoreSample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1668,6 +1674,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P53D29U9LJ;
 				INFOPLIST_FILE = AppStoreSample/Resource/Info.plist;
@@ -1678,6 +1685,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pookjw.AppStoreSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AppStoreSample/Application/AppStoreSample-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

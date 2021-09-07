@@ -16,7 +16,8 @@ def shared_pods
   pod 'Swinject'
   pod 'SwinjectStoryboard'
   pod 'SwiftLint'
-  pod 'SwiftGen', '~> 6.0' 
+  pod 'SwiftGen', '~> 6.0'
+  pod 'Zip', '~> 2.1'
 end
 
 target 'AppStoreSample' do

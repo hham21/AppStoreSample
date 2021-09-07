@@ -39,18 +39,36 @@ enum LogData {
     
 }
 
+/// 로그 관련 에러
+enum LogError: Error {
+    case exportNoLogFiles
+}
+
 protocol Log {
-    /// 로그가 전송될 때마다 이벤트가 날라온다.
-    static var triggeredLog: PublishRelay<LogData> { get }
+    // MARK: - 로그 파일
     
     /// 파일로 저장할지 말지를 설정한다. 비활성화해도 파일은 유지되어야 한다.
     static var isEnabledSaveToFile: Bool { get set }
     
-    /// 로그 파일의 URL이다. 존재하지 않을 수 있다.
-    static var logFileURL: URL { get }
+    /// 현재 작업 중인 로그 파일의 URL이다. 로그가 하나도 안 썼을 경우, 파일이 존재하지 않을 수 있다.
+    static var currentLogFileURL: URL { get }
     
-    /// 로그 파일이 존재하는지 알려준다.
-    static var doesLogFileExists: Bool { get }
+    /// currentLogFileURL이 존재하는지 알려준다.
+    static var doesCurrentLogFileExist: Bool { get }
+    
+    /// 로그 파일이 모인 폴더이다. 로그가 하나도 없거나, 권한 문제로 작성에 실패했을 경우 존재하지 않을 수 있다.
+    static var logFilesDirURL: URL { get }
+    
+    /// 로그 파일들의 목록이다. UNIX Creation Date에 따라 sort 된다.
+    static var contentsOfLogFilesDir: [URL] { get }
+    
+    /// 로그 파일들을 모두 ZIP 파일로 압축한다. dispose가 될 경우 압축된 파일은 삭제된다.
+    static func archiveAllLogFiles() -> Observable<URL>
+    
+    // MARK: - 로그 발생
+    
+    /// 로그가 전송될 때마다 이벤트가 날라온다.
+    static var triggeredLog: PublishRelay<LogData> { get }
     
     /// 발생 시 정상작동에 문제가 생기는 경우
     ///
