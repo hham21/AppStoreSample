@@ -66,14 +66,7 @@ final class InternalMainViewModel: ViewModelType, Stepper {
         //
         
         input.requestLogFileUrl
-            .filter { _ in
-                guard log.doesLogFileExists else {
-                    errorRelay.accept(InternalMainError.noLogFile)
-                    return false
-                }
-                return true
-            }
-            .map { _ in log.logFileURL }
+            .flatMap { _ in log.archiveAllLogFiles() }
             .bind(to: requestedLogFileUrl)
             .disposed(by: disposeBag)
         
