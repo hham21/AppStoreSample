@@ -50,19 +50,11 @@ final class SearchResultViewModel: ViewModel {
     internal func mutate(input: Input) -> Observable<Mutation> {
         switch input {
         case .searchBarTextUpdated(let text):
-            return Observable.just(text)
-                .withUnretained(self)
-                .flatMapLatest {
-                    $0.0.getKeywordUseCase.getKeywordsContains(text: $0.1)
-                }
+            return getKeywordUseCase.getKeywordsContains(text: text)
                 .compactMap { .getKeywords($0) }
                 .catch { .just(.error($0)) }
         case .searchButtonTapped(let text):
-            return Observable.just(text)
-                .withUnretained(self)
-                .flatMapLatest {
-                    $0.0.searchTrackUseCase.getTracks($0.1)
-                }
+            return searchTrackUseCase.getTracks(text)
                 .compactMap { .getTracks($0) }
                 .catch { .just(.error($0)) }
         }

@@ -66,12 +66,14 @@ extension ViewModelWithStepper {
         input
             .withUnretained(self)
             .flatMapLatest { $0.0.coordinate(input: $0.1) }
+            .observe(on: MainScheduler.instance)
             .bind(to: steps)
             .disposed(by: disposeBag)
         
         mutation
             .withUnretained(self)
             .flatMapLatest { $0.0.reduce(mutation: $0.1) }
+            .observe(on: MainScheduler.instance)
             .bind(to: output)
             .disposed(by: disposeBag)
     }

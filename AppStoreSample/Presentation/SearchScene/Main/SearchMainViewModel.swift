@@ -45,12 +45,7 @@ final class SearchMainViewModel: ViewModelWithStepper {
     internal func mutate(input: Input) -> Observable<Mutation> {
         switch input {
         case .initialLoad, .reload:
-            // getKeywords
-            return Observable.just(())
-                .withUnretained(self)
-                .flatMapLatest {
-                    $0.0.getKeywordUseCase.getKeywords()
-                }
+            return getKeywordUseCase.getKeywords()
                 .map { Mutation.getKeyword($0) }
         default:
             return Observable.empty()
