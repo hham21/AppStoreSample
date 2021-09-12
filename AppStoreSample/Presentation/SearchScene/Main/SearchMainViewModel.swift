@@ -29,20 +29,20 @@ final class SearchMainViewModel: ViewModelWithStepper {
     }
     
     let input: PublishRelay<Input> = .init()
-    internal var mutation: PublishRelay<Mutation> = .init()
+    let mutation: PublishRelay<Mutation> = .init()
     let output: BehaviorRelay<Output> = .init(value: .init())
-    
-    var steps: PublishRelay<Step> = .init()
+    let steps: PublishRelay<Step> = .init()
     
     private let getKeywordUseCase: GetKeywordUseCase
-    internal let disposeBag: DisposeBag = .init()
+    
+    let disposeBag: DisposeBag = .init()
     
     init(getKeywordUseCase: GetKeywordUseCase) {
         self.getKeywordUseCase = getKeywordUseCase
         bind()
     }
     
-    internal func mutate(input: Input) -> Observable<Mutation> {
+    func mutate(input: Input) -> Observable<Mutation> {
         switch input {
         case .initialLoad, .reload:
             return getKeywordUseCase.getKeywords()
@@ -52,7 +52,7 @@ final class SearchMainViewModel: ViewModelWithStepper {
         }
     }
     
-    internal func reduce(mutation: Mutation) -> Observable<Output> {
+    func reduce(mutation: Mutation) -> Observable<Output> {
         var newOutput = output.value
         
         switch mutation {
@@ -66,7 +66,7 @@ final class SearchMainViewModel: ViewModelWithStepper {
         return .just(newOutput)
     }
     
-    internal func coordinate(input: Input) -> Observable<Step> {
+    func coordinate(input: Input) -> Observable<Step> {
         switch input {
         case .trackSelected(let track):
             return Observable.just(track)

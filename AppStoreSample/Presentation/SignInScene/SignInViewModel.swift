@@ -21,21 +21,21 @@ final class SignInViewModel: ViewModelWithStepper {
     var input: PublishRelay<Input> = .init()
     var output: BehaviorRelay<Output> = .init(value: .init())
     
-    internal var disposeBag: DisposeBag = .init()
-    internal var steps: PublishRelay<Step> = .init()
+    let disposeBag: DisposeBag = .init()
+    let steps: PublishRelay<Step> = .init()
     
     init() {
         bind()
     }
     
-    internal func reduce(mutation: Input) -> Observable<Output> {
+    func reduce(mutation: Input) -> Observable<Output> {
         switch mutation {
         case .signInButtonTapped:
             return .just(.init(didSignIn: true))
         }
     }
     
-    internal func coordinate(input: Input) -> Observable<Step> {
+    func coordinate(input: Input) -> Observable<Step> {
         switch input {
         case .signInButtonTapped:
             return .just(AppStep.didSignIn)

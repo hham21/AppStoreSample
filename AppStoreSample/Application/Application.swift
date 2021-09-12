@@ -27,10 +27,6 @@ final class Application {
         startToLogCoordinator()
         coordinator.coordinate(flow: appFlow, with: stepper)
         window.makeKeyAndVisible()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now()+3) {
-            self.coordinator.navigate(to: AppStep.searchMain)
-        }
     }
     
     // log

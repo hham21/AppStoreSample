@@ -20,18 +20,18 @@ final class DetailViewModel: ViewModel {
         var artWorkURL: String?
     }
     
-    var input: PublishRelay<Input> = .init()
-    internal var mutation: PublishRelay<Input> = .init()
-    var output: BehaviorRelay<Output> = .init(value: .init())
+    let input: PublishRelay<Input> = .init()
+    let mutation: PublishRelay<Input> = .init()
+    let output: BehaviorRelay<Output> = .init(value: .init())
     
-    internal let disposeBag: DisposeBag = .init()
+    let disposeBag: DisposeBag = .init()
     
     init(with data: Track) {
         bind()
         input.accept(.initialData(data))
     }
     
-    internal func reduce(mutation: Input) -> Observable<Output> {
+    func reduce(mutation: Input) -> Observable<Output> {
         var newOutput = output.value
         switch mutation {
         case .initialData(let track):

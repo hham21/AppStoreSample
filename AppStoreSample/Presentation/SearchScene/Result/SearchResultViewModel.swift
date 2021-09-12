@@ -30,13 +30,13 @@ final class SearchResultViewModel: ViewModel {
     }
 
     let input: PublishRelay<Input> = .init()
-    internal let mutation: PublishRelay<Mutation> = .init()
+    let mutation: PublishRelay<Mutation> = .init()
     let output: BehaviorRelay<Output> = .init(value: .init())
     
     private let getKeywordUseCase: GetKeywordUseCase
     private let searchTrackUseCase: SearchTrackUseCase!
             
-    internal let disposeBag: DisposeBag = .init()
+    let disposeBag: DisposeBag = .init()
     
     init(
         getKeywordUseCase: GetKeywordUseCase,
@@ -47,7 +47,7 @@ final class SearchResultViewModel: ViewModel {
         bind()
     }
     
-    internal func mutate(input: Input) -> Observable<Mutation> {
+    func mutate(input: Input) -> Observable<Mutation> {
         switch input {
         case .searchBarTextUpdated(let text):
             return getKeywordUseCase.getKeywordsContains(text: text)
@@ -60,7 +60,7 @@ final class SearchResultViewModel: ViewModel {
         }
     }
     
-    internal func reduce(mutation: Mutation) -> Observable<Output> {
+    func reduce(mutation: Mutation) -> Observable<Output> {
         var newOuput = output.value
         
         switch mutation {
