@@ -10,7 +10,7 @@ import RxCocoa
 import RxFlow
 import Domain
 
-final class SettingMainViewModel: ViewModelType, Stepper {
+final class SettingMainViewModel: Stepper {
     struct Input {
         let initialLoad: PublishRelay<Void> = .init()
         let pushTapped: PublishRelay<SettingMain.Destination> = .init()

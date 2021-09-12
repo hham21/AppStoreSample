@@ -9,27 +9,34 @@ import Domain
 import RxSwift
 import RxCocoa
 import RxDataSources
+import RxFlow
 
-final class SearchResultViewModel: ViewModelType {
-    struct Input {
-        let searchBarTextUpdated: PublishRelay<String> = .init()
-        let searchButtonTapped: PublishRelay<String> = .init()
+final class SearchResultViewModel: ViewModel {
+    enum Input {
+        case searchBarTextUpdated(String)
+        case searchButtonTapped(String)
+    }
+    
+    enum Mutation {
+        case getKeywords([Keyword])
+        case getTracks([Track])
+        case error(Error)
     }
     
     struct Output {
-        let dataSource: Driver<[SearchResult.Model]>
-        let error: Signal<Error>
+        var dataSource: [SearchResult.Model]?
+        var tracks: [Track]?
+        var error: Error?
     }
-    
-    lazy var input: Input = .init()
-    lazy var output: Output = mutate(input: input)
+
+    let input: PublishRelay<Input> = .init()
+    internal let mutation: PublishRelay<Mutation> = .init()
+    let output: BehaviorRelay<Output> = .init(value: .init())
     
     private let getKeywordUseCase: GetKeywordUseCase
     private let searchTrackUseCase: SearchTrackUseCase!
-    
-    private var tracks: BehaviorRelay<[Track]> = .init(value: [])
-        
-    private let disposeBag: DisposeBag = .init()
+            
+    internal let disposeBag: DisposeBag = .init()
     
     init(
         getKeywordUseCase: GetKeywordUseCase,
@@ -37,66 +44,49 @@ final class SearchResultViewModel: ViewModelType {
     ) {
         self.getKeywordUseCase = getKeywordUseCase
         self.searchTrackUseCase = searchTrackUseCase
+        bind()
     }
     
-    func mutate(input: Input) -> Output {
-        // getKeywords
-        let getKeywords = input.searchBarTextUpdated
-            .distinctUntilChanged()
-            .filter { !$0.isEmpty }
-            .withUnretained(self)
-            .flatMapLatest {
-                $0.0.getKeywordUseCase.getKeywordsContains(text: $0.1)
-            }
-            .materialize()
-            .share()
+    internal func mutate(input: Input) -> Observable<Mutation> {
+        switch input {
+        case .searchBarTextUpdated(let text):
+            return Observable.just(text)
+                .withUnretained(self)
+                .flatMapLatest {
+                    $0.0.getKeywordUseCase.getKeywordsContains(text: $0.1)
+                }
+                .compactMap { .getKeywords($0) }
+                .catch { .just(.error($0)) }
+        case .searchButtonTapped(let text):
+            return Observable.just(text)
+                .withUnretained(self)
+                .flatMapLatest {
+                    $0.0.searchTrackUseCase.getTracks($0.1)
+                }
+                .compactMap { .getTracks($0) }
+                .catch { .just(.error($0)) }
+        }
+    }
+    
+    internal func reduce(mutation: Mutation) -> Observable<Output> {
+        var newOuput = output.value
         
-        let getKeywordsData = Observable.merge(getKeywords)
-            .compactMap { $0.element }
-            .compactMap { SearchResult().buildModel($0) }
+        switch mutation {
+        case .getKeywords(let keywords):
+            let dataSource = SearchResult().buildModel(keywords)
+            newOuput.dataSource = dataSource
+        case .getTracks(let tracks):
+            let dataSource = SearchResult().buildModel(tracks)
+            newOuput.dataSource = dataSource
+            newOuput.tracks = tracks
+        case .error(let error):
+            newOuput.error = error
+        }
         
-        let getKeywordsError = getKeywords
-            .compactMap { $0.error }
-        
-        // getTracks
-        let getTracks = input.searchButtonTapped
-            .withUnretained(self)
-            .flatMapLatest {
-                $0.0.searchTrackUseCase.getTracks($0.1)
-            }
-            .materialize()
-            .share()
-        
-        let getTracksData = getTracks
-            .compactMap { $0.element }
-            .do(onNext: { [weak self] tracks in
-                self?.tracks.accept(tracks)
-            })
-            .compactMap { SearchResult().buildModel($0) }
-        
-        let getTracksError = getTracks
-            .compactMap { $0.error }
-        
-        // dataSource binding
-        let dataSource = Observable
-            .merge(
-                getTracksData,
-                getKeywordsData
-            )
-            .asDriver(onErrorJustReturn: [])
-        
-        // errors binding
-        let error = Observable
-            .merge(
-                getTracksError,
-                getKeywordsError
-            )
-            .asSignal(onErrorJustReturn: RxError.unknown)
-        
-        return Output(dataSource: dataSource, error: error)
+        return .just(newOuput)
     }
     
     func getTrack(_ trackId: Int) -> Track? {
-        tracks.value.first(where: { $0.trackId == trackId })
+        output.value.tracks?.first(where: { $0.trackId == trackId })
     }
 }

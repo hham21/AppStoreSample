@@ -9,32 +9,36 @@ import RxSwift
 import RxCocoa
 import RxFlow
 
-final class SignInViewModel: ViewModelType, Stepper {
-    struct Input {
-        let signInButtonTapped: PublishRelay<Void> = .init()
+final class SignInViewModel: ViewModelWithStepper {
+    enum Input {
+        case signInButtonTapped
     }
     
     struct Output {
-        let signInSuccess: Driver<Bool>
+        var didSignIn: Bool?
     }
     
-    lazy var input: Input = .init()
-    lazy var output: Output = mutate(input: input)
+    var input: PublishRelay<Input> = .init()
+    var output: BehaviorRelay<Output> = .init(value: .init())
     
-    var steps: PublishRelay<Step> = .init()
+    internal var disposeBag: DisposeBag = .init()
+    internal var steps: PublishRelay<Step> = .init()
     
-    private let disposeBag: DisposeBag = .init()
+    init() {
+        bind()
+    }
     
-    func mutate(input: Input) -> Output {
-        let signedIn = input.signInButtonTapped
-            .map { true }
-            .asDriver(onErrorJustReturn: false)
-        
-        input.signInButtonTapped
-            .map { _ in AppStep.didSignIn }
-            .bind(to: steps)
-            .disposed(by: disposeBag)
-        
-        return Output(signInSuccess: signedIn)
+    internal func reduce(mutation: Input) -> Observable<Output> {
+        switch mutation {
+        case .signInButtonTapped:
+            return .just(.init(didSignIn: true))
+        }
+    }
+    
+    internal func coordinate(input: Input) -> Observable<Step> {
+        switch input {
+        case .signInButtonTapped:
+            return .just(AppStep.didSignIn)
+        }
     }
 }

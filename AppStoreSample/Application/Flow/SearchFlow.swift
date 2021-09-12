@@ -63,7 +63,7 @@ final class SearchFlow: Flow {
     }
     
     private func coordinateToSearchDetailVC(with track: Track) -> FlowContributors {
-        let viewModel: DetailViewModel = DIContainer.resolve(DetailViewModel.self, argument: Observable.just(track))!
+        let viewModel: DetailViewModel = DIContainer.resolve(DetailViewModel.self, argument: track)!
         let detailVC: SearchDetailViewController = DIContainer.resolve(SearchDetailViewController.self)!
         detailVC.viewModel = viewModel
         rootViewController.pushViewController(detailVC, animated: true)

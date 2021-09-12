@@ -8,31 +8,42 @@
 import Domain
 import RxSwift
 import RxCocoa
+import RxFlow
 
-final class DetailViewModel {
-    private let disposeBag: DisposeBag = .init()
+final class DetailViewModel: ViewModel {
+    enum Input {
+        case initialData(Track)
+    }
     
-    let dataSource: Driver<[SearchDetail.Model]>
-    private var artworkURL: BehaviorRelay<String?> = .init(value: nil)
+    struct Output {
+        var dataSource: [SearchDetail.Model]?
+        var artWorkURL: String?
+    }
     
-    init(with data: Observable<Track>) {
-        let initialData = data
-            .share()
-        
-        initialData
-            .map { $0.artworkURL }
-            .bind(to: artworkURL)
-            .disposed(by: disposeBag)
-        
-        let dataSource = initialData
-            .map(SearchDetail.DetailViewItemModel().parse)
-            .map { [SearchDetail.Model(model: .none, items: $0)] }
-            .asDriver(onErrorJustReturn: [])
-        
-        self.dataSource = dataSource
+    var input: PublishRelay<Input> = .init()
+    internal var mutation: PublishRelay<Input> = .init()
+    var output: BehaviorRelay<Output> = .init(value: .init())
+    
+    internal let disposeBag: DisposeBag = .init()
+    
+    init(with data: Track) {
+        bind()
+        input.accept(.initialData(data))
+    }
+    
+    internal func reduce(mutation: Input) -> Observable<Output> {
+        var newOutput = output.value
+        switch mutation {
+        case .initialData(let track):
+            let items = SearchDetail.DetailViewItemModel().parse(data: track)
+            let dataSource = [SearchDetail.Model(model: .none, items: items)]
+            newOutput.dataSource = dataSource
+            newOutput.artWorkURL = track.artworkURL
+        }
+        return .just(newOutput)
     }
     
     func getArtworkURL() -> String? {
-        artworkURL.value
+        output.value.artWorkURL
     }
 }

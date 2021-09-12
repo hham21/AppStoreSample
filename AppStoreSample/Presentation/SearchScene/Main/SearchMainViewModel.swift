@@ -11,67 +11,73 @@ import RxCocoa
 import RxDataSources
 import RxFlow
 
-final class SearchMainViewModel: ViewModelType, Stepper {
-    struct Input {
-        let initialLoad: PublishRelay<Void> = .init()
-        let reload: PublishRelay<Void> = .init()
-        let trackSelected: PublishRelay<Track> = .init()
+final class SearchMainViewModel: ViewModelWithStepper {
+    enum Input {
+        case initialLoad
+        case reload
+        case trackSelected(Track)
+    }
+    
+    enum Mutation {
+        case getKeyword([Keyword])
+        case error(Error)
     }
     
     struct Output {
-        let dataSource: Driver<[SearchMain.Model]>
-        let error: Signal<Error>
+        var dataSource: [SearchMain.Model]?
+        var error: Error?
     }
     
-    lazy var input: Input = .init()
-    lazy var output: Output = mutate(input: input)
+    let input: PublishRelay<Input> = .init()
+    internal var mutation: PublishRelay<Mutation> = .init()
+    let output: BehaviorRelay<Output> = .init(value: .init())
     
     var steps: PublishRelay<Step> = .init()
     
     private let getKeywordUseCase: GetKeywordUseCase
-    private let disposeBag: DisposeBag = .init()
+    internal let disposeBag: DisposeBag = .init()
     
     init(getKeywordUseCase: GetKeywordUseCase) {
         self.getKeywordUseCase = getKeywordUseCase
+        bind()
     }
     
-    func mutate(input: Input) -> Output {
+    internal func mutate(input: Input) -> Observable<Mutation> {
+        switch input {
+        case .initialLoad, .reload:
+            // getKeywords
+            return Observable.just(())
+                .withUnretained(self)
+                .flatMapLatest {
+                    $0.0.getKeywordUseCase.getKeywords()
+                }
+                .map { Mutation.getKeyword($0) }
+        default:
+            return Observable.empty()
+        }
+    }
+    
+    internal func reduce(mutation: Mutation) -> Observable<Output> {
+        var newOutput = output.value
         
-        input.trackSelected
-            .compactMap { AppStep.searchDetail(track: $0) }
-            .bind(to: steps)
-            .disposed(by: disposeBag)
-
-        // getKeywords
-        let getKeywords = Observable
-            .merge(
-                input.initialLoad.asObservable(),
-                input.reload.asObservable()
-            )
-            .withUnretained(self)
-            .flatMapLatest {
-                $0.0.getKeywordUseCase.getKeywords()
-            }
-            .materialize()
-            .share()
+        switch mutation {
+        case .getKeyword(let keywords):
+            let dataSource = SearchMain().buildModel(keywords)
+            newOutput.dataSource = dataSource
+        case .error(let error):
+            newOutput.error = error
+        }
         
-        let getKeywordsData = getKeywords
-            .compactMap { $0.element }
-            .compactMap(SearchMain().buildModel)
-        
-        let getKeywordsError = getKeywords
-            .compactMap { $0.error }
-        
-        // Merge DataSources
-        let dataSource = Observable
-            .merge(getKeywordsData)
-            .asDriver(onErrorJustReturn: [])
-        
-        // Merge Errors
-        let error = Observable
-            .merge(getKeywordsError)
-            .asSignal(onErrorJustReturn: RxError.unknown)
-        
-        return Output(dataSource: dataSource, error: error)
+        return .just(newOutput)
+    }
+    
+    internal func coordinate(input: Input) -> Observable<Step> {
+        switch input {
+        case .trackSelected(let track):
+            return Observable.just(track)
+                .compactMap { AppStep.searchDetail(track: $0) }
+        default:
+            return Observable.empty()
+        }
     }
 }

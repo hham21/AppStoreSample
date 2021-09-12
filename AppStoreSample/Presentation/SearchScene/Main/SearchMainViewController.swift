@@ -23,7 +23,7 @@ final class SearchMainViewController: UIViewController, StoryboardBased {
         super.viewDidLoad()
         setAttributes()
         bind()
-        viewModel.input.initialLoad.accept(())
+        viewModel.input.accept(.initialLoad)
     }
     
     private func setAttributes() {
@@ -82,15 +82,15 @@ final class SearchMainViewController: UIViewController, StoryboardBased {
     }
     
     private func bindDataSource() {
-        viewModel.output.dataSource
-            .drive(tableView.rx.items(dataSource: dataSource))
+        viewModel.output.compactMap { $0.dataSource }
+            .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
     }
     
     private func bindError() {
-        viewModel.output.error
-            .emit(onNext: { error in
-                log.warning(error)
+        viewModel.output.compactMap { $0.error }
+            .subscribe(onNext: { error in
+                log.debug(error)
             })
             .disposed(by: disposeBag)
     }
@@ -157,7 +157,7 @@ extension SearchMainViewController: UISearchResultsUpdating {
         guard let text: String = searchController.searchBar.text else {
             return
         }
-        viewModel.input.reload.accept(())
+        viewModel.input.accept(.reload)
         searchResultVC.updateSearchResult(text: text.lowercased())
     }
 }
@@ -178,7 +178,7 @@ extension SearchMainViewController: UISearchBarDelegate {
 
 extension SearchMainViewController: SearchResultViewControllerDelegate {
     func searchResultDidSelectTrack(with data: Track) {
-        viewModel.input.trackSelected.accept(data)
+        viewModel.input.accept(.trackSelected(data))
     }
     
     func searchResultScrollViewWillBeginDragging() {

@@ -11,7 +11,7 @@ import RxCocoa
 import RxDataSources
 import RxFlow
 
-final class InternalMainViewModel: ViewModelType, Stepper {
+final class InternalMainViewModel: Stepper {
     struct Input {
         let changeLoggingToFileEnabled: BehaviorRelay<Bool> = .init(value: log.isEnabledSaveToFile)
         let requestLogFileUrl: PublishRelay<Void> = .init()

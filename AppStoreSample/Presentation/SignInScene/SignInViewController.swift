@@ -25,15 +25,15 @@ final class SignInViewController: UIViewController, StoryboardBased {
     }
     
     private func bind() {
-        viewModel.output.signInSuccess
-            .drive(onNext: { bool in
+        viewModel.output.compactMap { $0.didSignIn }
+            .subscribe(onNext: { bool in
                 log.debug("signInsuccess: \(bool)")
             })
             .disposed(by: disposeBag)
     }
     
     @IBAction func signInButtonTapped(_ sender: UIButton) {
-        viewModel.input.signInButtonTapped.accept(())
+        viewModel.input.accept(.signInButtonTapped)
     }
 }
 
