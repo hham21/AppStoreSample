@@ -25,7 +25,7 @@ final class SignInViewController: UIViewController, StoryboardBased {
     }
     
     private func bind() {
-        viewModel.output.compactMap { $0.didSignIn }
+        viewModel.state.compactMap { $0.didSignIn }
             .subscribe(onNext: { bool in
                 log.debug("signInsuccess: \(bool)")
             })
@@ -33,7 +33,7 @@ final class SignInViewController: UIViewController, StoryboardBased {
     }
     
     @IBAction func signInButtonTapped(_ sender: UIButton) {
-        viewModel.input.accept(.signInButtonTapped)
+        viewModel.action.onNext(.signInButtonTapped)
     }
 }
 

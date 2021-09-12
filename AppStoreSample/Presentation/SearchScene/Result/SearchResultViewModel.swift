@@ -10,9 +10,10 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 import RxFlow
+import ReactorKit
 
-final class SearchResultViewModel: ViewModel {
-    enum Input {
+final class SearchResultViewModel: Reactor {
+    enum Action {
         case searchBarTextUpdated(String)
         case searchButtonTapped(String)
     }
@@ -23,15 +24,13 @@ final class SearchResultViewModel: ViewModel {
         case error(Error)
     }
     
-    struct Output {
-        var dataSource: [SearchResult.Model]?
-        var tracks: [Track]?
+    struct State {
+        var dataSource: [SearchResult.Model] = .init()
+        var tracks: [Track] = .init()
         var error: Error?
     }
 
-    let input: PublishRelay<Input> = .init()
-    let mutation: PublishRelay<Mutation> = .init()
-    let output: BehaviorRelay<Output> = .init(value: .init())
+    let initialState: State = .init()
     
     private let getKeywordUseCase: GetKeywordUseCase
     private let searchTrackUseCase: SearchTrackUseCase!
@@ -44,11 +43,10 @@ final class SearchResultViewModel: ViewModel {
     ) {
         self.getKeywordUseCase = getKeywordUseCase
         self.searchTrackUseCase = searchTrackUseCase
-        bind()
     }
     
-    func mutate(input: Input) -> Observable<Mutation> {
-        switch input {
+    func mutate(action: Action) -> Observable<Mutation> {
+        switch action {
         case .searchBarTextUpdated(let text):
             return getKeywordUseCase.getKeywordsContains(text: text)
                 .compactMap { .getKeywords($0) }
@@ -60,25 +58,25 @@ final class SearchResultViewModel: ViewModel {
         }
     }
     
-    func reduce(mutation: Mutation) -> Observable<Output> {
-        var newOuput = output.value
+    func reduce(state: State, mutation: Mutation) -> State {
+        var newState = state
         
         switch mutation {
         case .getKeywords(let keywords):
             let dataSource = SearchResult().buildModel(keywords)
-            newOuput.dataSource = dataSource
+            newState.dataSource = dataSource
         case .getTracks(let tracks):
             let dataSource = SearchResult().buildModel(tracks)
-            newOuput.dataSource = dataSource
-            newOuput.tracks = tracks
+            newState.dataSource = dataSource
+            newState.tracks = tracks
         case .error(let error):
-            newOuput.error = error
+            newState.error = error
         }
         
-        return .just(newOuput)
+        return newState
     }
     
     func getTrack(_ trackId: Int) -> Track? {
-        output.value.tracks?.first(where: { $0.trackId == trackId })
+        currentState.tracks.first(where: { $0.trackId == trackId })
     }
 }

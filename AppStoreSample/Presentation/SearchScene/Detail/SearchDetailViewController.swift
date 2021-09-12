@@ -44,13 +44,9 @@ final class SearchDetailViewController: UIViewController, StoryboardBased {
     }
     
     private func bind() {
-        viewModel.output.compactMap { $0.dataSource }
+        viewModel.state.compactMap { $0.dataSource }
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
-        
-//        viewModel.dataSource
-//            .drive(tableView.rx.items(dataSource: dataSource))
-//            .disposed(by: disposeBag)
     }
     
     private func createDataSource() -> SearchDetail.DataSource {

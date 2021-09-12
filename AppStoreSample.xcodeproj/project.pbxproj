@@ -76,7 +76,6 @@
 		37C1C49C26B8214700151E68 /* MainRecentKeywordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37C1C49826B8214700151E68 /* MainRecentKeywordCell.xib */; };
 		37C1C49D26B8214700151E68 /* MainRecentKeywordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1C49926B8214700151E68 /* MainRecentKeywordCell.swift */; };
 		37C1C49F26B8228900151E68 /* SearchMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1C49E26B8228900151E68 /* SearchMainViewModel.swift */; };
-		37C1C4A726B8291900151E68 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1C4A626B8291900151E68 /* ViewModelType.swift */; };
 		37C1C4A926B8376800151E68 /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1C4A826B8376800151E68 /* SearchResultViewModel.swift */; };
 		37C1C4AF26B8388B00151E68 /* SearchRecentKeywordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37C1C4AB26B8388B00151E68 /* SearchRecentKeywordCell.xib */; };
 		37C1C4B026B8388B00151E68 /* SearchRecentKeywordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1C4AC26B8388B00151E68 /* SearchRecentKeywordCell.swift */; };
@@ -241,7 +240,6 @@
 		37C1C49826B8214700151E68 /* MainRecentKeywordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainRecentKeywordCell.xib; sourceTree = "<group>"; };
 		37C1C49926B8214700151E68 /* MainRecentKeywordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainRecentKeywordCell.swift; sourceTree = "<group>"; };
 		37C1C49E26B8228900151E68 /* SearchMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMainViewModel.swift; sourceTree = "<group>"; };
-		37C1C4A626B8291900151E68 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		37C1C4A826B8376800151E68 /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
 		37C1C4AB26B8388B00151E68 /* SearchRecentKeywordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchRecentKeywordCell.xib; sourceTree = "<group>"; };
 		37C1C4AC26B8388B00151E68 /* SearchRecentKeywordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRecentKeywordCell.swift; sourceTree = "<group>"; };
@@ -631,7 +629,6 @@
 		37C1C4A526B828FD00151E68 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				37C1C4A626B8291900151E68 /* ViewModelType.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1352,7 +1349,6 @@
 				4FDE02CE26D6070E003009C0 /* SettingMainModel.swift in Sources */,
 				3793D16B26BE92E200999C81 /* SearchDetailModel.swift in Sources */,
 				37C1C4A926B8376800151E68 /* SearchResultViewModel.swift in Sources */,
-				37C1C4A726B8291900151E68 /* ViewModelType.swift in Sources */,
 				4FAA677A26DC82DE00BE8467 /* LogImpl.swift in Sources */,
 				37C1C4B226B8388B00151E68 /* SearchTrackCell.swift in Sources */,
 				3793D18A26BE931200999C81 /* DetailHorizontalInfoCell.swift in Sources */,

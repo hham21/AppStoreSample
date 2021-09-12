@@ -18,6 +18,7 @@ def shared_pods
   pod 'SwiftLint'
   pod 'SwiftGen', '~> 6.0'
   pod 'Zip', '~> 2.1'
+  pod 'ReactorKit'
 end
 
 target 'AppStoreSample' do

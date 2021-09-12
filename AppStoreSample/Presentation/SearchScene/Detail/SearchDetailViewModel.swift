@@ -9,41 +9,38 @@ import Domain
 import RxSwift
 import RxCocoa
 import RxFlow
+import ReactorKit
 
-final class DetailViewModel: ViewModel {
-    enum Input {
+final class DetailViewModel: Reactor {
+    enum Action {
         case initialData(Track)
     }
     
-    struct Output {
-        var dataSource: [SearchDetail.Model]?
+    struct State {
+        var dataSource: [SearchDetail.Model] = .init()
         var artWorkURL: String?
     }
     
-    let input: PublishRelay<Input> = .init()
-    let mutation: PublishRelay<Input> = .init()
-    let output: BehaviorRelay<Output> = .init(value: .init())
-    
+    let initialState: State = .init()
     let disposeBag: DisposeBag = .init()
     
     init(with data: Track) {
-        bind()
-        input.accept(.initialData(data))
+        action.onNext(.initialData(data))
     }
     
-    func reduce(mutation: Input) -> Observable<Output> {
-        var newOutput = output.value
+    func reduce(state: State, mutation: Action) -> State {
+        var newState = state
         switch mutation {
         case .initialData(let track):
             let items = SearchDetail.DetailViewItemModel().parse(data: track)
             let dataSource = [SearchDetail.Model(model: .none, items: items)]
-            newOutput.dataSource = dataSource
-            newOutput.artWorkURL = track.artworkURL
+            newState.dataSource = dataSource
+            newState.artWorkURL = track.artworkURL
         }
-        return .just(newOutput)
+        return newState
     }
     
     func getArtworkURL() -> String? {
-        output.value.artWorkURL
+        return currentState.artWorkURL
     }
 }

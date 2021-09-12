@@ -31,7 +31,7 @@ final class SettingMainViewController: UIViewController, StoryboardBased {
         
         switch motion {
         case .motionShake:
-            viewModel.input.accept(.shakeDetected)
+            viewModel.action.onNext(.shakeDetected)
         default:
             break
         }
@@ -61,12 +61,11 @@ final class SettingMainViewController: UIViewController, StoryboardBased {
     }
     
     private func bindOutput() {
-        viewModel.output.compactMap { $0.dataSource }
-            .debug("bindOutput")
+        viewModel.state.compactMap { $0.dataSource }
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
-        viewModel.output.compactMap { $0.signedOut }
+        viewModel.state.compactMap { $0.signedOut }
             .subscribe(onNext: { _ in
                 log.debug("signed out")
             })
@@ -107,10 +106,10 @@ extension SettingMainViewController: UITableViewDelegate {
         case .push(let desination):
             switch desination {
             case .internal:
-                viewModel.input.accept(.didSelectInternal)
+                viewModel.action.onNext(.didSelectInternal)
             }
         case .logout:
-            viewModel.input.accept(.signOutTapped)
+            viewModel.action.onNext(.signOutTapped)
         }
     }
 }

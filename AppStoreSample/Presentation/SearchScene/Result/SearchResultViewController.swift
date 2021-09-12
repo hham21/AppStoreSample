@@ -52,13 +52,13 @@ final class SearchResultViewController: UIViewController, StoryboardBased {
     }
     
     private func bindDataSource() {
-        viewModel.output.compactMap { $0.dataSource }
+        viewModel.state.compactMap { $0.dataSource }
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
     }
     
     private func bindError() {
-        viewModel.output.compactMap { $0.error }
+        viewModel.state.compactMap { $0.error }
             .subscribe(onNext: { error in
                 log.error(error)
             })
@@ -108,7 +108,7 @@ extension SearchResultViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch dataSource[indexPath] {
         case .recentKeyword(let text):
-            viewModel.input.accept(.searchButtonTapped(text))
+            viewModel.action.onNext(.searchButtonTapped(text))
             delegate?.searchResultDidSelectKeyword(text)
             tableView.deselectRow(at: indexPath, animated: true)
         case .track(let data):
@@ -127,11 +127,11 @@ extension SearchResultViewController: UITableViewDelegate {
 
 extension SearchResultViewController {
     func updateSearchResult(text: String) {
-        viewModel.input.accept(.searchBarTextUpdated(text))
+        viewModel.action.onNext(.searchBarTextUpdated(text))
     }
     
     func searchQuery(text: String) {
-        viewModel.input.accept(.searchButtonTapped(text))
+        viewModel.action.onNext(.searchButtonTapped(text))
     }
 }
 

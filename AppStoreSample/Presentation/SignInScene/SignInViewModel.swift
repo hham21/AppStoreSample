@@ -8,37 +8,37 @@
 import RxSwift
 import RxCocoa
 import RxFlow
+import ReactorKit
 
-final class SignInViewModel: ViewModelWithStepper {
-    enum Input {
+final class SignInViewModel: Reactor, Stepper {
+    enum Action {
         case signInButtonTapped
     }
     
-    struct Output {
-        var didSignIn: Bool?
+    struct State {
+        var didSignIn: Bool = false
     }
     
-    var input: PublishRelay<Input> = .init()
-    var output: BehaviorRelay<Output> = .init(value: .init())
-    
-    let disposeBag: DisposeBag = .init()
     let steps: PublishRelay<Step> = .init()
+    let initialState: State = .init()
+    let disposeBag: DisposeBag = .init()
     
-    init() {
-        bind()
+    init() {}
+    
+    func mutate(action: Action) -> Observable<Action> {
+        switch action {
+        case .signInButtonTapped:
+            steps.accept(AppStep.didSignIn)
+            return .empty()
+        }
     }
     
-    func reduce(mutation: Input) -> Observable<Output> {
+    func reduce(state: State, mutation: Action) -> State {
+        var newState = state
         switch mutation {
         case .signInButtonTapped:
-            return .just(.init(didSignIn: true))
+            newState.didSignIn = true
         }
-    }
-    
-    func coordinate(input: Input) -> Observable<Step> {
-        switch input {
-        case .signInButtonTapped:
-            return .just(AppStep.didSignIn)
-        }
+        return newState
     }
 }
